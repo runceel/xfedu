@@ -1,2 +1,3 @@
-# xfedu
-Xamarin.Forms 入門
+# かずきの Xamarin.Forms 入門
+
+ちまちま書いていきます。
