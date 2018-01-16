@@ -17,7 +17,7 @@ Xamarin.Forms は以下のプラットフォームのアプリケーションを
 - WPF
 - etc...
 
-本書では Android と iOS をターゲットとして開設を行います。
+本書では Android と iOS をターゲットとして解説を行います。
 
 また、Xamarin.Forms のプロジェクトの形式として .NET Standard と Shared がありますが本サイトでは .NET Standard を使用して解説を行います。
 
