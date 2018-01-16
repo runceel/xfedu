@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Hello world - かずきの Xamarin.Forms 入門</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Hello world";
+    var mkdocs_page_input_path = "02.hello-world\\index.md";
+    var mkdocs_page_url = "/02.hello-world/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> かずきの Xamarin.Forms 入門</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../01.introduction/">はじめに</a>
+	    </li>
+          
+            <li class="toctree-l1 current">
+		
+    <a class="current" href="./">Hello world</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#hello-world">Hello world</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#_1">実行して動作確認</a></li>
+        
+        </ul>
+    
+
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">かずきの Xamarin.Forms 入門</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Hello world</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/runceel/xfedu/edit/master/docs/02.hello-world/index.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="hello-world">Hello world</h1>
+<p>Xamarin.Forms での Hello world について解説します。Xamarin.Forms でプロジェクトを新規作成すると、どの IDE で行なっても以下のようなものが作成されます。</p>
+<p><img alt="Create project" src="./images/create-project.png" /></p>
+<p>HelloWorld プロジェクトが .NET Standard のプロジェクトになります。基本的には、ここにロジックや画面などを記載していきます。HelloWorld.Android プロジェクトが Android のプロジェクトになります。このプロジェクトの MainActivity.cs が Android 上の実質的なエントリポイントになります。Xamarin.Forms の初期化処理が書かれています。</p>
+<pre><code class="cs">using System;
+
+using Android.App;
+using Android.Content.PM;
+using Android.Runtime;
+using Android.Views;
+using Android.Widget;
+using Android.OS;
+
+namespace HelloWorld.Droid
+{
+    [Activity(Label = &quot;HelloWorld&quot;, Icon = &quot;@drawable/icon&quot;, Theme = &quot;@style/MainTheme&quot;, MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+    public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
+    {
+        protected override void OnCreate(Bundle bundle)
+        {
+            TabLayoutResource = Resource.Layout.Tabbar;
+            ToolbarResource = Resource.Layout.Toolbar;
+
+            base.OnCreate(bundle);
+
+            global::Xamarin.Forms.Forms.Init(this, bundle);
+            LoadApplication(new App());
+        }
+    }
+}
+</code></pre>
+
+<p>長いですが、基本的には global::Xamarin.Forms.Forms.Init(this, bundle) という行と LoadApplication(new App()) という行が初期化処理になります。次に HelloWorld.iOS プロジェクトを見ていきます。HelloWorld.iOS プロジェクトは、 AppDelegate.cs クラスがエントリポイントとなります。コードを以下に示します。</p>
+<pre><code class="cs">using System;
+using System.Collections.Generic;
+using System.Linq;
+
+using Foundation;
+using UIKit;
+
+namespace HelloWorld.iOS
+{
+    // The UIApplicationDelegate for the application. This class is responsible for launching the 
+    // User Interface of the application, as well as listening (and optionally responding) to 
+    // application events from iOS.
+    [Register(&quot;AppDelegate&quot;)]
+    public partial class AppDelegate : global::Xamarin.Forms.Platform.iOS.FormsApplicationDelegate
+    {
+        //
+        // This method is invoked when the application has loaded and is ready to run. In this 
+        // method you should instantiate the window, load the UI into it and then make the window
+        // visible.
+        //
+        // You have 17 seconds to return from this method, or iOS will terminate your application.
+        //
+        public override bool FinishedLaunching(UIApplication app, NSDictionary options)
+        {
+            global::Xamarin.Forms.Forms.Init();
+            LoadApplication(new App());
+
+            return base.FinishedLaunching(app, options);
+        }
+    }
+}
+</code></pre>
+
+<p>iOS も global::Xamarin.Forms.Forms.Init() の行と LoadApplication(new App()) が Xamarin.Forms の初期化処理を行なっている部分になります。</p>
+<p>次に LoadApplication メソッドに渡されている App クラスについて見てみます。App クラスは HelloWorld プロジェクトに App.xaml と App.xaml.cs の2つのファイルで構成されています。後述しますが XAML と呼ばれるマークアップ言語と、それに紐づいたコードビハインドクラスからできています。App.xaml.cs を開くと以下のようなコードになっています。</p>
+<pre><code class="cs">using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+using Xamarin.Forms;
+
+namespace HelloWorld
+{
+    public partial class App : Application
+    {
+        public App ()
+        {
+            InitializeComponent();
+
+            MainPage = new HelloWorld.MainPage();
+        }
+
+        protected override void OnStart ()
+        {
+            // Handle when your app starts
+        }
+
+        protected override void OnSleep ()
+        {
+            // Handle when your app sleeps
+        }
+
+        protected override void OnResume ()
+        {
+            // Handle when your app resumes
+        }
+    }
+}
+</code></pre>
+
+<p>コンストラクタで MainPage プロパティに HelloWorld.MainPage を設定しています。Xamarin.Forms では、このように App クラスの MainPage プロパティにページを設定することで初期画面を設定できます。</p>
+<p>では、次に HelloWorld.MainPage を見ていきたいと思います。
+HelloWorld.MainPage も App クラスと同様に MainPage.xaml と MainPage.xaml.cs から構成されています。MainPage.xaml で画面の見た目を XAML で定義して MainPage.xaml.cs で画面の処理を C＃ で記述するという流れになります。見た目を定義している MainPage.xamlのコードを以下に示します。</p>
+<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;
+&lt;ContentPage xmlns=&quot;http://xamarin.com/schemas/2014/forms&quot;
+             xmlns:x=&quot;http://schemas.microsoft.com/winfx/2009/xaml&quot;
+             xmlns:local=&quot;clr-namespace:HelloWorld&quot;
+             x:Class=&quot;HelloWorld.MainPage&quot;&gt;
+
+    &lt;Label Text=&quot;Welcome to Xamarin.Forms!&quot; 
+           VerticalOptions=&quot;Center&quot; 
+           HorizontalOptions=&quot;Center&quot; /&gt;
+
+&lt;/ContentPage&gt;
+</code></pre>
+
+<p>XAML は基本的に XML をベースとした言語になります。
+詳細は後述しますが XML 名前空間が C＃ の名前空間に紐付きタグ名がクラス名に紐付き属性がプロパティに紐づくという感じになります。ここでは ContentPage という Xamarin.Forms の一般的なページに対して文字列を表示するための Label を中央寄せで配置しています。</p>
+<p>最後に MainPage.xaml.cs を見ていきます。コードを以下に示します。</p>
+<pre><code class="cs">using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Xamarin.Forms;
+
+namespace HelloWorld
+{
+    public partial class MainPage : ContentPage
+    {
+        public MainPage()
+        {
+            InitializeComponent();
+        }
+    }
+}
+</code></pre>
+
+<p>Xamarin.Forms の基本的なページである ContentPage を継承しています。</p>
+<h2 id="_1">実行して動作確認</h2>
+<p>では、実行して動作確認をします。iOS と Android で実行すると以下のようになります。</p>
+<p><img alt="Hello world Android" src="./images/hello-world-android.png" />
+<img alt="Hello world iOS" src="./images/hello-world-ios.png" /></p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="../01.introduction/" class="btn btn-neutral" title="はじめに"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/runceel/xfedu/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../01.introduction/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/require.js"></script>
+      <script src="../search/search.js"></script>
+
+</body>
+</html>
