@@ -160,7 +160,7 @@ Xamarin.Forms の基本的なページである ContentPage を継承してい�
 
 ## 実行して動作確認
 
-では、実行して動作確認をします。iOS と Android で実行すると以下のようになります。
+実行して動作確認をします。iOS と Android で実行すると以下のようになります。
 
 ![Hello world Android](images/hello-world-android.png)
 ![Hello world iOS](images/hello-world-ios.png)
