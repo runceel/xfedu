@@ -1,8 +1,9 @@
 site_name: かずきの Xamarin.Forms 入門
 repo_url: https://github.com/runceel/xfedu
-site_authoer: 大田　一希
+site_authoer: 'Kazuki Ota'
 theme: readthedocs
 pages:
   - 'Home': 'index.md'
   - 'はじめに': '01.introduction/index.md'
   - 'Hello world': '02.hello-world/index.md'
+  - 'XAML': '03.xaml/index.md'
