@@ -1,6 +1,6 @@
 site_name: かずきの Xamarin.Forms 入門
 repo_url: https://github.com/runceel/xfedu
-site_authoer: 'Kazuki Ota'
+site_author: 'Kazuki Ota'
 theme: readthedocs
 pages:
   - 'Home': 'index.md'
