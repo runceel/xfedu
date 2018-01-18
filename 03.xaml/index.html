@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>XAML - かずきの Xamarin.Forms 入門</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "XAML";
+    var mkdocs_page_input_path = "03.xaml\\index.md";
+    var mkdocs_page_url = "/03.xaml/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> かずきの Xamarin.Forms 入門</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../01.introduction/">はじめに</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../02.hello-world/">Hello world</a>
+	    </li>
+          
+            <li class="toctree-l1 current">
+		
+    <a class="current" href="./">XAML</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#xaml">XAML</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#xaml-c">XAML と C# のコードの対比</a></li>
+        
+        </ul>
+    
+
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">かずきの Xamarin.Forms 入門</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>XAML</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/runceel/xfedu/edit/master/docs/03.xaml/index.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="xaml">XAML</h1>
+<p>ここでは Xamarin.Forms で UI を記述するための言語である XAML について説明します。XAML とは XML をベースとした言語です。XML なのでツリー状の構造を持ったものを記述するのに向いています。UI はページをルートとしたツリー構造のものなので UI を記述するのに非常に親和性が高い言語となっています。では XAML について解説していきます。</p>
+<h2 id="xaml-c">XAML と C# のコードの対比</h2>
+<p>XAML はオブジェクトのインスタンスを組み立てるための言語です。
+オブジェクトのインスタンスを組み立てるだけなら C# でも可能です。
+実際に XAML を使わずに C# で画面部品を組み立てた Xamarin.Forms のサンプルプログラムやリリースされているプログラムもあります。
+本書では C# による画面構築は基本的に行わずに XAML を主体とした画面構築を行います。それでは XAML を見て行ってみましょう。</p>
+<h3 id="xaml_1">XAML の基本</h3>
+<p>XAML は Xamarin.Forms のページを作成するのに使われます。では、ページを作成してみましょう。IDE によって若干生成されるページのコードは異なりますがおおむね以下のようになります。</p>
+<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;ContentPage xmlns=&quot;http://xamarin.com/schemas/2014/forms&quot; 
+    xmlns:x=&quot;http://schemas.microsoft.com/winfx/2009/xaml&quot;  
+    x:Class=&quot;HelloWorld.MyPage&quot;&gt;
+&lt;/ContentPage&gt;
+</code></pre>
+
+<p>XAML ではタグ名がクラス名に該当します。つまり、これは ContentPage クラスのインスタンスを組み立てているということになります。いくつか XML 名前空間が定義されています。<code>http://xamarin.com/schemas/2014/forms</code> 名前空間は Xamarin.Forms のクラスが定義されている特別な名前空間です。
+<code>x</code>名前空間の <code>http://schemas.microsoft.com/winfx/2009/xaml</code> も XAML 内で使用する様々なクラスが定義された名前空間になります。
+この 2 つの名前空間は新規作成するとデフォルトで付いてくるものなので自分で打つ必要はありませんが特別なものだと覚えておきましょう。<code>x:Class</code>属性はコードビハインドと XAML ファイルを紐づけるためのタグになります。
+コードビハインドクラスは HelloWorld.MyPage クラスであるということが定義されています。</p>
+<p>XAML では XML の属性が C# のプロパティの設定に該当します。
+ContentPage クラスには string 型の Title プロパティがあるので、それに Hello world を設定すると XAML は以下のようになります。</p>
+<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;ContentPage xmlns=&quot;http://xamarin.com/schemas/2014/forms&quot;
+    xmlns:x=&quot;http://schemas.microsoft.com/winfx/2009/xaml&quot;
+    x:Class=&quot;HelloWorld.MyPage&quot;
+    Title=&quot;Hello world&quot;&gt;
+&lt;/ContentPage&gt;
+</code></pre>
+
+<p>C# のコードで表すと以下のようなイメージになります。</p>
+<pre><code class="cs">var page = new ContentPage
+{
+    Title = “Hello world”,
+};
+</code></pre>
+
+<p>ContentPage にコントロールを配置するには object 型の Content プロパティにコントロールを配置していきます。
+各種コントロールのような複雑なオブジェクトをプロパティに設定するための構文として、プロパティ要素構文というものがあります。これは、タグ名としてプロパティを定義するための構文で、「クラス名.プロパティ名」という形でタグを書くことで、タグとしてプロパティを設定できます。こうすることでオブジェクトのような複雑な型をプロパティに設定することができます。例えば ContentPage に Hello world と設定した Label （テキストを表示するためのコントロール）を設定した XAML を以下に示します。</p>
+<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;ContentPage xmlns=&quot;http://xamarin.com/schemas/2014/forms&quot;
+    xmlns:x=&quot;http://schemas.microsoft.com/winfx/2009/xaml&quot;
+    x:Class=&quot;HelloWorld.MyPage&quot;
+    Title=&quot;Hello world&quot;&gt;
+    &lt;ContentPage.Content&gt;
+        &lt;Label Text=&quot;Hello world&quot; /&gt;
+    &lt;/ContentPage.Content&gt;
+&lt;/ContentPage&gt;
+</code></pre>
+
+<p>XAML では 1 つのクラスに対して 1 つのコンテンツ プロパティを定義することができます。コンテンツ プロパティは XAML でタグを省略した時に設定されるデフォルトのプロパティのことです。ややこしいのですが ContentPage コントロールは Content プロパティがコンテンツ プロパティとして定義されています。そのため ContentPage.Content のタグは省略できるため上記の XAML は以下のように書くことができます。</p>
+<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;ContentPage xmlns=&quot;http://xamarin.com/schemas/2014/forms&quot;
+    xmlns:x=&quot;http://schemas.microsoft.com/winfx/2009/xaml&quot;
+    x:Class=&quot;HelloWorld.MyPage&quot;
+    Title=&quot;Hello world&quot;&gt;
+    &lt;Label Text=&quot;Hello world&quot; /&gt;
+&lt;/ContentPage&gt;
+</code></pre>
+
+<p>複数のコントロールをページに置いてみましょう。
+ContentPage クラスの Content プロパティは単一の要素しか置けないため、複数のコントロールを配置するときは要素のレイアウトを行うコントロールを置いて、その中にコントロールを配置して行います。よく使われるレイアウト コントロールとして StackLayout というクラスがあります。これは子要素を縦や横に並べるコントロールです。StackLayout コントロールには Children プロパティというコレクション型のプロパティがあり、そこにコントロールを追加していきます。</p>
+<p>コレクション型のプロパティに対して要素を追加するにはコレクション構文というものがあり、コレクションのプロパティに対して直接子要素を設定することでコレクションに設定させることができます。そのため StackLayout に対して Label コントロールと Button コントロールを配置するには以下のように書くことができます。</p>
+<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;ContentPage xmlns=&quot;http://xamarin.com/schemas/2014/forms&quot;
+    xmlns:x=&quot;http://schemas.microsoft.com/winfx/2009/xaml&quot;
+    x:Class=&quot;HelloWorld.MyPage&quot;
+    Title=&quot;Hello world&quot;&gt;
+    &lt;StackLayout&gt;
+        &lt;Label Text=&quot;Hello world&quot; /&gt;
+        &lt;Button Text=&quot;Click me&quot; /&gt;
+    &lt;/StackLayout&gt;
+&lt;/ContentPage&gt;
+</code></pre>
+
+<p>次にイベントを設定する方法を示します。各コントロールには様々なユーザーの操作に対応するためのイベントが定義されています。代表的なものとして Button コントロールの Clicked イベントがあります。名前の通り Button がタップされたときに起きるイベントです。イベントはプロパティの設定と同じように「イベント名=”イベントハンドラ名”」という形式で記述します。イベントハンドラは各種イベントに応じた引数を受け取るメソッドで、コードビハインド クラスに定義されます。では上記の XAML に対して Button の Clicked イベントに OnClicked イベントを割り当ててみましょう。
+XAML を以下に示します。</p>
+<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;ContentPage xmlns=&quot;http://xamarin.com/schemas/2014/forms&quot;
+    xmlns:x=&quot;http://schemas.microsoft.com/winfx/2009/xaml&quot;
+    x:Class=&quot;HelloWorld.MyPage&quot;
+    Title=&quot;Hello world&quot;&gt;
+    &lt;StackLayout&gt;
+        &lt;Label Text=&quot;Hello world&quot; /&gt;
+        &lt;Button Text=&quot;Click me&quot;
+            Clicked=&quot;OnClicked&quot; /&gt;
+    &lt;/StackLayout&gt;
+&lt;/ContentPage&gt;
+</code></pre>
+
+<p>コードビハインドで OnClicked というメソッドを定義します。以下にコードを示します。</p>
+<pre><code class="cs">using System;
+using Xamarin.Forms;
+
+namespace HelloWorld
+{
+    public partial class MyPage : ContentPage
+    {
+        public MyPage()
+        {
+            InitializeComponent();
+        }
+
+        private void OnClicked(object sender, EventArgs args)
+        {
+            // ここに処理を書く
+        }
+    }
+}
+</code></pre>
+
+<p>コードビハインドからコントロールを触るには x:Name という属性を使用します。<code>x</code>名前空間には特殊な動きをする様々な属性や要素が定義されています。詳細はリファレンスをみてください。本サイトでは代表的なものについて適時説明していきます。</p>
+<blockquote>
+<p>x名前空間で定義されているもののリストのあるページ
+https://developer.xamarin.com/guides/xamarin-forms/xaml/namespaces/</p>
+</blockquote>
+<p>では Label に x:Name 属性で名前をつけて Button がタップされた時に Text プロパティを書き換えるようにしてみたいと思います。まず XAML で Label に <code>x:Name=”labelHelloWorld”</code> という形で名前をつけます。</p>
+<pre><code class="xml">&lt;Label x:Name=&quot;labelHelloWorld&quot;
+    Text=&quot;Hello world&quot; /&gt;
+</code></pre>
+
+<p>そして、先ほどコードビハインドに定義した OnClicked イベント ハンドラに以下のように処理を記述します。</p>
+<pre><code class="cs">private void OnClicked(object sender, EventArgs args)
+{
+    this.labelHelloWorld.Text = &quot;こんにちは世界&quot;;
+}
+</code></pre>
+
+<p>この状態で実行すると以下のように Button を押すと Label の Text が書き換わります。
+Button の選択前は以下のように表示されていますが</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="../02.hello-world/" class="btn btn-neutral" title="Hello world"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/runceel/xfedu/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../02.hello-world/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/require.js"></script>
+      <script src="../search/search.js"></script>
+
+</body>
+</html>
