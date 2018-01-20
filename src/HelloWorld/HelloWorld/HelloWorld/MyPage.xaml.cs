@@ -12,7 +12,7 @@ namespace HelloWorld
 
         private void OnClicked(object sender, EventArgs args)
         {
-            // ここに処理を書く
+            this.labelHelloWorld.Text = "こんにちは世界";
         }
     }
 }

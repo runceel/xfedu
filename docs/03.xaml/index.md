@@ -80,17 +80,22 @@ ContentPage クラスの Content プロパティは単一の要素しか置け�
 
 コレクション型のプロパティに対して要素を追加するにはコレクション構文というものがあり、コレクションのプロパティに対して直接子要素を設定することでコレクションに設定させることができます。そのため StackLayout に対して Label コントロールと Button コントロールを配置するには以下のように書くことができます。
 
+また、水平方向と垂直方向に中央に表示させるための HorizontalOptions プロパティと VerticalOpeions プロパティの設定もあわせて行っています。
+
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="HelloWorld.MyPage"
-    Title="Hello world">
-    <StackLayout>
-        <Label Text="Hello world" />
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HelloWorld.MyPage"
+             Title="Hello world">
+    <StackLayout HorizontalOptions="Center"
+                 VerticalOptions="Center">
+        <Label x:Name="labelHelloWorld"
+               Text="Hello world" />
         <Button Text="Click me" />
     </StackLayout>
+</ContentPage>
 </ContentPage>
 ```
 
@@ -100,13 +105,15 @@ XAML を以下に示します。
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="HelloWorld.MyPage"
-    Title="Hello world">
-    <StackLayout>
-        <Label Text="Hello world" />
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HelloWorld.MyPage"
+             Title="Hello world">
+    <StackLayout HorizontalOptions="Center"
+                 VerticalOptions="Center">
+        <Label x:Name="labelHelloWorld"
+               Text="Hello world" />
         <Button Text="Click me"
-            Clicked="OnClicked" />
+                Clicked="OnClicked" />
     </StackLayout>
 </ContentPage>
 ```
@@ -156,6 +163,17 @@ private void OnClicked(object sender, EventArgs args)
 ```
 
 この状態で実行すると以下のように Button を押すと Label の Text が書き換わります。
-Button の選択前は以下のように表示されていますが
+Button の選択前は Hello world と表示されていますが Button を選択すると こんにちは世界 に Label の Text が書き換わります。
 
+![Android Hello world](images/android-helloworld.gif)
+
+![iOS Hello world](images/ios-helloworld.gif)
+
+以上が、XAMLを使用してアプリケーションを組む場合に必要最低限必要な部分になります。
+
+## XAML の応用
+
+ここからは、XAMLの応用的なことについて説明していきます。
+
+### 添付プロパティ
 
