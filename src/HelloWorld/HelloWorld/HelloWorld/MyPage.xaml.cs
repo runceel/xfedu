@@ -9,10 +9,5 @@ namespace HelloWorld
         {
             InitializeComponent();
         }
-
-        private void OnClicked(object sender, EventArgs args)
-        {
-            this.labelHelloWorld.Text = "こんにちは世界";
-        }
     }
 }
