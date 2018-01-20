@@ -184,3 +184,35 @@ XAMLには、オブジェクトには本来存在していない他のクラス�
 ![Attached property](images/android-attached.png)
 
 ![Attached property](images/ios-attached.png)
+
+### マークアップ拡張
+
+XAML を使うことで、入れ子構造になった複雑な形状のオブジェクトを構築することができます。しかし XML という形式で表現するのが冗長であったり、そもそも XML で表現が難しいものも中にはあります。そういったものを表現するためにマークアップ拡張というものがあります。マークアップ拡張は、属性の設定値の中に「{マークアップ拡張名 プロパティ名=値, プロパティ名=値…}」のような形で記載をしていきます。特によく使われるマークアップ拡張として StaticResource マークアップ拡張を、まず紹介します。
+
+### StaticResource
+
+StaticResource は Page などのコントロールに実装されている Resources プロパティに設定された ResourceDictionary の中で定義された要素を参照するために使用します。ResourceDictionary に共通の定義を追加することで文字列や色やスタイルなどを再利用することができます。ResourceDictionary に定義したオブジェクトは x:Key 属性で名前をつける必要があります。名前をつけると StaticResource マークアップ拡張の Key プロパティで指定して取得することができます。文字列を ResourceDictionary で定義して StaticResource で取得する XAML の例を以下に示します。
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="HelloWorld.MyPage"
+    Title="Hello world">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <x:String x:Key="text">Hello world</x:String>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <Label Text="{StaticResource text}"
+        HorizontalOptions="Center"
+        VerticalOptions="Center" />
+</ContentPage>
+```
+
+実行すると Label に Hello world と表示されます。
+
+![Android StaticResource](images/android-staticresource.png)
+
+![iOS StaticResource](images/ios-staticresource.png)
+

@@ -1,28 +1,14 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="HelloWorld.MyPage"
-             Title="Hello world">
-    <Grid>
-        <!-- 行の定義 -->
-        <Grid.RowDefinitions>
-            <RowDefinition />
-            <RowDefinition />
-            <RowDefinition />
-        </Grid.RowDefinitions>
-        <!-- 列の定義 -->
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition />
-            <ColumnDefinition />
-            <ColumnDefinition />
-        </Grid.ColumnDefinitions>
-        <!-- Buttonを斜めに置いていく -->
-        <Button Text="0,0" />
-        <Button Text="1,1"
-                Grid.Row="1"
-                Grid.Column="1" />
-        <Button Text="2,2"
-                Grid.Row="2"
-                Grid.Column="2" />
-    </Grid>
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="HelloWorld.MyPage"
+    Title="Hello world">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <x:String x:Key="text">Hello world</x:String>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <Label Text="{StaticResource text}"
+        HorizontalOptions="Center"
+        VerticalOptions="Center" />
 </ContentPage>
