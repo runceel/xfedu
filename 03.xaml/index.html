@@ -73,6 +73,8 @@
         
             <li><a class="toctree-l3" href="#xaml-c">XAML と C# のコードの対比</a></li>
         
+            <li><a class="toctree-l3" href="#xaml_2">XAML の応用</a></li>
+        
         </ul>
     
 
@@ -177,15 +179,19 @@ ContentPage クラスには string 型の Title プロパティがあるので�
 <p>複数のコントロールをページに置いてみましょう。
 ContentPage クラスの Content プロパティは単一の要素しか置けないため、複数のコントロールを配置するときは要素のレイアウトを行うコントロールを置いて、その中にコントロールを配置して行います。よく使われるレイアウト コントロールとして StackLayout というクラスがあります。これは子要素を縦や横に並べるコントロールです。StackLayout コントロールには Children プロパティというコレクション型のプロパティがあり、そこにコントロールを追加していきます。</p>
 <p>コレクション型のプロパティに対して要素を追加するにはコレクション構文というものがあり、コレクションのプロパティに対して直接子要素を設定することでコレクションに設定させることができます。そのため StackLayout に対して Label コントロールと Button コントロールを配置するには以下のように書くことができます。</p>
+<p>また、水平方向と垂直方向に中央に表示させるための HorizontalOptions プロパティと VerticalOpeions プロパティの設定もあわせて行っています。</p>
 <pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
 &lt;ContentPage xmlns=&quot;http://xamarin.com/schemas/2014/forms&quot;
-    xmlns:x=&quot;http://schemas.microsoft.com/winfx/2009/xaml&quot;
-    x:Class=&quot;HelloWorld.MyPage&quot;
-    Title=&quot;Hello world&quot;&gt;
-    &lt;StackLayout&gt;
-        &lt;Label Text=&quot;Hello world&quot; /&gt;
+             xmlns:x=&quot;http://schemas.microsoft.com/winfx/2009/xaml&quot;
+             x:Class=&quot;HelloWorld.MyPage&quot;
+             Title=&quot;Hello world&quot;&gt;
+    &lt;StackLayout HorizontalOptions=&quot;Center&quot;
+                 VerticalOptions=&quot;Center&quot;&gt;
+        &lt;Label x:Name=&quot;labelHelloWorld&quot;
+               Text=&quot;Hello world&quot; /&gt;
         &lt;Button Text=&quot;Click me&quot; /&gt;
     &lt;/StackLayout&gt;
+&lt;/ContentPage&gt;
 &lt;/ContentPage&gt;
 </code></pre>
 
@@ -193,13 +199,15 @@ ContentPage クラスの Content プロパティは単一の要素しか置け�
 XAML を以下に示します。</p>
 <pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
 &lt;ContentPage xmlns=&quot;http://xamarin.com/schemas/2014/forms&quot;
-    xmlns:x=&quot;http://schemas.microsoft.com/winfx/2009/xaml&quot;
-    x:Class=&quot;HelloWorld.MyPage&quot;
-    Title=&quot;Hello world&quot;&gt;
-    &lt;StackLayout&gt;
-        &lt;Label Text=&quot;Hello world&quot; /&gt;
+             xmlns:x=&quot;http://schemas.microsoft.com/winfx/2009/xaml&quot;
+             x:Class=&quot;HelloWorld.MyPage&quot;
+             Title=&quot;Hello world&quot;&gt;
+    &lt;StackLayout HorizontalOptions=&quot;Center&quot;
+                 VerticalOptions=&quot;Center&quot;&gt;
+        &lt;Label x:Name=&quot;labelHelloWorld&quot;
+               Text=&quot;Hello world&quot; /&gt;
         &lt;Button Text=&quot;Click me&quot;
-            Clicked=&quot;OnClicked&quot; /&gt;
+                Clicked=&quot;OnClicked&quot; /&gt;
     &lt;/StackLayout&gt;
 &lt;/ContentPage&gt;
 </code></pre>
@@ -243,7 +251,40 @@ https://developer.xamarin.com/guides/xamarin-forms/xaml/namespaces/</p>
 </code></pre>
 
 <p>この状態で実行すると以下のように Button を押すと Label の Text が書き換わります。
-Button の選択前は以下のように表示されていますが</p>
+Button の選択前は Hello world と表示されていますが Button を選択すると こんにちは世界 に Label の Text が書き換わります。</p>
+<p><img alt="Android Hello world" src="./images/android-helloworld.gif" /></p>
+<p><img alt="iOS Hello world" src="./images/ios-helloworld.gif" /></p>
+<p>以上が、XAMLを使用してアプリケーションを組む場合に必要最低限必要な部分になります。</p>
+<h2 id="xaml_2">XAML の応用</h2>
+<p>ここからは、XAMLの応用的なことについて説明していきます。</p>
+<h3 id="_1">添付プロパティ</h3>
+<p>XAMLには、オブジェクトには本来存在していない他のクラスで定義されたプロパティを指定する添付プロパティというものが提供されています。添付プロパティは主に、画面レイアウトに必要な情報をコントロールに設定するために使用されます。一番わかりやすい例が Grid コントロールです。Grid コントロールは画面を格子状に区切って、そこにコントロールを配置するというレイアウトコントロールです。RowDefinitions プロパティで行を定義して ColumnDefinitions プロパティで行と列が何個あるのか定義します。定義したあとに、コントロールを Grid の中に配置していくのですがコントロールを何行何列目に配置するのかという設定を Grid に定義された添付プロパティで行います。以下に、3x3 の Grid に斜めに Button を置く場合のコード例を示します。</p>
+<p>添付プロパティは、コード中の「Grid.Row=”1”」や「Grid.Column=”1”」といった「クラス名.プロパティ名」といった方法で指定している部分になります。実行結果を以下に示します。</p>
+<p><img alt="Attached property" src="./images/android-attached.png" /></p>
+<p><img alt="Attached property" src="./images/ios-attached.png" /></p>
+<h3 id="_2">マークアップ拡張</h3>
+<p>XAML を使うことで、入れ子構造になった複雑な形状のオブジェクトを構築することができます。しかし XML という形式で表現するのが冗長であったり、そもそも XML で表現が難しいものも中にはあります。そういったものを表現するためにマークアップ拡張というものがあります。マークアップ拡張は、属性の設定値の中に「{マークアップ拡張名 プロパティ名=値, プロパティ名=値…}」のような形で記載をしていきます。特によく使われるマークアップ拡張として StaticResource マークアップ拡張を、まず紹介します。</p>
+<h3 id="staticresource">StaticResource</h3>
+<p>StaticResource は Page などのコントロールに実装されている Resources プロパティに設定された ResourceDictionary の中で定義された要素を参照するために使用します。ResourceDictionary に共通の定義を追加することで文字列や色やスタイルなどを再利用することができます。ResourceDictionary に定義したオブジェクトは x:Key 属性で名前をつける必要があります。名前をつけると StaticResource マークアップ拡張の Key プロパティで指定して取得することができます。文字列を ResourceDictionary で定義して StaticResource で取得する XAML の例を以下に示します。</p>
+<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;ContentPage xmlns=&quot;http://xamarin.com/schemas/2014/forms&quot;
+    xmlns:x=&quot;http://schemas.microsoft.com/winfx/2009/xaml&quot;
+    x:Class=&quot;HelloWorld.MyPage&quot;
+    Title=&quot;Hello world&quot;&gt;
+    &lt;ContentPage.Resources&gt;
+        &lt;ResourceDictionary&gt;
+            &lt;x:String x:Key=&quot;text&quot;&gt;Hello world&lt;/x:String&gt;
+        &lt;/ResourceDictionary&gt;
+    &lt;/ContentPage.Resources&gt;
+    &lt;Label Text=&quot;{StaticResource text}&quot;
+        HorizontalOptions=&quot;Center&quot;
+        VerticalOptions=&quot;Center&quot; /&gt;
+&lt;/ContentPage&gt;
+</code></pre>
+
+<p>実行すると Label に Hello world と表示されます。</p>
+<p><img alt="Android StaticResource" src="./images/android-staticresource.png" /></p>
+<p><img alt="iOS StaticResource" src="./images/ios-staticresource.png" /></p>
               
             </div>
           </div>
