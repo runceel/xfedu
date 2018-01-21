@@ -6,8 +6,8 @@
         <Slider x:Name="slider"
                 Maximum="100"
                 Minimum="0"
-                VerticalOptions="StartAndExpand" />
-        <Label Text="{Binding Value, Source={x:Reference slider}}"
-               HorizontalOptions="Center" />
+                HorizontalOptions="Fill" />
+        <Entry Text="{Binding Value, Source={x:Reference slider}, Mode=OneWay}"
+               HorizontalOptions="Fill" />
     </StackLayout>
 </ContentPage>

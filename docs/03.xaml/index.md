@@ -365,3 +365,57 @@ x:Reference で名前付きのコントロールのインスタンスを取得�
 ![Android Control Binding](images/android-controlbinding.gif)
 
 ![iOS Control Binding](images/ios-controlbinding.gif)
+
+#### データ バインディングのモード
+
+データバインディングには Mode というプロパティがあります。このプロパティを指定することで、データ バインディングの同期方向をカスタマイズすることができます。データ バインディングの Mode には以下のものが定義されています。
+
+- Default：バインドしているターゲットのプロパティに指定されたデフォルトの値が使用される。
+- OneWay；ソースからターゲットへの一方通行で同期される。
+- OneWayToSource：ターゲットからソースへの一方通行で同期される。
+- TwoWay：ソースとターゲット間の双方向で同期される。
+
+先ほどの Slider と Label の同期から Slider と Entry（テキスト入力用コントロール）の同期にかえて動作を確認してみます。XAML を以下に示します。
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HelloWorld.MyPage">
+    <StackLayout VerticalOptions="Center">
+        <Slider x:Name="slider"
+                Maximum="100"
+                Minimum="0"
+                HorizontalOptions="Fill" />
+        <Entry Text="{Binding Value, Source={x:Reference slider}}"
+               HorizontalOptions="Fill" />
+    </StackLayout>
+</ContentPage>
+```
+
+Entry の Text プロパティの Default の Mode は TwoWay なので Slider の値を変更すると Entry の中の Text が書き換わります。Entry の Text を 40 などのように書き換えると Slider のバーの位置が変わります。
+Mode を明示的に書くと以下のようになります。（Entry タグのみ抜粋）
+
+```xml
+<Entry Text="{Binding Value, Source={x:Reference slider}, Mode=TwoWay}"
+    HorizontalOptions="Fill" />
+```
+
+
+![Android TwoWay Binding](images/android-twowaybinding.gif)
+
+![iOS TwoWay Binding](images/ios-twowaybinding.gif)
+
+
+ここで Mode を OneWay にすると Entry の内容を書き換えても Slider に値が反映されなくなります。
+
+```xml
+<Entry Text="{Binding Value, Source={x:Reference slider}, Mode=OneWay}"
+    HorizontalOptions="Fill" />
+```
+
+実行結果を以下に示します。
+
+![Android OneWay Binding](images/android-onewaybinding.gif)
+
+![iOS OneWay Binding](images/ios-onewaybinding.gif)
