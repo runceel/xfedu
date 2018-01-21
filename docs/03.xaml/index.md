@@ -187,7 +187,7 @@ XAMLには、オブジェクトには本来存在していない他のクラス�
 
 ### マークアップ拡張
 
-XAML を使うことで、入れ子構造になった複雑な形状のオブジェクトを構築することができます。しかし XML という形式で表現するのが冗長であったり、そもそも XML で表現が難しいものも中にはあります。そういったものを表現するためにマークアップ拡張というものがあります。マークアップ拡張は、属性の設定値の中に「{マークアップ拡張名 プロパティ名=値, プロパティ名=値…}」のような形で記載をしていきます。特によく使われるマークアップ拡張として StaticResource マークアップ拡張を、まず紹介します。
+XAML を使うことで、入れ子構造になった複雑な形状のオブジェクトを構築することができます。しかし XML という形式で表現するのが冗長であったり、そもそも XML で表現が難しいものも中にはあります。そういったものを表現するためにマークアップ拡張というものがあります。マークアップ拡張は、属性の設定値の中に「{マークアップ拡張名 プロパティ名=値, プロパティ名=値…}」のような形で記載をしていきます。特によく使われるマークアップ拡張として StaticResource マークアップ拡張をまず紹介します。
 
 ### StaticResource
 
@@ -216,3 +216,37 @@ StaticResource は Page などのコントロールに実装されている Reso
 
 ![iOS StaticResource](images/ios-staticresource.png)
 
+### x:Static
+
+x:Static マークアップ拡張は、クラスの static メンバーを呼び出すためのマークアップ拡張になります。以下のような static な Message プロパティを持った StaticItem クラスがあるとします。
+
+```cs
+namespace HelloWorld
+{
+    public static class StaticItem
+    {
+        public static string Message { get; } = "Hello static world";
+    }
+}
+```
+
+このクラスの Message プロパティを Label の Text プロパティに設定する XAML は以下のようになります。
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:HelloWorld;assembly=HelloWorld"
+    x:Class="HelloWorld.MyPage"
+    Title="Hello world">
+    <Label Text="{x:Static local:StaticItem.Message}"
+        HorizontalOptions="Center"
+        VerticalOptions="Center" />
+</ContentPage>
+```
+
+StaticItem クラスが定義されている名前空間を XML 名前空間とマッピングする定義を追加します。「xmlns:local=”clr-namespace:HelloWorld;assembly=HelloWorld”」が、その定義になります。clr-namespace で C# の名前空間を定義して assembly でアセンブリ名を定義します。XAML と同じアセンブリにある名前空間を指定する場合は、assembly は省略して「xmlns:local=”clr-namespace:HelloWorld”」のように書くこともできます。上記 XAML を実行すると Label に Hello static world と表示されます。
+
+![Android x:Static](images/android-xstatic.png)
+
+![iOS x:Static](images/ios-xstatic.png)
