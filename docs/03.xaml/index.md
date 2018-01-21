@@ -462,3 +462,70 @@ OneWayToSource は OneWay とは逆に Slider の値が変化しても Entry の
 
 StringFormatで指定した書式が設定されていることが確認できます。
 
+#### Converter
+
+データ バインディングでは、ソースからターゲットに値が行くタイミングと、ターゲットからソースに値が行くタイミングで値の変換処理を入れることができます。Converter プロパティに IValueConverter インターフェースを実装したクラスを指定することが可能になります。 IValueConverter インターフェースは以下のように定義されています。
+
+```cs
+public interface IValueConverter
+{
+    object Convert(object value, Type targetType, object parameter, CultureInfo culture);
+
+    object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture);
+}
+```
+
+Convert メソッドがソースからターゲットに行くときに呼ばれるメソッドになります。ConvertBack メソッドがターゲットからソースに行くときに呼ばれるメソッドになります。どちらのメソッドも、オリジナルの値、変換先の型、変換に使用するパラメータ、カルチャーインフォの値が渡ってくるので、これを使用して変換処理を行います。
+例として StringFormat プロパティと同じ機能を持つ StringFormatConverter を作成してみます。この Converter はソースからターゲットに行くときにパラメータに指定した書式でフォーマットするというものになります。コード例を以下に示します。
+
+```cs
+using System;
+using System.Globalization;
+using Xamarin.Forms;
+
+namespace HelloWorld
+{
+    public class StringFormatConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return string.Format((string)parameter, value);
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotSupportedException();
+        }
+    }
+}
+```
+
+Converter は Resources に定義して StaticResource マークアップ拡張で指定します。XAML を以下に示します。
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	xmlns:local="clr-namespace:HelloWorld"
+    x:Class="HelloWorld.MyPage">
+	<ContentPage.Resources>
+        <ResourceDictionary>
+            <local:StringFormatConverter x:Key="StringFormatConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <StackLayout VerticalOptions="Center">
+        <Slider x:Name="slider"
+            Maximum="100"
+            Minimum="0"
+            HorizontalOptions="Fill" />
+        <Label Text="{Binding Value, Source={x:Reference slider}, Converter={StaticResource StringFormatConverter}, ConverterParameter='Slider value is {0:000}.'}"
+            HorizontalOptions="Fill" />
+    </StackLayout>
+</ContentPage>
+```
+
+Converter プロパティに IValueConverter の実装を指定して ConverterParameter プロパティに Convert メソッドや ConvertBack メソッドの parameter 引数に渡される値を指定します。実行すると以下のようになります。
+
+![Android Converter](images/android-converter.gif)
+
+![iOS Converter](images/ios-converter.gif)

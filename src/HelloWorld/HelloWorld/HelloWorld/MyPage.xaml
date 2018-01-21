@@ -1,13 +1,19 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:HelloWorld"
              x:Class="HelloWorld.MyPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:StringFormatConverter x:Key="StringFormatConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <StackLayout VerticalOptions="Center">
         <Slider x:Name="slider"
                 Maximum="100"
                 Minimum="0"
                 HorizontalOptions="Fill" />
-        <Label Text="{Binding Value, Source={x:Reference slider}, StringFormat='Slider value is {0:000}.'}"
+        <Label Text="{Binding Value, Source={x:Reference slider}, Converter={StaticResource StringFormatConverter}, ConverterParameter='Slider value is {0:000}.'}"
                HorizontalOptions="Fill" />
     </StackLayout>
 </ContentPage>
