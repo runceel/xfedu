@@ -419,3 +419,16 @@ Mode を明示的に書くと以下のようになります。（Entry タグの
 ![Android OneWay Binding](images/android-onewaybinding.gif)
 
 ![iOS OneWay Binding](images/ios-onewaybinding.gif)
+
+OneWayToSource は OneWay とは逆に Slider の値が変化しても Entry の中身が変わらなくなります。Entry の値の変更は Slider に反映されれます。XAML を以下に示します。
+
+```xml
+<Entry Text="{Binding Value, Source={x:Reference slider}, Mode=OneWayToSource}"
+    HorizontalOptions="Fill" />
+```
+
+実行結果を以下に示します。
+
+![Android OneWayToSource Binding](images/android-onewaytosourcebinding.gif)
+
+![iOS OneWayToSource Binding](images/ios-onewaytosourcebinding.gif)
