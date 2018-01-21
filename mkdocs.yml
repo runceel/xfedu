@@ -1,9 +1,16 @@
 site_name: かずきの Xamarin.Forms 入門
 repo_url: https://github.com/runceel/xfedu
 site_author: 'Kazuki Ota'
-theme: mkdocs
+theme: readthedocs
 pages:
   - 'Home': 'index.md'
   - 'はじめに': '01.introduction/index.md'
   - 'Hello world': '02.hello-world/index.md'
-  - 'XAML': '03.xaml/index.md'
+  - 'XAML': 
+    - 'XAML': '03.xaml/index.md'
+    - 'XAML と C# のコードの対比': '03.xaml/xaml-and-cs.md'
+    - 'XAML の応用': '03.xaml/adv-xaml.md'
+  - 'Xamarin.Forms のコントロール':
+    - 'はじめに': '04.controls/index.md'
+    - 'BindableObject': '04.controls/bindableobject.md'
+    - 'レイアウトコントロール': '04.controls/layoutcontrol.md'
