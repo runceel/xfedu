@@ -250,3 +250,90 @@ StaticItem クラスが定義されている名前空間を XML 名前空間と�
 ![Android x:Static](images/android-xstatic.png)
 
 ![iOS x:Static](images/ios-xstatic.png)
+
+### TypeConverter
+
+ここでは TypeConverter について説明します。TypeConverter は XAML で指定した文字列を特定の型に変換するための仕組みになります。例えば ContentPage の Padding プロパティは Thickness 型なのですが、以下のようにカンマ区切り文字列で指定可能です。
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:HelloWorld;assembly=HelloWorld"
+    x:Class="HelloWorld.MyPage"
+    Title="Hello world"
+    Padding="0,20,0,0">
+    <Label Text="{x:Static local:StaticItem.Message}"
+        HorizontalOptions="Center"
+        VerticalOptions="Center" />
+</ContentPage>
+```
+
+### プラットフォーム固有の設定値の指定方法
+
+Xamarin.Forms では複数のプラットフォームで XAML を共有して使用します。
+大部分のコードは、共有可能なように作られていますが一部分に関しては OS ごとに固有の値を設定したいケースなども出てくると思います。
+
+そのため、Xamarin.Forms では OnPlatform という仕組みが提供されています。
+OnPlatform は型引数（x:TypeArguments で指定します）で扱う型を指定して On タグでプラットフォームごとに返す値を設定します。例えば iOS の場合に Hello iOS という値を返して Android の場合に Hello Android を返すような定義は以下のようになります。
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:HelloWorld;assembly=HelloWorld"
+             xmlns:system="clr-namespace:System;assembly=netstandard"
+             x:Class="HelloWorld.MyPage"
+             Title="Hello world">
+    <Label HorizontalOptions="Center"
+           VerticalOptions="Center">
+        <Label.Text>
+            <OnPlatform x:TypeArguments="system:String">
+                <On Platform="{x:Static Device.iOS}"
+                    Value="Hello iOS" />
+                <On Platform="{x:Static Device.Android}"
+                    Value="Hello Android" />
+            </OnPlatform>
+        </Label.Text>
+    </Label>
+</ContentPage>
+```
+
+Xamarin.Forms が組み込みでサポートしているプラットフォーム名の定数は Device クラスに定義されています。上記 XAML ではその値を x:Static を使って参照しています。
+
+実行すると以下のような結果になります。
+
+![Android OnPlatform](images/android-onplatform.png)
+
+![iOS OnPlatform](images/ios-onplatform.png)
+
+この OnPlatform で行っているプラットフォームに応じて設定値を変えるという操作は C# では以下のように Device クラスの RuntimePlatform の値を見て処理を分けることで実現できます。
+
+```cs
+using System;
+using Xamarin.Forms;
+
+namespace HelloWorld
+{
+    public partial class MyPage : ContentPage
+    {
+        public MyPage()
+        {
+            InitializeComponent();
+
+            switch (Device.RuntimePlatform)
+            {
+                case Device.iOS:
+                    label.Text = "Hello iOS";
+                    break;
+                case Device.Android:
+                    label.Text = "Hello Android";
+                    break;
+            }
+        }
+    }
+}
+```
+
+### データバインディング
+
