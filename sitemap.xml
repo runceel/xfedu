@@ -26,11 +26,47 @@
     
 
     
+        
     <url>
      <loc>/03.xaml/</loc>
      <lastmod>2018-01-21</lastmod>
      <changefreq>daily</changefreq>
     </url>
+        
+    <url>
+     <loc>/03.xaml/xaml-and-cs/</loc>
+     <lastmod>2018-01-21</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>/03.xaml/adv-xaml/</loc>
+     <lastmod>2018-01-21</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    
+
+    
+        
+    <url>
+     <loc>/04.controls/</loc>
+     <lastmod>2018-01-21</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>/04.controls/bindableobject/</loc>
+     <lastmod>2018-01-21</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>/04.controls/layoutcontrol/</loc>
+     <lastmod>2018-01-21</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
     
 
 </urlset>

@@ -5,26 +5,26 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="None">
+  
   <meta name="author" content="Kazuki Ota">
-  <link rel="shortcut icon" href="./img/favicon.ico">
-  <title>Home - かずきの Xamarin.Forms 入門</title>
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>レイアウトコントロール - かずきの Xamarin.Forms 入門</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
-  <link rel="stylesheet" href="./css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="./css/theme_extra.css" type="text/css" />
-  <link rel="stylesheet" href="./css/highlight.css">
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/highlight.css">
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Home";
-    var mkdocs_page_input_path = "index.md";
-    var mkdocs_page_url = "/";
+    var mkdocs_page_name = "\u30ec\u30a4\u30a2\u30a6\u30c8\u30b3\u30f3\u30c8\u30ed\u30fc\u30eb";
+    var mkdocs_page_input_path = "04.controls\\layoutcontrol.md";
+    var mkdocs_page_url = "/04.controls/layoutcontrol/";
   </script>
   
-  <script src="./js/jquery-2.1.1.min.js"></script>
-  <script src="./js/modernizr-2.8.3.min.js"></script>
-  <script type="text/javascript" src="./js/highlight.pack.js"></script> 
+  <script src="../../js/jquery-2.1.1.min.js"></script>
+  <script src="../../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script> 
   
 </head>
 
@@ -35,9 +35,9 @@
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
       <div class="wy-side-nav-search">
-        <a href="." class="icon icon-home"> かずきの Xamarin.Forms 入門</a>
+        <a href="../.." class="icon icon-home"> かずきの Xamarin.Forms 入門</a>
         <div role="search">
-  <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
   </form>
 </div>
@@ -47,25 +47,19 @@
 	<ul class="current">
 	  
           
-            <li class="toctree-l1 current">
+            <li class="toctree-l1">
 		
-    <a class="current" href=".">Home</a>
-    <ul class="subnav">
-            
-    <li class="toctree-l2"><a href="#_1">本サイトについて</a></li>
-    
-
-    </ul>
+    <a class="" href="../..">Home</a>
 	    </li>
           
             <li class="toctree-l1">
 		
-    <a class="" href="01.introduction/">はじめに</a>
+    <a class="" href="../../01.introduction/">はじめに</a>
 	    </li>
           
             <li class="toctree-l1">
 		
-    <a class="" href="02.hello-world/">Hello world</a>
+    <a class="" href="../../02.hello-world/">Hello world</a>
 	    </li>
           
             <li class="toctree-l1">
@@ -74,15 +68,15 @@
     <ul class="subnav">
                 <li class="">
                     
-    <a class="" href="03.xaml/">XAML</a>
+    <a class="" href="../../03.xaml/">XAML</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="03.xaml/xaml-and-cs/">XAML と C# のコードの対比</a>
+    <a class="" href="../../03.xaml/xaml-and-cs/">XAML と C# のコードの対比</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="03.xaml/adv-xaml/">XAML の応用</a>
+    <a class="" href="../../03.xaml/adv-xaml/">XAML の応用</a>
                 </li>
     </ul>
 	    </li>
@@ -93,15 +87,27 @@
     <ul class="subnav">
                 <li class="">
                     
-    <a class="" href="04.controls/">はじめに</a>
+    <a class="" href="../">はじめに</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="04.controls/bindableobject/">BindableObject</a>
+    <a class="" href="../bindableobject/">BindableObject</a>
                 </li>
-                <li class="">
+                <li class=" current">
                     
-    <a class="" href="04.controls/layoutcontrol/">レイアウトコントロール</a>
+    <a class="current" href="./">レイアウトコントロール</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#_1">レイアウトコントロール</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#stacklayout">StackLayout</a></li>
+        
+        </ul>
+    
+
+    </ul>
                 </li>
     </ul>
 	    </li>
@@ -116,7 +122,7 @@
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href=".">かずきの Xamarin.Forms 入門</a>
+        <a href="../..">かずきの Xamarin.Forms 入門</a>
       </nav>
 
       
@@ -124,14 +130,18 @@
         <div class="rst-content">
           <div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    <li><a href=".">Docs</a> &raquo;</li>
+    <li><a href="../..">Docs</a> &raquo;</li>
     
       
+        
+          <li>Xamarin.Forms のコントロール &raquo;</li>
+        
+      
     
-    <li>Home</li>
+    <li>レイアウトコントロール</li>
     <li class="wy-breadcrumbs-aside">
       
-        <a href="https://github.com/runceel/xfedu/edit/master/docs/index.md"
+        <a href="https://github.com/runceel/xfedu/edit/master/docs/04.controls/layoutcontrol.md"
           class="icon icon-github"> Edit on GitHub</a>
       
     </li>
@@ -141,8 +151,17 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="_1">本サイトについて</h1>
-<p>Xamarin.Forms に関することについてまとめています。</p>
+                <h1 id="_1">レイアウトコントロール</h1>
+<p>ここでは Xamarin.Forms でレイアウトに関係するコントロールについて紹介します。Xamarin.Forms では、以下のように様々なレイアウトコントロールが提供されています。</p>
+<ul>
+<li>StackLayout</li>
+<li>Grid</li>
+<li>AbsoluteLayout</li>
+<li>RelativeLayout</li>
+<li>ScrollView</li>
+</ul>
+<h2 id="stacklayout">StackLayout</h2>
+<p>StackLayout は名前の通りスタック状にコントロールを並べて配置するコントロールです。デフォルトでは縦にコントロールを並べますが Orientation プロパティに Horizontal を指定することで横並びに配置することもできます。StackLayout の基本的な使い方の例を以下に示します。</p>
               
             </div>
           </div>
@@ -150,8 +169,8 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="01.introduction/" class="btn btn-neutral float-right" title="はじめに">Next <span class="icon icon-circle-arrow-right"></span></a>
       
+        <a href="../bindableobject/" class="btn btn-neutral" title="BindableObject"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -179,20 +198,15 @@
           <a href="https://github.com/runceel/xfedu/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
+        <span><a href="../bindableobject/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
-        <span style="margin-left: 15px"><a href="01.introduction/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
-    <script>var base_url = '.';</script>
-    <script src="./js/theme.js"></script>
-      <script src="./search/require.js"></script>
-      <script src="./search/search.js"></script>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/require.js"></script>
+      <script src="../../search/search.js"></script>
 
 </body>
 </html>
-
-<!--
-MkDocs version : 0.17.2
-Build Date UTC : 2018-01-21 13:24:59
--->

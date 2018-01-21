@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Kazuki Ota">
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>BindableObject - かずきの Xamarin.Forms 入門</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/highlight.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "BindableObject";
+    var mkdocs_page_input_path = "04.controls\\bindableobject.md";
+    var mkdocs_page_url = "/04.controls/bindableobject/";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js"></script>
+  <script src="../../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> かずきの Xamarin.Forms 入門</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../01.introduction/">はじめに</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../02.hello-world/">Hello world</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">XAML</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../03.xaml/">XAML</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../03.xaml/xaml-and-cs/">XAML と C# のコードの対比</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../03.xaml/adv-xaml/">XAML の応用</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Xamarin.Forms のコントロール</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../">はじめに</a>
+                </li>
+                <li class=" current">
+                    
+    <a class="current" href="./">BindableObject</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#bindableobject">BindableObject</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#_1">バインダブルプロパティ</a></li>
+        
+            <li><a class="toctree-l4" href="#_2">添付プロパティ</a></li>
+        
+        </ul>
+    
+
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../layoutcontrol/">レイアウトコントロール</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">かずきの Xamarin.Forms 入門</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Xamarin.Forms のコントロール &raquo;</li>
+        
+      
+    
+    <li>BindableObject</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/runceel/xfedu/edit/master/docs/04.controls/bindableobject.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="bindableobject">BindableObject</h1>
+<p>Xamarin.Forms のコントロールは全て BindableObject を継承関係の祖先として持っています。この BindableObject クラスはデータ バインディングの機能やバインダブルプロパティや添付プロパティなどといった重要な機能を提供しています。</p>
+<h2 id="_1">バインダブルプロパティ</h2>
+<p>バインダブルプロパティは以下の特徴を持つ特別なプロパティです。</p>
+<ul>
+<li>データバインディングのターゲットとして使用可能</li>
+<li>スタイルが設定可能</li>
+<li>デフォルト値を設定可能</li>
+<li>値のバリデーションが可能</li>
+<li>値の変更を監視可能</li>
+</ul>
+<p>バインダブルプロパティを定義するには BindableObject を継承して、 BindableProperty.Create メソッドを呼び出します。
+結果は static readonly なフィールドとして保持します。Name というバインダブルプロパティを持った Person クラスの定義を以下に示します。</p>
+<pre><code class="cs">using Xamarin.Forms;
+
+namespace HelloWorld
+{
+    public class Person : BindableObject
+    {
+        public static readonly BindableProperty NameProperty = BindableProperty.Create(
+            &quot;Name&quot;,
+            typeof(string),
+            typeof(Person));
+
+        public string Name
+        {
+            get { return (string)this.GetValue(NameProperty); }
+            set { this.SetValue(NameProperty, value); }
+        }
+    }
+}
+</code></pre>
+
+<p>BindableProperty.Create にプロパティ名、プロパティの型、プロパティを所持するクラスの型を指定します。戻ってくる BindableProperty のインスタンスを static readonly のフィールドで保持します。この時のフィールド名は「プロパティ名 Property」にします。これでバインダブルプロパティは定義できました。次に C# から簡単にアクセスできるように CLR プロパティのラッパーを作ります。get アクセサーで GetValue メソッドをつかって BindableProperty をキーにして値を取得します。set アクセサーで SetValue メソッドを使って BindableProperty をキーにして値を設定します。これが最低限なバインダブルプロパティの作成方法です。</p>
+<p>バインダブルプロパティにはデフォルト値が指定可能です。BindableProperty.Create メソッドのプロパティを所持するクラスの型に続いてデフォルト値を設定するだけです。tanaka をデフォルト値としたい場合のバインダブルプロパティの定義は以下のようになります。</p>
+<pre><code class="cs">public static readonly BindableProperty NameProperty = BindableProperty.Create(
+    &quot;Name&quot;,
+    typeof(string),
+    typeof(Person),
+    &quot;tanaka&quot;);
+</code></pre>
+
+<p>プロパティの変更時の処理を記述することもできます。BindableProperty.Create メソッドの propertyChanged 引数を指定することでコールバックを指定できます。コールバックの引数は、第一引数に変更があったクラスのインスタンス、第二引数に古い値、第三引数に新しい値になります。コード例を以下に示します。</p>
+<pre><code class="cs">public static readonly BindableProperty NameProperty = BindableProperty.Create(
+    &quot;Name&quot;,
+    typeof(string),
+    typeof(Person),
+    &quot;tanaka&quot;,
+    propertyChanged: OnNameChanged);
+
+private static void OnNameChanged(BindableObject bindable, object oldValue, object newValue)
+{
+    // 変更前と変更後の値を使って何かする
+}
+</code></pre>
+
+<p>valudateValue 引数を指定することで、値の検証ロジックを追加できます。第一引数にオブジェクトの参照、第二引数に値が渡ってきます。戻り値として、検証結果を bool 型で返します。</p>
+<pre><code class="cs">public static readonly BindableProperty NameProperty = BindableProperty.Create(
+    &quot;Name&quot;,
+    typeof(string),
+    typeof(Person),
+    &quot;tanaka&quot;,
+    validateValue: OnNameValidateValue);
+
+private static bool OnNameValidateValue(BindableObject bindable, object value)
+{
+    // バリデーションロジックを書きます
+    var name = (string)value;
+    return !string.IsNullOrEmpty(name);
+}
+</code></pre>
+
+<p>coerceValue 引数を指定することで、プロパティに設定された値を矯正することができます。用途としては、最大値、最小値のプロパティがあるようなクラスで、値が最小値と最大値の間に来るように調整するといったものがあります。コールバックの引数は、第一引数にオブジェクトの参照、第二引数に値が渡ってきます。戻り値として、矯正後の値を返します。例として、10 文字より長い名前は 10 文字に切り詰める場合のコードを以下に示します。</p>
+<pre><code class="cs">public static readonly BindableProperty NameProperty = BindableProperty.Create(
+    &quot;Name&quot;,
+    typeof(string),
+    typeof(Person),
+    &quot;tanaka&quot;,
+    coerceValue: OnNameCoerceValue);
+
+private static object OnNameCoerceValue(BindableObject bindable, object value)
+{
+    // 値の調整ロジックを書く
+    var name = (string)value;
+    if (name.Length &gt; 10)
+    {
+        name = name.Substring(0, 10);
+    }
+    return name;
+}
+</code></pre>
+
+<p>バインダブルプロパティは、読み取り専用として定義することもできます。読み取り専用にするには、BindableProperty.CreateReadOnly メソッドを使って BindablePropertyKey を取得します。この BindablePropertyKey を private で管理します。値の書き込みは、この BindablePropertyKey を通して行います。値の取得は BindablePropertyKey クラスの BindableProperty プロパティで取得できる BindableProperty クラスを使用して行います。一般的な読み取り専用のバインダブルプロパティの定義を以下に示します。</p>
+<pre><code class="cs">// 読み取り専用のBindablePropertyKeyを定義(privateに管理する)
+private static readonly BindablePropertyKey AgePropertyKey = BindableProperty.CreateReadOnly(
+    &quot;Age&quot;,
+    typeof(int),
+    typeof(Person),
+    0);
+// KeyからBindablePropertyを取得
+public static readonly BindableProperty AgeProperty = AgePropertyKey.BindableProperty;
+
+public int Age
+{
+    // 読み取りは通常通りBindablePropertyで行う。
+    get { return (int)this.GetValue(AgeProperty); }
+    // 書き込みはBindablePropertyKeyで行う
+    private set { this.SetValue(AgePropertyKey, value); }
+}
+</code></pre>
+
+<h2 id="_2">添付プロパティ</h2>
+<p>ここでは、他の BindableObject に対して別のオブジェクトで定義されたプロパティの値を設定、取得することができる添付プロパティについて説明します。添付プロパティは XAML で解説したようにレイアウトのコントロールでよく使われています。BindableObject の添付プロパティの仕組みと深く結びついています。
+添付プロパティの定義は BindableProperty.CreateAttached を使う点を除くとバインダブルプロパティとほぼ同じです。添付プロパティは、インスタンスに紐づかないため CLR のプロパティラッパーは作成しません。その代わりに「戻り値 Getプロパティ名(BindableObject)」「void Setプロパティ名(BindableObject, プロパティの型)」といったシグネチャの static なメソッドでラップします。Row 添付プロパティの定義例を以下に示します。</p>
+<pre><code class="cs">public static readonly BindableProperty RowProperty = BindableProperty.CreateAttached(
+    &quot;Row&quot;,
+    typeof(int),
+    typeof(MyGrid),
+    0);
+
+public static int GetRow(BindableObject obj)
+{
+    return (int)obj.GetValue(RowProperty);
+}
+
+public static void SetRow(BindableObject obj, int value)
+{
+    obj.SetValue(RowProperty, value);
+}
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../layoutcontrol/" class="btn btn-neutral float-right" title="レイアウトコントロール">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../" class="btn btn-neutral" title="はじめに"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/runceel/xfedu/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../layoutcontrol/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/require.js"></script>
+      <script src="../../search/search.js"></script>
+
+</body>
+</html>
