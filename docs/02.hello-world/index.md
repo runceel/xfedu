@@ -163,5 +163,57 @@ Xamarin.Forms の基本的なページである ContentPage を継承してい�
 実行して動作確認をします。iOS と Android で実行すると以下のようになります。
 
 ![Hello world Android](images/hello-world-android.png)
+
 ![Hello world iOS](images/hello-world-ios.png)
+
+## iPhone X への対応
+
+iPhone X では画面上部にセンサーが配置されている領域があり画面が長方形ではありません。
+そのため、何も考えずにコントロールを配置すると以下のように画面上部にコントロールが埋まってしまいます。
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:HelloWorld"
+             x:Class="HelloWorld.MyPage">
+    <Label Text="テキストです" />
+</ContentPage>
+```
+
+![iPhone X](images/iphonex-gadimage.png)
+
+これに対応する方法は以下のページに記載があります。
+
+[Making iOS 11 Even Easier with Xamarin.Forms](https://blog.xamarin.com/making-ios-11-even-easier-xamarin-forms/)
+
+対応方法はページのコンストラクタに以下のコードを追加する必要があります。
+
+```cs
+// 以下の using を追加
+// using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
+
+On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
+```
+
+または、以下のようにページに UseSafeArea 属性を追加します。
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:HelloWorld"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             ios:Page.UseSafeArea="true"
+             x:Class="HelloWorld.MyPage">
+    <Label Text="テキストです" />
+</ContentPage>
+```
+
+実行結果を以下に示します。
+
+![iPhone X](images/iphonex-goodimage.png)
+
+余白が適切に設定されていることが確認できます。
+
 
