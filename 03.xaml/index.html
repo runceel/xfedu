@@ -1,122 +1,99 @@
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <meta name="author" content="Kazuki Ota">
-  <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>XAML - かずきの Xamarin.Forms 入門</title>
-  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="author" content="Kazuki Ota">
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>XAML - かずきの Xamarin.Forms 入門</title>
+        <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../css/font-awesome-4.5.0.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="../css/highlight.css">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
 
-  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
-  <link rel="stylesheet" href="../css/highlight.css">
-  
-  <script>
-    // Current page data
-    var mkdocs_page_name = "XAML";
-    var mkdocs_page_input_path = "03.xaml\\index.md";
-    var mkdocs_page_url = "/03.xaml/";
-  </script>
-  
-  <script src="../js/jquery-2.1.1.min.js"></script>
-  <script src="../js/modernizr-2.8.3.min.js"></script>
-  <script type="text/javascript" src="../js/highlight.pack.js"></script> 
-  
-</head>
+        <script src="../js/jquery-1.10.2.min.js"></script>
+        <script src="../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../js/highlight.pack.js"></script> 
+    </head>
 
-<body class="wy-body-for-nav" role="document">
+    <body>
 
-  <div class="wy-grid-for-nav">
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
 
-    
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
-      <div class="wy-side-nav-search">
-        <a href=".." class="icon icon-home"> かずきの Xamarin.Forms 入門</a>
-        <div role="search">
-  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
-  </form>
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="..">かずきの Xamarin.Forms 入門</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                    <li >
+                        <a href="..">Home</a>
+                    </li>
+                    <li >
+                        <a href="../01.introduction/">はじめに</a>
+                    </li>
+                    <li >
+                        <a href="../02.hello-world/">Hello world</a>
+                    </li>
+                    <li class="active">
+                        <a href="./">XAML</a>
+                    </li>
+                </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                </li>
+                    <li >
+                        <a rel="next" href="../02.hello-world/">
+                            <i class="fa fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li class="disabled">
+                        <a rel="prev" >
+                            Next <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/runceel/xfedu/edit/master/docs/03.xaml/index.md"><i class="fa fa-github"></i> Edit on GitHub</a>
+                    </li>
+            </ul>
+        </div>
+    </div>
 </div>
-      </div>
 
-      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-	<ul class="current">
-	  
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="..">Home</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../01.introduction/">はじめに</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../02.hello-world/">Hello world</a>
-	    </li>
-          
-            <li class="toctree-l1 current">
-		
-    <a class="current" href="./">XAML</a>
-    <ul class="subnav">
-            
-    <li class="toctree-l2"><a href="#xaml">XAML</a></li>
-    
-        <ul>
-        
-            <li><a class="toctree-l3" href="#xaml-c">XAML と C# のコードの対比</a></li>
-        
-            <li><a class="toctree-l3" href="#xaml_2">XAML の応用</a></li>
-        
-        </ul>
-    
-
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#xaml">XAML</a></li>
+            <li><a href="#xaml-c">XAML と C# のコードの対比</a></li>
+            <li><a href="#xaml_2">XAML の応用</a></li>
     </ul>
-	    </li>
-          
-        </ul>
-      </div>
-      &nbsp;
-    </nav>
+</div></div>
+                <div class="col-md-9" role="main">
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="..">かずきの Xamarin.Forms 入門</a>
-      </nav>
-
-      
-      <div class="wy-nav-content">
-        <div class="rst-content">
-          <div role="navigation" aria-label="breadcrumbs navigation">
-  <ul class="wy-breadcrumbs">
-    <li><a href="..">Docs</a> &raquo;</li>
-    
-      
-    
-    <li>XAML</li>
-    <li class="wy-breadcrumbs-aside">
-      
-        <a href="https://github.com/runceel/xfedu/edit/master/docs/03.xaml/index.md"
-          class="icon icon-github"> Edit on GitHub</a>
-      
-    </li>
-  </ul>
-  <hr/>
-</div>
-          <div role="main">
-            <div class="section">
-              
-                <h1 id="xaml">XAML</h1>
+<h1 id="xaml">XAML</h1>
 <p>ここでは Xamarin.Forms で UI を記述するための言語である XAML について説明します。XAML とは XML をベースとした言語です。XML なのでツリー状の構造を持ったものを記述するのに向いています。UI はページをルートとしたツリー構造のものなので UI を記述するのに非常に親和性が高い言語となっています。では XAML について解説していきます。</p>
 <h2 id="xaml-c">XAML と C# のコードの対比</h2>
 <p>XAML はオブジェクトのインスタンスを組み立てるための言語です。
@@ -263,7 +240,7 @@ Button の選択前は Hello world と表示されていますが Button を選�
 <p><img alt="Attached property" src="./images/android-attached.png" /></p>
 <p><img alt="Attached property" src="./images/ios-attached.png" /></p>
 <h3 id="_2">マークアップ拡張</h3>
-<p>XAML を使うことで、入れ子構造になった複雑な形状のオブジェクトを構築することができます。しかし XML という形式で表現するのが冗長であったり、そもそも XML で表現が難しいものも中にはあります。そういったものを表現するためにマークアップ拡張というものがあります。マークアップ拡張は、属性の設定値の中に「{マークアップ拡張名 プロパティ名=値, プロパティ名=値…}」のような形で記載をしていきます。特によく使われるマークアップ拡張として StaticResource マークアップ拡張を、まず紹介します。</p>
+<p>XAML を使うことで、入れ子構造になった複雑な形状のオブジェクトを構築することができます。しかし XML という形式で表現するのが冗長であったり、そもそも XML で表現が難しいものも中にはあります。そういったものを表現するためにマークアップ拡張というものがあります。マークアップ拡張は、属性の設定値の中に「{マークアップ拡張名 プロパティ名=値, プロパティ名=値…}」のような形で記載をしていきます。特によく使われるマークアップ拡張として StaticResource マークアップ拡張をまず紹介します。</p>
 <h3 id="staticresource">StaticResource</h3>
 <p>StaticResource は Page などのコントロールに実装されている Resources プロパティに設定された ResourceDictionary の中で定義された要素を参照するために使用します。ResourceDictionary に共通の定義を追加することで文字列や色やスタイルなどを再利用することができます。ResourceDictionary に定義したオブジェクトは x:Key 属性で名前をつける必要があります。名前をつけると StaticResource マークアップ拡張の Key プロパティで指定して取得することができます。文字列を ResourceDictionary で定義して StaticResource で取得する XAML の例を以下に示します。</p>
 <pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
@@ -285,51 +262,461 @@ Button の選択前は Hello world と表示されていますが Button を選�
 <p>実行すると Label に Hello world と表示されます。</p>
 <p><img alt="Android StaticResource" src="./images/android-staticresource.png" /></p>
 <p><img alt="iOS StaticResource" src="./images/ios-staticresource.png" /></p>
-              
-            </div>
-          </div>
-          <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-      
-        <a href="../02.hello-world/" class="btn btn-neutral" title="Hello world"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-      
-    </div>
-  
+<h3 id="xstatic">x:Static</h3>
+<p>x:Static マークアップ拡張は、クラスの static メンバーを呼び出すためのマークアップ拡張になります。以下のような static な Message プロパティを持った StaticItem クラスがあるとします。</p>
+<pre><code class="cs">namespace HelloWorld
+{
+    public static class StaticItem
+    {
+        public static string Message { get; } = &quot;Hello static world&quot;;
+    }
+}
+</code></pre>
 
-  <hr/>
+<p>このクラスの Message プロパティを Label の Text プロパティに設定する XAML は以下のようになります。</p>
+<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;ContentPage xmlns=&quot;http://xamarin.com/schemas/2014/forms&quot;
+    xmlns:x=&quot;http://schemas.microsoft.com/winfx/2009/xaml&quot;
+    xmlns:local=&quot;clr-namespace:HelloWorld;assembly=HelloWorld&quot;
+    x:Class=&quot;HelloWorld.MyPage&quot;
+    Title=&quot;Hello world&quot;&gt;
+    &lt;Label Text=&quot;{x:Static local:StaticItem.Message}&quot;
+        HorizontalOptions=&quot;Center&quot;
+        VerticalOptions=&quot;Center&quot; /&gt;
+&lt;/ContentPage&gt;
+</code></pre>
 
-  <div role="contentinfo">
-    <!-- Copyright etc -->
-    
-  </div>
+<p>StaticItem クラスが定義されている名前空間を XML 名前空間とマッピングする定義を追加します。「xmlns:local=”clr-namespace:HelloWorld;assembly=HelloWorld”」が、その定義になります。clr-namespace で C# の名前空間を定義して assembly でアセンブリ名を定義します。XAML と同じアセンブリにある名前空間を指定する場合は、assembly は省略して「xmlns:local=”clr-namespace:HelloWorld”」のように書くこともできます。上記 XAML を実行すると Label に Hello static world と表示されます。</p>
+<p><img alt="Android x:Static" src="./images/android-xstatic.png" /></p>
+<p><img alt="iOS x:Static" src="./images/ios-xstatic.png" /></p>
+<h3 id="typeconverter">TypeConverter</h3>
+<p>ここでは TypeConverter について説明します。TypeConverter は XAML で指定した文字列を特定の型に変換するための仕組みになります。例えば ContentPage の Padding プロパティは Thickness 型なのですが、以下のようにカンマ区切り文字列で指定可能です。</p>
+<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;ContentPage xmlns=&quot;http://xamarin.com/schemas/2014/forms&quot;
+    xmlns:x=&quot;http://schemas.microsoft.com/winfx/2009/xaml&quot;
+    xmlns:local=&quot;clr-namespace:HelloWorld;assembly=HelloWorld&quot;
+    x:Class=&quot;HelloWorld.MyPage&quot;
+    Title=&quot;Hello world&quot;
+    Padding=&quot;0,20,0,0&quot;&gt;
+    &lt;Label Text=&quot;{x:Static local:StaticItem.Message}&quot;
+        HorizontalOptions=&quot;Center&quot;
+        VerticalOptions=&quot;Center&quot; /&gt;
+&lt;/ContentPage&gt;
+</code></pre>
 
-  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
-</footer>
-      
+<h3 id="_3">プラットフォーム固有の設定値の指定方法</h3>
+<p>Xamarin.Forms では複数のプラットフォームで XAML を共有して使用します。
+大部分のコードは、共有可能なように作られていますが一部分に関しては OS ごとに固有の値を設定したいケースなども出てくると思います。</p>
+<p>そのため、Xamarin.Forms では OnPlatform という仕組みが提供されています。
+OnPlatform は型引数（x:TypeArguments で指定します）で扱う型を指定して On タグでプラットフォームごとに返す値を設定します。例えば iOS の場合に Hello iOS という値を返して Android の場合に Hello Android を返すような定義は以下のようになります。</p>
+<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;ContentPage xmlns=&quot;http://xamarin.com/schemas/2014/forms&quot;
+             xmlns:x=&quot;http://schemas.microsoft.com/winfx/2009/xaml&quot;
+             xmlns:local=&quot;clr-namespace:HelloWorld;assembly=HelloWorld&quot;
+             xmlns:system=&quot;clr-namespace:System;assembly=netstandard&quot;
+             x:Class=&quot;HelloWorld.MyPage&quot;
+             Title=&quot;Hello world&quot;&gt;
+    &lt;Label HorizontalOptions=&quot;Center&quot;
+           VerticalOptions=&quot;Center&quot;&gt;
+        &lt;Label.Text&gt;
+            &lt;OnPlatform x:TypeArguments=&quot;system:String&quot;&gt;
+                &lt;On Platform=&quot;{x:Static Device.iOS}&quot;
+                    Value=&quot;Hello iOS&quot; /&gt;
+                &lt;On Platform=&quot;{x:Static Device.Android}&quot;
+                    Value=&quot;Hello Android&quot; /&gt;
+            &lt;/OnPlatform&gt;
+        &lt;/Label.Text&gt;
+    &lt;/Label&gt;
+&lt;/ContentPage&gt;
+</code></pre>
+
+<p>Xamarin.Forms が組み込みでサポートしているプラットフォーム名の定数は Device クラスに定義されています。上記 XAML ではその値を x:Static を使って参照しています。</p>
+<p>実行すると以下のような結果になります。</p>
+<p><img alt="Android OnPlatform" src="./images/android-onplatform.png" /></p>
+<p><img alt="iOS OnPlatform" src="./images/ios-onplatform.png" /></p>
+<p>この OnPlatform で行っているプラットフォームに応じて設定値を変えるという操作は C# では以下のように Device クラスの RuntimePlatform の値を見て処理を分けることで実現できます。</p>
+<pre><code class="cs">using System;
+using Xamarin.Forms;
+
+namespace HelloWorld
+{
+    public partial class MyPage : ContentPage
+    {
+        public MyPage()
+        {
+            InitializeComponent();
+
+            switch (Device.RuntimePlatform)
+            {
+                case Device.iOS:
+                    label.Text = &quot;Hello iOS&quot;;
+                    break;
+                case Device.Android:
+                    label.Text = &quot;Hello Android&quot;;
+                    break;
+            }
+        }
+    }
+}
+</code></pre>
+
+<h3 id="_4">データ バインディング</h3>
+<p>ここでは XAML を用いたアプリケーション開発の中で最も重要な要素の 1 つであるデータ バインディングについて説明します。
+データ バインディングは、ソース（任意のオブジェクトのプロパティ）とターゲット（BindableObject を継承したクラスで定義できる BindableProperty）の間の同期を取るための仕組みです。BindableObject を継承した BindableProperty は、ほとんどのコントロールのプロパティが該当するため実質的には画面のコントロールのプロパティと、任意のクラスのプロパティの同期を取るために使用されます。</p>
+<h4 id="_5">コントロール同士のデータバインディング</h4>
+<p>一番シンプルなデータ バインディングはコントロール同士のプロパティのデータ バインディングになります。データ バインディングは、Binding マークアップ拡張を使って指定します。Source プロパティにデータ バインディングのソースを指定して、Path プロパティに Source でデータバインディングしたいプロパティを指定します。Slider の Value プロパティと Label の Text プロパティの同期のコード例を以下に示します。</p>
+<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;ContentPage xmlns=&quot;http://xamarin.com/schemas/2014/forms&quot;
+    xmlns:x=&quot;http://schemas.microsoft.com/winfx/2009/xaml&quot;
+    x:Class=&quot;HelloWorld.MyPage&quot;&gt;
+    &lt;StackLayout VerticalOptions=&quot;Center&quot;&gt;
+        &lt;Slider x:Name=&quot;slider&quot;
+            Maximum=&quot;100&quot;
+            Minimum=&quot;0&quot;
+            VerticalOptions=&quot;StartAndExpand&quot; /&gt;
+        &lt;Label Text=&quot;{Binding Value, Source={x:Reference slider}}&quot;
+            HorizontalOptions=&quot;Center&quot; /&gt;
+    &lt;/StackLayout&gt;
+&lt;/ContentPage&gt;
+</code></pre>
+
+<p>x:Reference で名前付きのコントロールのインスタンスを取得できるので、それを使用して Label の Text プロパティと Slider の Value プロパティをバインドしています。Binding マークアップ拡張では、Path プロパティは最初に書く場合省略可能なので上記の例では省略しています。このコードを実行すると以下のような結果になります。</p>
+<p><img alt="Android Control Binding" src="./images/android-controlbinding.gif" /></p>
+<p><img alt="iOS Control Binding" src="./images/ios-controlbinding.gif" /></p>
+<h4 id="_6">データ バインディングのモード</h4>
+<p>データバインディングには Mode というプロパティがあります。このプロパティを指定することで、データ バインディングの同期方向をカスタマイズすることができます。データ バインディングの Mode には以下のものが定義されています。</p>
+<ul>
+<li>Default：バインドしているターゲットのプロパティに指定されたデフォルトの値が使用される。</li>
+<li>OneWay；ソースからターゲットへの一方通行で同期される。</li>
+<li>OneWayToSource：ターゲットからソースへの一方通行で同期される。</li>
+<li>TwoWay：ソースとターゲット間の双方向で同期される。</li>
+</ul>
+<p>先ほどの Slider と Label の同期から Slider と Entry（テキスト入力用コントロール）の同期にかえて動作を確認してみます。XAML を以下に示します。</p>
+<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;ContentPage xmlns=&quot;http://xamarin.com/schemas/2014/forms&quot;
+             xmlns:x=&quot;http://schemas.microsoft.com/winfx/2009/xaml&quot;
+             x:Class=&quot;HelloWorld.MyPage&quot;&gt;
+    &lt;StackLayout VerticalOptions=&quot;Center&quot;&gt;
+        &lt;Slider x:Name=&quot;slider&quot;
+                Maximum=&quot;100&quot;
+                Minimum=&quot;0&quot;
+                HorizontalOptions=&quot;Fill&quot; /&gt;
+        &lt;Entry Text=&quot;{Binding Value, Source={x:Reference slider}}&quot;
+               HorizontalOptions=&quot;Fill&quot; /&gt;
+    &lt;/StackLayout&gt;
+&lt;/ContentPage&gt;
+</code></pre>
+
+<p>Entry の Text プロパティの Default の Mode は TwoWay なので Slider の値を変更すると Entry の中の Text が書き換わります。Entry の Text を 40 などのように書き換えると Slider のバーの位置が変わります。
+Mode を明示的に書くと以下のようになります。（Entry タグのみ抜粋）</p>
+<pre><code class="xml">&lt;Entry Text=&quot;{Binding Value, Source={x:Reference slider}, Mode=TwoWay}&quot;
+    HorizontalOptions=&quot;Fill&quot; /&gt;
+</code></pre>
+
+<p><img alt="Android TwoWay Binding" src="./images/android-twowaybinding.gif" /></p>
+<p><img alt="iOS TwoWay Binding" src="./images/ios-twowaybinding.gif" /></p>
+<p>ここで Mode を OneWay にすると Entry の内容を書き換えても Slider に値が反映されなくなります。</p>
+<pre><code class="xml">&lt;Entry Text=&quot;{Binding Value, Source={x:Reference slider}, Mode=OneWay}&quot;
+    HorizontalOptions=&quot;Fill&quot; /&gt;
+</code></pre>
+
+<p>実行結果を以下に示します。</p>
+<p><img alt="Android OneWay Binding" src="./images/android-onewaybinding.gif" /></p>
+<p><img alt="iOS OneWay Binding" src="./images/ios-onewaybinding.gif" /></p>
+<p>OneWayToSource は OneWay とは逆に Slider の値が変化しても Entry の中身が変わらなくなります。Entry の値の変更は Slider に反映されれます。XAML を以下に示します。</p>
+<pre><code class="xml">&lt;Entry Text=&quot;{Binding Value, Source={x:Reference slider}, Mode=OneWayToSource}&quot;
+    HorizontalOptions=&quot;Fill&quot; /&gt;
+</code></pre>
+
+<p>実行結果を以下に示します。</p>
+<p><img alt="Android OneWayToSource Binding" src="./images/android-onewaytosourcebinding.gif" /></p>
+<p><img alt="iOS OneWayToSource Binding" src="./images/ios-onewaytosourcebinding.gif" /></p>
+<h4 id="stringformat">StringFormat</h4>
+<p>次にデータ バインディングの出力のフォーマットについて説明します。データ バインディングの値の出力は StringFormat プロパティで書式指定することができます。C# の string.Format メソッドと同じ書式指定が使えます。コード例を以下に示します。</p>
+<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;ContentPage xmlns=&quot;http://xamarin.com/schemas/2014/forms&quot;
+    xmlns:x=&quot;http://schemas.microsoft.com/winfx/2009/xaml&quot;
+    x:Class=&quot;HelloWorld.MyPage&quot;&gt;
+    &lt;StackLayout VerticalOptions=&quot;Center&quot;&gt;
+        &lt;Slider x:Name=&quot;slider&quot;
+            Maximum=&quot;100&quot;
+            Minimum=&quot;0&quot;
+            HorizontalOptions=&quot;Fill&quot; /&gt;
+        &lt;Label Text=&quot;{Binding Value, Source={x:Reference slider}, StringFormat='Slider value is {0:000}.'}&quot;
+            HorizontalOptions=&quot;Fill&quot; /&gt;
+    &lt;/StackLayout&gt;
+&lt;/ContentPage&gt;
+</code></pre>
+
+<p>実行すると以下のようになります。</p>
+<p><img alt="Android StringFormat" src="./images/android-stringformat.gif" /></p>
+<p><img alt="iOS StringFormat" src="./images/ios-stringformat.gif" /></p>
+<p>StringFormatで指定した書式が設定されていることが確認できます。</p>
+<h4 id="converter">Converter</h4>
+<p>データ バインディングでは、ソースからターゲットに値が行くタイミングと、ターゲットからソースに値が行くタイミングで値の変換処理を入れることができます。Converter プロパティに IValueConverter インターフェースを実装したクラスを指定することが可能になります。 IValueConverter インターフェースは以下のように定義されています。</p>
+<pre><code class="cs">public interface IValueConverter
+{
+    object Convert(object value, Type targetType, object parameter, CultureInfo culture);
+
+    object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture);
+}
+</code></pre>
+
+<p>Convert メソッドがソースからターゲットに行くときに呼ばれるメソッドになります。ConvertBack メソッドがターゲットからソースに行くときに呼ばれるメソッドになります。どちらのメソッドも、オリジナルの値、変換先の型、変換に使用するパラメータ、カルチャーインフォの値が渡ってくるので、これを使用して変換処理を行います。
+例として StringFormat プロパティと同じ機能を持つ StringFormatConverter を作成してみます。この Converter はソースからターゲットに行くときにパラメータに指定した書式でフォーマットするというものになります。コード例を以下に示します。</p>
+<pre><code class="cs">using System;
+using System.Globalization;
+using Xamarin.Forms;
+
+namespace HelloWorld
+{
+    public class StringFormatConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return string.Format((string)parameter, value);
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotSupportedException();
+        }
+    }
+}
+</code></pre>
+
+<p>Converter は Resources に定義して StaticResource マークアップ拡張で指定します。XAML を以下に示します。</p>
+<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;ContentPage xmlns=&quot;http://xamarin.com/schemas/2014/forms&quot;
+    xmlns:x=&quot;http://schemas.microsoft.com/winfx/2009/xaml&quot;
+    xmlns:local=&quot;clr-namespace:HelloWorld&quot;
+    x:Class=&quot;HelloWorld.MyPage&quot;&gt;
+    &lt;ContentPage.Resources&gt;
+        &lt;ResourceDictionary&gt;
+            &lt;local:StringFormatConverter x:Key=&quot;StringFormatConverter&quot; /&gt;
+        &lt;/ResourceDictionary&gt;
+    &lt;/ContentPage.Resources&gt;
+    &lt;StackLayout VerticalOptions=&quot;Center&quot;&gt;
+        &lt;Slider x:Name=&quot;slider&quot;
+            Maximum=&quot;100&quot;
+            Minimum=&quot;0&quot;
+            HorizontalOptions=&quot;Fill&quot; /&gt;
+        &lt;Label Text=&quot;{Binding Value, Source={x:Reference slider}, Converter={StaticResource StringFormatConverter}, ConverterParameter='Slider value is {0:000}.'}&quot;
+            HorizontalOptions=&quot;Fill&quot; /&gt;
+    &lt;/StackLayout&gt;
+&lt;/ContentPage&gt;
+</code></pre>
+
+<p>Converter プロパティに IValueConverter の実装を指定して ConverterParameter プロパティに Convert メソッドや ConvertBack メソッドの parameter 引数に渡される値を指定します。実行すると以下のようになります。</p>
+<p><img alt="Android Converter" src="./images/android-converter.gif" /></p>
+<p><img alt="iOS Converter" src="./images/ios-converter.gif" /></p>
+<h4 id="bindingcontext">BindingContext</h4>
+<p>ここでは、データ バインディングの BindingContext について説明します。BindingContext は、コントロールの親クラスをたどって行くとたどり着く BindableObject クラスに定義されているプロパティになります。このプロパティは、データ バインディングの Source プロパティが指定されていないときに暗黙的に Source として使われるというプロパティになります。さらに BindingContext は、コントロールの階層の親から子へと伝播して行くので Page の BindingContext に設定することで自動的に Page 内の全コントロールの Binding の Source が設定可能です。この特徴を利用して Page の BindingContext にオブジェクトを設定して、それとデータバインディングを行うことで C# のオブジェクトの世界と XAML の世界を接続するプログラミング モデルがよく採用されます。BindingContext に設定するオブジェクトは INotifyPropertyChanged インターフェースを実装していることが多くのケースにおいて望ましいです。データ バインディングは INotifyPropertyChanged インターフェースの PropertyChanged イベントを監視してデータの変更を検知してターゲットの値の更新を行います。逆にいうと INotifyPropertyChanged インターフェースを実装していないクラスを BindingContext に設定しても、ソースのプロパティが変わってもターゲットに伝搬されないため実質使い物になりません。</p>
+<p>そのため、以下のような INotifyPropertyChanged の実装クラスを定義しておいて、そのクラスを継承する形で BindingContext に設定するクラスを定義するという方法がよく取られています。</p>
+<pre><code class="cs">using System.Collections.Generic;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
+
+namespace HelloWorld
+{
+    public class BindableBase : INotifyPropertyChanged
+    {
+        protected BindableBase()
+        {
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        protected virtual bool SetProperty&lt;T&gt;(ref T field, T value, [CallerMemberName] string propertyName = null)
+        {
+            if (EqualityComparer&lt;T&gt;.Default.Equals(field, value)) { return false; }
+
+            field = value;
+            OnPropertyChanged(propertyName);
+            return true;
+        }
+    }
+}
+</code></pre>
+
+<p>そして、以下のようなクラスを BindingContext に設定します。</p>
+<pre><code class="cs">namespace HelloWorld
+{
+    public class MyPageViewModel : BindableBase
+    {
+        private double _sliderValue;
+
+        public double SliderValue
+        {
+            get { return _sliderValue; }
+            set { SetProperty(ref _sliderValue, value); OnPropertyChanged(nameof(LabelValue)); }
+        }
+
+        public string LabelValue =&gt; $&quot;This is slider value '{SliderValue.ToString(&quot;000&quot;)}'&quot;;
+    }
+}
+</code></pre>
+
+<p>Page の BindingContext への設定は以下のように行います。</p>
+<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;ContentPage xmlns=&quot;http://xamarin.com/schemas/2014/forms&quot;
+             xmlns:x=&quot;http://schemas.microsoft.com/winfx/2009/xaml&quot;
+             xmlns:local=&quot;clr-namespace:HelloWorld&quot;
+             x:Class=&quot;HelloWorld.MyPage&quot;&gt;
+    &lt;ContentPage.BindingContext&gt;
+        &lt;local:MyPageViewModel /&gt;
+    &lt;/ContentPage.BindingContext&gt;
+    &lt;StackLayout VerticalOptions=&quot;Center&quot;&gt;
+        &lt;Slider Maximum=&quot;100&quot;
+                Minimum=&quot;0&quot;
+                HorizontalOptions=&quot;Fill&quot;
+                Value=&quot;{Binding SliderValue}&quot; /&gt;
+        &lt;Label Text=&quot;{Binding LabelValue}&quot;
+               HorizontalOptions=&quot;Fill&quot; /&gt;
+    &lt;/StackLayout&gt;
+&lt;/ContentPage&gt;
+</code></pre>
+
+<p>先ほど作成したクラスのインスタンスを BindingContext に設定して Slider と Label には BindingContext に設定したクラスのプロパティをデータ バインディングしています。プログラムの実行結果を以下に示します。</p>
+<p><img alt="Android BindingContext" src="./images/android-bindingcontext.gif" /></p>
+<p><img alt="iOS BindingContext" src="./images/ios-bindingcontext.gif" /></p>
+<h4 id="_7">コレクションのデータ バインディング</h4>
+<p>Xamarin.Forms では ListView というコントロールを使ってコレクションをデータ バインディングすることができます。コレクションのデータ バインディングは ItemsSource プロパティにコレクションをデータ バインディングすることで行います。
+このとき、コレクションの要素の増減に対応するためには INotifyCollectionChanged インターフェースを実装して適切に CollectionChanged イベントを発行するコレクションである必要があります。
+このような条件があるため通常 ItemsSource に設定する可変のコレクションは ObservableCollection&lt;T&gt; クラスという INotifyCollectionChanged インターフェースを実装したクラスを使用します。可変でない場合は IEnumerable&lt;T&gt; インターフェースでも List&lt;T&gt; クラスでも問題ありません。</p>
+<p>コレクションのデータ バインディングを見ていきます。まず、コレクションに格納するための Person クラスを以下のように定義します。何の変哲も無いただの POCO です。</p>
+<pre><code class="cs">namespace HelloWorld
+{
+    public class Person
+    {
+        public string Name { get; set; }
+    }
+}
+</code></pre>
+
+<p>次に BindingContext に設定する MyPageViewModel のコードを以下に示します。1 秒ごとに新しい Person クラスが追加されます。Xamarin.Forms では Device クラスの StartTimer メソッドでタイマーを設定します。</p>
+<pre><code class="cs">using System;
+using System.Collections.ObjectModel;
+using Xamarin.Forms;
+
+namespace HelloWorld
+{
+    public class MyPageViewModel : BindableBase
+    {
+        public ObservableCollection&lt;Person&gt; People { get; } = new ObservableCollection&lt;Person&gt;();
+
+        public MyPageViewModel()
+        {
+            var r = new Random();
+            Device.StartTimer(
+                TimeSpan.FromSeconds(1),
+                () =&gt;
+                {
+                    People.Add(new Person { Name = $&quot;tanaka {r.Next()}&quot; });
+                    return true;
+                });
+        }
+    }
+}
+</code></pre>
+
+<p>そして XAML で ListView の ItemsSource プロパティに People プロパティをデータバインディングします。XAML を以下に示します。</p>
+<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;ContentPage xmlns=&quot;http://xamarin.com/schemas/2014/forms&quot;
+             xmlns:x=&quot;http://schemas.microsoft.com/winfx/2009/xaml&quot;
+             xmlns:local=&quot;clr-namespace:HelloWorld&quot;
+             x:Class=&quot;HelloWorld.MyPage&quot;&gt;
+    &lt;ContentPage.BindingContext&gt;
+        &lt;local:MyPageViewModel /&gt;
+    &lt;/ContentPage.BindingContext&gt;
+    &lt;ListView ItemsSource=&quot;{Binding People}&quot;&gt;
+    &lt;/ListView&gt;
+&lt;/ContentPage&gt;
+</code></pre>
+
+<p>このプログラムを実行すると 1 秒ごとに ListView に要素が追加されていきます。実行結果を以下に示します。</p>
+<p><img alt="Android CollectionBinding" src="./images/android-collectionbinding.gif" /></p>
+<p><img alt="iOS CollectionBinding" src="./images/ios-collectionbinding.gif" /></p></div>
         </div>
-      </div>
 
-    </section>
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>var base_url = '..';</script>
+        <script src="../js/base.js"></script>
+        <script src="../search/require.js"></script>
+        <script src="../search/search.js"></script>
 
-  </div>
-
-  <div class="rst-versions" role="note" style="cursor: pointer">
-    <span class="rst-current-version" data-toggle="rst-current-version">
-      
-          <a href="https://github.com/runceel/xfedu/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
-      
-      
-        <span><a href="../02.hello-world/" style="color: #fcfcfc;">&laquo; Previous</a></span>
-      
-      
-    </span>
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>&larr;</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>&rarr;</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
 </div>
-    <script>var base_url = '..';</script>
-    <script src="../js/theme.js"></script>
-      <script src="../search/require.js"></script>
-      <script src="../search/search.js"></script>
 
-</body>
+
+    </body>
 </html>
