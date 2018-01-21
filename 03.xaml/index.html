@@ -641,7 +641,29 @@ namespace HelloWorld
 
 <p>このプログラムを実行すると 1 秒ごとに ListView に要素が追加されていきます。実行結果を以下に示します。</p>
 <p><img alt="Android CollectionBinding" src="./images/android-collectionbinding.gif" /></p>
-<p><img alt="iOS CollectionBinding" src="./images/ios-collectionbinding.gif" /></p></div>
+<p><img alt="iOS CollectionBinding" src="./images/ios-collectionbinding.gif" /></p>
+<p>デフォルトの挙動では ListView は ToString() の結果を表示します。ここの表示をカスタマイズするには ItemTemplate プロパティを設定する必要があります。ItemTemplate プロパティには DataTemplate を設定して、その中に Cell を設定します。Cell には様々な種類があるのですが、ここではテキストを表示するための TextCell を使用します。Person クラスの Name プロパティを表示する例を以下に示します。</p>
+<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;ContentPage xmlns=&quot;http://xamarin.com/schemas/2014/forms&quot;
+             xmlns:x=&quot;http://schemas.microsoft.com/winfx/2009/xaml&quot;
+             xmlns:local=&quot;clr-namespace:HelloWorld&quot;
+             x:Class=&quot;HelloWorld.MyPage&quot;&gt;
+    &lt;ContentPage.BindingContext&gt;
+        &lt;local:MyPageViewModel /&gt;
+    &lt;/ContentPage.BindingContext&gt;
+    &lt;ListView ItemsSource=&quot;{Binding People}&quot;&gt;
+        &lt;ListView.ItemTemplate&gt;
+            &lt;DataTemplate&gt;
+                &lt;TextCell Text=&quot;{Binding Name}&quot; /&gt;
+            &lt;/DataTemplate&gt;
+        &lt;/ListView.ItemTemplate&gt;
+    &lt;/ListView&gt;
+&lt;/ContentPage&gt;
+</code></pre>
+
+<p>DataTemplate 内での BindingContext はコレクション内の要素になるため Binding の Path には Name を指定することで Person クラスの Name が表示されるようになります。実行結果を以下に示します。</p>
+<p><img alt="Android CollectionBinding &amp; DataTemplate" src="./images/android-collectionbinding-datatemplate.gif" /></p>
+<p><img alt="iOS CollectionBinding &amp; DataTemplate" src="./images/ios-collectionbinding-datatemplate.gif" /></p></div>
         </div>
 
         <footer class="col-md-12">
