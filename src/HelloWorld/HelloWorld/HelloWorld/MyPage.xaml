@@ -7,7 +7,7 @@
                 Maximum="100"
                 Minimum="0"
                 HorizontalOptions="Fill" />
-        <Entry Text="{Binding Value, Source={x:Reference slider}, Mode=OneWayToSource}"
+        <Label Text="{Binding Value, Source={x:Reference slider}, StringFormat='Slider value is {0:000}.'}"
                HorizontalOptions="Fill" />
     </StackLayout>
 </ContentPage>

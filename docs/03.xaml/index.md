@@ -432,3 +432,33 @@ OneWayToSource は OneWay とは逆に Slider の値が変化しても Entry の
 ![Android OneWayToSource Binding](images/android-onewaytosourcebinding.gif)
 
 ![iOS OneWayToSource Binding](images/ios-onewaytosourcebinding.gif)
+
+#### StringFormat
+
+次にデータ バインディングの出力のフォーマットについて説明します。データ バインディングの値の出力は StringFormat プロパティで書式指定することができます。C# の string.Format メソッドと同じ書式指定が使えます。コード例を以下に示します。
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="HelloWorld.MyPage">
+    <StackLayout VerticalOptions="Center">
+        <Slider x:Name="slider"
+            Maximum="100"
+            Minimum="0"
+            HorizontalOptions="Fill" />
+        <Label Text="{Binding Value, Source={x:Reference slider}, StringFormat='Slider value is {0:000}.'}"
+            HorizontalOptions="Fill" />
+    </StackLayout>
+</ContentPage>
+```
+
+実行すると以下のようになります。
+
+
+![Android StringFormat](images/android-stringformat.gif)
+
+![iOS StringFormat](images/ios-stringformat.gif)
+
+StringFormatで指定した書式が設定されていることが確認できます。
+
