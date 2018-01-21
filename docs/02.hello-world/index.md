@@ -181,7 +181,7 @@ iPhone X では画面上部にセンサーが配置されている領域があ�
 </ContentPage>
 ```
 
-![iPhone X](images/iphonex-gadimage.png)
+![iPhone X](images/iphonex-badimage.png)
 
 これに対応する方法は以下のページに記載があります。
 
