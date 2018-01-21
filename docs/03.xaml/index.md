@@ -617,3 +617,70 @@ Page の BindingContext への設定は以下のように行います。
 
 ![iOS BindingContext](images/ios-bindingcontext.gif)
 
+#### コレクションのデータ バインディング
+
+Xamarin.Forms では ListView というコントロールを使ってコレクションをデータ バインディングすることができます。コレクションのデータ バインディングは ItemsSource プロパティにコレクションをデータ バインディングすることで行います。
+このとき、コレクションの要素の増減に対応するためには INotifyCollectionChanged インターフェースを実装して適切に CollectionChanged イベントを発行するコレクションである必要があります。
+このような条件があるため通常 ItemsSource に設定する可変のコレクションは ObservableCollection&lt;T&gt; クラスという INotifyCollectionChanged インターフェースを実装したクラスを使用します。可変でない場合は IEnumerable&lt;T&gt; インターフェースでも List&lt;T&gt; クラスでも問題ありません。
+
+コレクションのデータ バインディングを見ていきます。まず、コレクションに格納するための Person クラスを以下のように定義します。何の変哲も無いただの POCO です。
+
+```cs
+namespace HelloWorld
+{
+    public class Person
+    {
+        public string Name { get; set; }
+    }
+}
+```
+
+次に BindingContext に設定する MyPageViewModel のコードを以下に示します。1 秒ごとに新しい Person クラスが追加されます。Xamarin.Forms では Device クラスの StartTimer メソッドでタイマーを設定します。
+
+```cs
+using System;
+using System.Collections.ObjectModel;
+using Xamarin.Forms;
+
+namespace HelloWorld
+{
+    public class MyPageViewModel : BindableBase
+    {
+        public ObservableCollection<Person> People { get; } = new ObservableCollection<Person>();
+
+        public MyPageViewModel()
+        {
+            var r = new Random();
+            Device.StartTimer(
+                TimeSpan.FromSeconds(1),
+                () =>
+                {
+                    People.Add(new Person { Name = $"tanaka {r.Next()}" });
+                    return true;
+                });
+        }
+    }
+}
+```
+
+そして XAML で ListView の ItemsSource プロパティに People プロパティをデータバインディングします。XAML を以下に示します。
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:HelloWorld"
+             x:Class="HelloWorld.MyPage">
+    <ContentPage.BindingContext>
+        <local:MyPageViewModel />
+    </ContentPage.BindingContext>
+    <ListView ItemsSource="{Binding People}">
+    </ListView>
+</ContentPage>
+```
+
+このプログラムを実行すると 1 秒ごとに ListView に要素が追加されていきます。実行結果を以下に示します。
+
+![Android CollectionBinding](images/android-collectionbinding.gif)
+
+![iOS CollectionBinding](images/ios-collectionbinding.gif)

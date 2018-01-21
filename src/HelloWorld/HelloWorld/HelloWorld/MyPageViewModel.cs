@@ -1,15 +1,23 @@
-﻿namespace HelloWorld
+﻿using System;
+using System.Collections.ObjectModel;
+using Xamarin.Forms;
+
+namespace HelloWorld
 {
     public class MyPageViewModel : BindableBase
     {
-        private double _sliderValue;
+        public ObservableCollection<Person> People { get; } = new ObservableCollection<Person>();
 
-        public double SliderValue
+        public MyPageViewModel()
         {
-            get { return _sliderValue; }
-            set { SetProperty(ref _sliderValue, value); OnPropertyChanged(nameof(LabelValue)); }
+            var r = new Random();
+            Device.StartTimer(
+                TimeSpan.FromSeconds(1),
+                () =>
+                {
+                    People.Add(new Person { Name = $"tanaka {r.Next()}" });
+                    return true;
+                });
         }
-
-        public string LabelValue => $"This is slider value '{SliderValue.ToString("000")}'";
     }
 }

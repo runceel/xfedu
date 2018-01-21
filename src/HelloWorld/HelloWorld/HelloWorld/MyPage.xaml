@@ -6,12 +6,6 @@
     <ContentPage.BindingContext>
         <local:MyPageViewModel />
     </ContentPage.BindingContext>
-    <StackLayout VerticalOptions="Center">
-        <Slider Maximum="100"
-                Minimum="0"
-                HorizontalOptions="Fill"
-                Value="{Binding SliderValue}" />
-        <Label Text="{Binding LabelValue}"
-               HorizontalOptions="Fill" />
-    </StackLayout>
+    <ListView ItemsSource="{Binding People}">
+    </ListView>
 </ContentPage>
