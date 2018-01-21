@@ -711,3 +711,15 @@ DataTemplate 内での BindingContext はコレクション内の要素になる
 ![Android CollectionBinding & DataTemplate](images/android-collectionbinding-datatemplate.gif)
 
 ![iOS CollectionBinding & DataTemplate](images/ios-collectionbinding-datatemplate.gif)
+
+#### C# からのデータ バインディング
+
+これまでデータ バインディングは全て XAML からやってきましたが C# からもデータ バインディングは指定できます。ここでは、その方法について説明します。C# からデータ バインディングができると動的にデータ バインディングができるようになります。
+C# からデータ バインディングを行うには BindableObject クラスの SetBinding メソッドを使います。つまりコントロールのクラスの SetBinding メソッドを呼ぶことになります。SetBinding メソッドには Binding のターゲットとなるプロパティ、パス、モード、コンバーター、StringFormat を指定します。必須なのはターゲットとなるプロパティとパスの 2 つです。ターゲットとなるプロパティは、コントロールのクラスの静的な変数として定義されています。例として Label の Text プロパティに Name を TwoWay バインディングするコードを以下に示します。
+
+```cs
+label.SetBinding(
+    Label.TextProperty,
+    "Name",
+    BindingMode.TwoWay);
+```
