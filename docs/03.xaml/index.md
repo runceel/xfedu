@@ -335,5 +335,33 @@ namespace HelloWorld
 }
 ```
 
-### データバインディング
+### データ バインディング
 
+ここでは XAML を用いたアプリケーション開発の中で最も重要な要素の 1 つであるデータ バインディングについて説明します。
+データ バインディングは、ソース（任意のオブジェクトのプロパティ）とターゲット（BindableObject を継承したクラスで定義できる BindableProperty）の間の同期を取るための仕組みです。BindableObject を継承した BindableProperty は、ほとんどのコントロールのプロパティが該当するため実質的には画面のコントロールのプロパティと、任意のクラスのプロパティの同期を取るために使用されます。
+
+#### コントロール同士のデータバインディング
+
+一番シンプルなデータ バインディングはコントロール同士のプロパティのデータ バインディングになります。データ バインディングは、Binding マークアップ拡張を使って指定します。Source プロパティにデータ バインディングのソースを指定して、Path プロパティに Source でデータバインディングしたいプロパティを指定します。Slider の Value プロパティと Label の Text プロパティの同期のコード例を以下に示します。
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="HelloWorld.MyPage">
+    <StackLayout VerticalOptions="Center">
+        <Slider x:Name="slider"
+            Maximum="100"
+            Minimum="0"
+            VerticalOptions="StartAndExpand" />
+        <Label Text="{Binding Value, Source={x:Reference slider}}"
+            HorizontalOptions="Center" />
+    </StackLayout>
+</ContentPage>
+```
+
+x:Reference で名前付きのコントロールのインスタンスを取得できるので、それを使用して Label の Text プロパティと Slider の Value プロパティをバインドしています。Binding マークアップ拡張では、Path プロパティは最初に書く場合省略可能なので上記の例では省略しています。このコードを実行すると以下のような結果になります。
+
+![Android Control Binding](images/android-controlbinding.gif)
+
+![iOS Control Binding](images/ios-controlbinding.gif)

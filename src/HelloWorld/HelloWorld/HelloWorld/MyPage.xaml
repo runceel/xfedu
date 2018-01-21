@@ -1,19 +1,13 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:HelloWorld;assembly=HelloWorld"
-             xmlns:system="clr-namespace:System;assembly=netstandard"
-             x:Class="HelloWorld.MyPage"
-             Title="Hello world">
-    <Label HorizontalOptions="Center"
-           VerticalOptions="Center">
-        <Label.Text>
-            <OnPlatform x:TypeArguments="system:String">
-                <On Platform="{x:Static Device.iOS}"
-                    Value="Hello iOS" />
-                <On Platform="{x:Static Device.Android}"
-                    Value="Hello Android" />
-            </OnPlatform>
-        </Label.Text>
-    </Label>
+             x:Class="HelloWorld.MyPage">
+    <StackLayout VerticalOptions="Center">
+        <Slider x:Name="slider"
+                Maximum="100"
+                Minimum="0"
+                VerticalOptions="StartAndExpand" />
+        <Label Text="{Binding Value, Source={x:Reference slider}}"
+               HorizontalOptions="Center" />
+    </StackLayout>
 </ContentPage>
