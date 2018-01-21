@@ -104,6 +104,8 @@
         
             <li><a class="toctree-l4" href="#stacklayout">StackLayout</a></li>
         
+            <li><a class="toctree-l4" href="#grid">Grid</a></li>
+        
         </ul>
     
 
@@ -312,6 +314,87 @@
 <p>実行すると以下のようになります。ツイッターの1つの呟きのようなレイアウトになります。</p>
 <p><img alt="Android StackLayout Complex layout" src="../images/android-stacklayout-complexlayout.png" /></p>
 <p><img alt="iOS StackLayout Complex layout" src="../images/ios-stacklayout-complexlayout.png" /></p>
+<h2 id="grid">Grid</h2>
+<p>Grid は格子状に領域を区切って、そこにコントロールを配置していく方法でレイアウトを行うコントロールです。RowDefinitions プロパティの中に RowDefinition で行を定義して、ColumnDefinitions プロパティの中に ColumnDefinition を指定して列を定義します。RowDefinition には Height プロパティで高さが指定できます。ColumnDefinition には Width プロパティで幅が指定できます。
+Height と Width は GridLength という型で固定数値、Auto、数字<em>という３つの指定方法があります。Autoが中身の大きさに応じてサイズを変える指定方法で、固定数値が指定したピクセル数で表示する方法になります。数字</em>という指定方法は、余白を比率で分割する指定方法になります。数字の部分を省略した場合は1を指定したことになります。例えば、「3<em>」と「2</em>」を指定すると3:2に領域を分割することになります。コントロールをどこに配置するかは Grid.Row 添付プロパティと Grid.Column 添付プロパティで指定します。インデックスは 0 始まりになります。コード例を以下に示します。</p>
+<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;ContentPage xmlns=&quot;http://xamarin.com/schemas/2014/forms&quot;
+             xmlns:x=&quot;http://schemas.microsoft.com/winfx/2009/xaml&quot;
+             xmlns:local=&quot;clr-namespace:HelloWorld&quot;
+             xmlns:ios=&quot;clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core&quot;
+             ios:Page.UseSafeArea=&quot;true&quot;
+             x:Class=&quot;HelloWorld.MyPage&quot;&gt;
+    &lt;Grid&gt;
+        &lt;Grid.RowDefinitions&gt;
+            &lt;RowDefinition Height=&quot;50&quot; /&gt;
+            &lt;RowDefinition Height=&quot;Auto&quot; /&gt;
+            &lt;RowDefinition Height=&quot;*&quot; /&gt;
+            &lt;RowDefinition Height=&quot;2*&quot; /&gt;
+        &lt;/Grid.RowDefinitions&gt;
+        &lt;Grid.ColumnDefinitions&gt;
+            &lt;ColumnDefinition /&gt;
+            &lt;!-- 指定を省略した時は*になる --&gt;
+            &lt;ColumnDefinition Width=&quot;100&quot; /&gt;
+            &lt;ColumnDefinition Width=&quot;Auto&quot; /&gt;
+        &lt;/Grid.ColumnDefinitions&gt;
+        &lt;!-- 何も指定しないと0,0に配置される --&gt;
+        &lt;BoxView Color=&quot;Purple&quot; /&gt;
+        &lt;BoxView Color=&quot;Red&quot;
+                 Grid.Row=&quot;1&quot;
+                 Grid.Column=&quot;1&quot; /&gt;
+        &lt;BoxView Color=&quot;Blue&quot;
+                 Grid.Row=&quot;2&quot;
+                 Grid.Column=&quot;2&quot; /&gt;
+        &lt;BoxView Color=&quot;Yellow&quot;
+                 Grid.Row=&quot;3&quot;
+                 Grid.Column=&quot;1&quot; /&gt;
+    &lt;/Grid&gt;
+&lt;/ContentPage&gt;
+</code></pre>
+
+<p><img alt="Android Grid" src="../images/android-grid.png" /></p>
+<p><img alt="iOS Grid" src="../images/ios-grid.png" /></p>
+<p>Grid コントロールでは単純にセルの中にコントロールを置くのではなく Grid.RowSpan 添付プロパティと Grid.ColumnSpan 添付プロパティを使って複数のセルに渡って要素を配置することができます。コード例を以下に示します。</p>
+<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;ContentPage xmlns=&quot;http://xamarin.com/schemas/2014/forms&quot;
+             xmlns:x=&quot;http://schemas.microsoft.com/winfx/2009/xaml&quot;
+             xmlns:local=&quot;clr-namespace:HelloWorld&quot;
+             xmlns:ios=&quot;clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core&quot;
+             ios:Page.UseSafeArea=&quot;true&quot;
+             x:Class=&quot;HelloWorld.MyPage&quot;&gt;
+    &lt;Grid&gt;
+        &lt;Grid.RowDefinitions&gt;
+            &lt;RowDefinition Height=&quot;50&quot; /&gt;
+            &lt;RowDefinition Height=&quot;Auto&quot; /&gt;
+            &lt;RowDefinition Height=&quot;*&quot; /&gt;
+            &lt;RowDefinition Height=&quot;2*&quot; /&gt;
+        &lt;/Grid.RowDefinitions&gt;
+        &lt;Grid.ColumnDefinitions&gt;
+            &lt;ColumnDefinition /&gt;
+            &lt;!-- 指定を省略した時は*になる --&gt;
+            &lt;ColumnDefinition Width=&quot;100&quot; /&gt;
+            &lt;ColumnDefinition Width=&quot;Auto&quot; /&gt;
+        &lt;/Grid.ColumnDefinitions&gt;
+        &lt;BoxView Color=&quot;Purple&quot;
+                 Grid.RowSpan=&quot;3&quot; /&gt;
+        &lt;!-- 何も指定しないと0,0に配置される --&gt;
+        &lt;BoxView Color=&quot;Red&quot;
+                 Grid.Row=&quot;1&quot;
+                 Grid.Column=&quot;1&quot;
+                 Grid.ColumnSpan=&quot;2&quot; /&gt;
+        &lt;BoxView Color=&quot;Blue&quot;
+                 Grid.Row=&quot;2&quot;
+                 Grid.Column=&quot;2&quot; /&gt;
+        &lt;BoxView Color=&quot;Yellow&quot;
+                 Grid.Row=&quot;3&quot;
+                 Grid.Column=&quot;1&quot; /&gt;
+    &lt;/Grid&gt;
+&lt;/ContentPage&gt;
+</code></pre>
+
+<p>先ほどのコードの一部にGrid.RowSpan添付プロパティとGrid.ColumnSpan添付プロパティを指定しています。実行結果を以下に示します。</p>
+<p><img alt="Android Grid span" src="../images/android-grid-span.png" /></p>
+<p><img alt="iOS Grid span" src="../images/ios-grid-span.png" /></p>
               
             </div>
           </div>
