@@ -663,7 +663,15 @@ namespace HelloWorld
 
 <p>DataTemplate 内での BindingContext はコレクション内の要素になるため Binding の Path には Name を指定することで Person クラスの Name が表示されるようになります。実行結果を以下に示します。</p>
 <p><img alt="Android CollectionBinding &amp; DataTemplate" src="./images/android-collectionbinding-datatemplate.gif" /></p>
-<p><img alt="iOS CollectionBinding &amp; DataTemplate" src="./images/ios-collectionbinding-datatemplate.gif" /></p></div>
+<p><img alt="iOS CollectionBinding &amp; DataTemplate" src="./images/ios-collectionbinding-datatemplate.gif" /></p>
+<h4 id="c">C# からのデータ バインディング</h4>
+<p>これまでデータ バインディングは全て XAML からやってきましたが C# からもデータ バインディングは指定できます。ここでは、その方法について説明します。C# からデータ バインディングができると動的にデータ バインディングができるようになります。
+C# からデータ バインディングを行うには BindableObject クラスの SetBinding メソッドを使います。つまりコントロールのクラスの SetBinding メソッドを呼ぶことになります。SetBinding メソッドには Binding のターゲットとなるプロパティ、パス、モード、コンバーター、StringFormat を指定します。必須なのはターゲットとなるプロパティとパスの 2 つです。ターゲットとなるプロパティは、コントロールのクラスの静的な変数として定義されています。例として Label の Text プロパティに Name を TwoWay バインディングするコードを以下に示します。</p>
+<pre><code class="cs">label.SetBinding(
+    Label.TextProperty,
+    &quot;Name&quot;,
+    BindingMode.TwoWay);
+</code></pre></div>
         </div>
 
         <footer class="col-md-12">
