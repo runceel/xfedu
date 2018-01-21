@@ -3,17 +3,15 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:HelloWorld"
              x:Class="HelloWorld.MyPage">
-    <ContentPage.Resources>
-        <ResourceDictionary>
-            <local:StringFormatConverter x:Key="StringFormatConverter" />
-        </ResourceDictionary>
-    </ContentPage.Resources>
+    <ContentPage.BindingContext>
+        <local:MyPageViewModel />
+    </ContentPage.BindingContext>
     <StackLayout VerticalOptions="Center">
-        <Slider x:Name="slider"
-                Maximum="100"
+        <Slider Maximum="100"
                 Minimum="0"
-                HorizontalOptions="Fill" />
-        <Label Text="{Binding Value, Source={x:Reference slider}, Converter={StaticResource StringFormatConverter}, ConverterParameter='Slider value is {0:000}.'}"
+                HorizontalOptions="Fill"
+                Value="{Binding SliderValue}" />
+        <Label Text="{Binding LabelValue}"
                HorizontalOptions="Fill" />
     </StackLayout>
 </ContentPage>

@@ -529,3 +529,91 @@ Converter プロパティに IValueConverter の実装を指定して ConverterP
 ![Android Converter](images/android-converter.gif)
 
 ![iOS Converter](images/ios-converter.gif)
+
+#### BindingContext
+
+ここでは、データ バインディングの BindingContext について説明します。BindingContext は、コントロールの親クラスをたどって行くとたどり着く BindableObject クラスに定義されているプロパティになります。このプロパティは、データ バインディングの Source プロパティが指定されていないときに暗黙的に Source として使われるというプロパティになります。さらに BindingContext は、コントロールの階層の親から子へと伝播して行くので Page の BindingContext に設定することで自動的に Page 内の全コントロールの Binding の Source が設定可能です。この特徴を利用して Page の BindingContext にオブジェクトを設定して、それとデータバインディングを行うことで C# のオブジェクトの世界と XAML の世界を接続するプログラミング モデルがよく採用されます。BindingContext に設定するオブジェクトは INotifyPropertyChanged インターフェースを実装していることが多くのケースにおいて望ましいです。データ バインディングは INotifyPropertyChanged インターフェースの PropertyChanged イベントを監視してデータの変更を検知してターゲットの値の更新を行います。逆にいうと INotifyPropertyChanged インターフェースを実装していないクラスを BindingContext に設定しても、ソースのプロパティが変わってもターゲットに伝搬されないため実質使い物になりません。
+
+そのため、以下のような INotifyPropertyChanged の実装クラスを定義しておいて、そのクラスを継承する形で BindingContext に設定するクラスを定義するという方法がよく取られています。
+
+```cs
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
+
+namespace HelloWorld
+{
+    public class BindableBase : INotifyPropertyChanged
+    {
+        protected BindableBase()
+        {
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        protected virtual bool SetProperty<T>(ref T field, T value, [CallerMemberName] string propertyName = null)
+        {
+            if (EqualityComparer<T>.Default.Equals(field, value)) { return false; }
+
+            field = value;
+            OnPropertyChanged(propertyName);
+            return true;
+        }
+    }
+}
+```
+
+そして、以下のようなクラスを BindingContext に設定します。
+
+```cs
+namespace HelloWorld
+{
+    public class MyPageViewModel : BindableBase
+    {
+        private double _sliderValue;
+
+        public double SliderValue
+        {
+            get { return _sliderValue; }
+            set { SetProperty(ref _sliderValue, value); OnPropertyChanged(nameof(LabelValue)); }
+        }
+
+        public string LabelValue => $"This is slider value '{SliderValue.ToString("000")}'";
+    }
+}
+```
+
+Page の BindingContext への設定は以下のように行います。
+
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:HelloWorld"
+             x:Class="HelloWorld.MyPage">
+    <ContentPage.BindingContext>
+        <local:MyPageViewModel />
+    </ContentPage.BindingContext>
+    <StackLayout VerticalOptions="Center">
+        <Slider Maximum="100"
+                Minimum="0"
+                HorizontalOptions="Fill"
+                Value="{Binding SliderValue}" />
+        <Label Text="{Binding LabelValue}"
+               HorizontalOptions="Fill" />
+    </StackLayout>
+</ContentPage>
+```
+
+先ほど作成したクラスのインスタンスを BindingContext に設定して Slider と Label には BindingContext に設定したクラスのプロパティをデータ バインディングしています。プログラムの実行結果を以下に示します。
+
+![Android BindingContext](images/android-bindingcontext.gif)
+
+![iOS BindingContext](images/ios-bindingcontext.gif)
+
