@@ -684,3 +684,30 @@ namespace HelloWorld
 ![Android CollectionBinding](images/android-collectionbinding.gif)
 
 ![iOS CollectionBinding](images/ios-collectionbinding.gif)
+
+デフォルトの挙動では ListView は ToString() の結果を表示します。ここの表示をカスタマイズするには ItemTemplate プロパティを設定する必要があります。ItemTemplate プロパティには DataTemplate を設定して、その中に Cell を設定します。Cell には様々な種類があるのですが、ここではテキストを表示するための TextCell を使用します。Person クラスの Name プロパティを表示する例を以下に示します。
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:HelloWorld"
+             x:Class="HelloWorld.MyPage">
+    <ContentPage.BindingContext>
+        <local:MyPageViewModel />
+    </ContentPage.BindingContext>
+    <ListView ItemsSource="{Binding People}">
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <TextCell Text="{Binding Name}" />
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
+</ContentPage>
+```
+
+DataTemplate 内での BindingContext はコレクション内の要素になるため Binding の Path には Name を指定することで Person クラスの Name が表示されるようになります。実行結果を以下に示します。
+
+![Android CollectionBinding & DataTemplate](images/android-collectionbinding-datatemplate.gif)
+
+![iOS CollectionBinding & DataTemplate](images/ios-collectionbinding-datatemplate.gif)
