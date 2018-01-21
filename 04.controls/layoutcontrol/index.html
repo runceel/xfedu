@@ -162,6 +162,156 @@
 </ul>
 <h2 id="stacklayout">StackLayout</h2>
 <p>StackLayout は名前の通りスタック状にコントロールを並べて配置するコントロールです。デフォルトでは縦にコントロールを並べますが Orientation プロパティに Horizontal を指定することで横並びに配置することもできます。StackLayout の基本的な使い方の例を以下に示します。</p>
+<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;ContentPage xmlns=&quot;http://xamarin.com/schemas/2014/forms&quot;
+             xmlns:x=&quot;http://schemas.microsoft.com/winfx/2009/xaml&quot;
+             xmlns:local=&quot;clr-namespace:HelloWorld&quot;
+             xmlns:ios=&quot;clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core&quot;
+             ios:Page.UseSafeArea=&quot;true&quot;
+             x:Class=&quot;HelloWorld.MyPage&quot;&gt;
+    &lt;StackLayout&gt;
+        &lt;BoxView Color=&quot;Red&quot; /&gt;
+        &lt;BoxView Color=&quot;Blue&quot; /&gt;
+        &lt;BoxView Color=&quot;Yellow&quot; /&gt;
+    &lt;/StackLayout&gt;
+&lt;/ContentPage&gt;
+</code></pre>
+
+<p>実行すると、縦に赤、青、黄色の矩形が並んで表示されます。実行結果を以下に示します。</p>
+<p><img alt="Android StackLayout" src="../images/android-stacklayout.png" /></p>
+<p><img alt="iOS StackLayout" src="../images/ios-stacklayout.png" /></p>
+<p>Orientation プロパティを Horizontal(デフォルトは Vertical)に設定することで横並びにすることができます。XAML を以下に示します。</p>
+<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;ContentPage xmlns=&quot;http://xamarin.com/schemas/2014/forms&quot;
+             xmlns:x=&quot;http://schemas.microsoft.com/winfx/2009/xaml&quot;
+             xmlns:local=&quot;clr-namespace:HelloWorld&quot;
+             xmlns:ios=&quot;clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core&quot;
+             ios:Page.UseSafeArea=&quot;true&quot;
+             x:Class=&quot;HelloWorld.MyPage&quot;&gt;
+    &lt;StackLayout Orientation=&quot;Horizontal&quot;&gt;
+        &lt;BoxView Color=&quot;Red&quot; /&gt;
+        &lt;BoxView Color=&quot;Blue&quot; /&gt;
+        &lt;BoxView Color=&quot;Yellow&quot; /&gt;
+    &lt;/StackLayout&gt;
+&lt;/ContentPage&gt;
+</code></pre>
+
+<p>実行結果を以下に示します。</p>
+<p><img alt="Android StackLayout Horizontal" src="../images/android-stacklayout-horizontal.png" /></p>
+<p><img alt="iOS StackLayout Horizontal" src="../images/ios-stacklayout-horizontal.png" /></p>
+<p>Spacing プロパティに数字を指定すると指定したサイズだけ要素間に空白ができます。XAML の例を以下に示します。</p>
+<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;ContentPage xmlns=&quot;http://xamarin.com/schemas/2014/forms&quot;
+             xmlns:x=&quot;http://schemas.microsoft.com/winfx/2009/xaml&quot;
+             xmlns:local=&quot;clr-namespace:HelloWorld&quot;
+             xmlns:ios=&quot;clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core&quot;
+             ios:Page.UseSafeArea=&quot;true&quot;
+             x:Class=&quot;HelloWorld.MyPage&quot;&gt;
+    &lt;StackLayout Spacing=&quot;25&quot;&gt;
+        &lt;BoxView Color=&quot;Red&quot; /&gt;
+        &lt;BoxView Color=&quot;Blue&quot; /&gt;
+        &lt;BoxView Color=&quot;Yellow&quot; /&gt;
+    &lt;/StackLayout&gt;
+&lt;/ContentPage&gt;
+</code></pre>
+
+<p>実行すると以下のようになります。</p>
+<p><img alt="Android StackLayout Spacing" src="../images/android-stacklayout-spacing.png" /></p>
+<p><img alt="iOS StackLayout Spacing" src="../images/ios-stacklayout-spacing.png" /></p>
+<p>余白があいていることが確認できます。</p>
+<p>さらにコントロールの HorizontalOptions プロパティ、VerticalOptions プロパティを使用することで表示位置や表示領域をカスタマイズすることができます。HorizontalOptions プロパティと VerticalOptions プロパティは LayoutOptions 型で以下の値を持ちます。</p>
+<ul>
+<li>Start：開始位置に表示されます。</li>
+<li>Center：中央に表示されます。</li>
+<li>End：終端に表示されます。</li>
+<li>Fill：全体に広がって表示されます。</li>
+<li>StartAndExpand：開始位置に表示され余白を占有します。</li>
+<li>CenterAndExpand：中央に表示され余白を占有します。</li>
+<li>EndAndExpand：終端位置に表示され余白を占有します。</li>
+<li>FillAndExpand：全体に広がって表示され余白を占有します。</li>
+</ul>
+<p>動作を確認するための XAML を以下に示します。</p>
+<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;ContentPage xmlns=&quot;http://xamarin.com/schemas/2014/forms&quot;
+             xmlns:x=&quot;http://schemas.microsoft.com/winfx/2009/xaml&quot;
+             xmlns:local=&quot;clr-namespace:HelloWorld&quot;
+             xmlns:ios=&quot;clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core&quot;
+             ios:Page.UseSafeArea=&quot;true&quot;
+             x:Class=&quot;HelloWorld.MyPage&quot;&gt;
+    &lt;StackLayout&gt;
+        &lt;BoxView Color=&quot;Red&quot;
+                 HorizontalOptions=&quot;Start&quot; /&gt;
+        &lt;BoxView Color=&quot;Blue&quot;
+                 HorizontalOptions=&quot;Center&quot; /&gt;
+        &lt;BoxView Color=&quot;Yellow&quot;
+                 HorizontalOptions=&quot;End&quot; /&gt;
+        &lt;BoxView Color=&quot;Silver&quot;
+                 HorizontalOptions=&quot;Fill&quot; /&gt;
+    &lt;/StackLayout&gt;
+&lt;/ContentPage&gt;
+</code></pre>
+
+<p>実行結果を以下にしめします。</p>
+<p><img alt="Android StackLayout HorizontalOptions" src="../images/android-stacklayout-horizontaloptions.png" /></p>
+<p><img alt="iOS StackLayout HorizontalOptions" src="../images/ios-stacklayout-horizontaloptions.png" /></p>
+<p>***AndExpand は複数指定されると均等に余白を分割しようとします。そのため以下のように複数指定すると均等にコントロールが配置されます。</p>
+<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;ContentPage xmlns=&quot;http://xamarin.com/schemas/2014/forms&quot;
+             xmlns:x=&quot;http://schemas.microsoft.com/winfx/2009/xaml&quot;
+             xmlns:local=&quot;clr-namespace:HelloWorld&quot;
+             xmlns:ios=&quot;clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core&quot;
+             ios:Page.UseSafeArea=&quot;true&quot;
+             x:Class=&quot;HelloWorld.MyPage&quot;&gt;
+    &lt;StackLayout&gt;
+        &lt;BoxView Color=&quot;Red&quot;
+                 VerticalOptions=&quot;StartAndExpand&quot; /&gt;
+        &lt;BoxView Color=&quot;Blue&quot;
+                 VerticalOptions=&quot;CenterAndExpand&quot; /&gt;
+        &lt;BoxView Color=&quot;Yellow&quot;
+                 VerticalOptions=&quot;EndAndExpand&quot; /&gt;
+        &lt;BoxView Color=&quot;Silver&quot;
+                 VerticalOptions=&quot;FillAndExpand&quot; /&gt;
+    &lt;/StackLayout&gt;
+&lt;/ContentPage&gt;
+</code></pre>
+
+<p>実行すると以下のようになります。</p>
+<p><img alt="Android StackLayout Expand" src="../images/android-stacklayout-expand.png" /></p>
+<p><img alt="iOS StackLayout Expand" src="../images/ios-stacklayout-expand.png" /></p>
+<p>画面が 4 分割されて、それぞれ開始位置、中央、終端、いっぱいに広がるというレイアウトがされていることが確認できます。これを組み合わせてネストさせることで複雑なレイアウトが可能になります。複雑なレイアウトの例を以下に示します。</p>
+<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;ContentPage xmlns=&quot;http://xamarin.com/schemas/2014/forms&quot;
+             xmlns:x=&quot;http://schemas.microsoft.com/winfx/2009/xaml&quot;
+             xmlns:local=&quot;clr-namespace:HelloWorld&quot;
+             xmlns:ios=&quot;clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core&quot;
+             ios:Page.UseSafeArea=&quot;true&quot;
+             x:Class=&quot;HelloWorld.MyPage&quot;&gt;
+    &lt;StackLayout VerticalOptions=&quot;Start&quot;&gt;
+        &lt;StackLayout Orientation=&quot;Horizontal&quot;&gt;
+            &lt;BoxView WidthRequest=&quot;50&quot;
+                     HeightRequest=&quot;50&quot;
+                     Color=&quot;Purple&quot;
+                     HorizontalOptions=&quot;Center&quot;
+                     VerticalOptions=&quot;Center&quot; /&gt;
+            &lt;StackLayout&gt;
+                &lt;StackLayout Orientation=&quot;Horizontal&quot;&gt;
+                    &lt;Label Text=&quot;名前&quot;
+                           FontAttributes=&quot;Bold&quot; /&gt;
+                    &lt;Label Text=&quot;@xxxxxxxx&quot; /&gt;
+                &lt;/StackLayout&gt;
+                &lt;Label Text=&quot;本文本文本文本文本文本文本文本文本文本文本文本文本文本文&quot;
+                       VerticalOptions=&quot;FillAndExpand&quot; /&gt;
+                &lt;Label Text=&quot;tweeted by sample&quot;
+                       VerticalOptions=&quot;End&quot; /&gt;
+            &lt;/StackLayout&gt;
+        &lt;/StackLayout&gt;
+    &lt;/StackLayout&gt;
+&lt;/ContentPage&gt;
+</code></pre>
+
+<p>実行すると以下のようになります。ツイッターの1つの呟きのようなレイアウトになります。</p>
+<p><img alt="Android StackLayout Complex layout" src="../images/android-stacklayout-complexlayout.png" /></p>
+<p><img alt="iOS StackLayout Complex layout" src="../images/ios-stacklayout-complexlayout.png" /></p>
               
             </div>
           </div>
