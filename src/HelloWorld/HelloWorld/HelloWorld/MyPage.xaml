@@ -5,29 +5,27 @@
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
              ios:Page.UseSafeArea="true"
              x:Class="HelloWorld.MyPage">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="50" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="2*" />
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition />
-            <!-- 指定を省略した時は*になる -->
-            <ColumnDefinition Width="100" />
-            <ColumnDefinition Width="Auto" />
-        </Grid.ColumnDefinitions>
-        <!-- 何も指定しないと0,0に配置される -->
-        <BoxView Color="Purple" />
-        <BoxView Color="Red"
-                 Grid.Row="1"
-                 Grid.Column="1" />
-        <BoxView Color="Blue"
-                 Grid.Row="2"
-                 Grid.Column="2" />
-        <BoxView Color="Yellow"
-                 Grid.Row="3"
-                 Grid.Column="1" />
-    </Grid>
+    <StackLayout>
+        <Button Text="Scroll"
+                Clicked="ButtonScrollTo_Clicked" />
+        <ScrollView x:Name="scrollView"
+                    VerticalOptions="FillAndExpand"
+                    Orientation="Both">
+            <StackLayout>
+                <BoxView Color="Red"
+                         WidthRequest="500"
+                         HeightRequest="500" />
+                <BoxView Color="Blue"
+                         WidthRequest="500"
+                         HeightRequest="500" />
+                <BoxView x:Name="boxViewYellow"
+                         Color="Yellow"
+                         WidthRequest="500"
+                         HeightRequest="500" />
+                <BoxView Color="Olive"
+                         WidthRequest="500"
+                         HeightRequest="500" />
+            </StackLayout>
+        </ScrollView>
+    </StackLayout>
 </ContentPage>

@@ -13,4 +13,5 @@ pages:
   - 'Xamarin.Forms のコントロール':
     - 'はじめに': '04.controls/index.md'
     - 'BindableObject': '04.controls/bindableobject.md'
-    - 'レイアウトコントロール': '04.controls/layoutcontrol.md'
+    - 'レイアウト コントロール': '04.controls/layoutcontrol.md'
+    - '一般的なコントロール': '04.controls/common-controls.md'

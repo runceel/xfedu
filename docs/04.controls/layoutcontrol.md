@@ -284,3 +284,209 @@ Grid コントロールでは単純にセルの中にコントロールを置く
 ![Android Grid span](images/android-grid-span.png)
 
 ![iOS Grid span](images/ios-grid-span.png)
+
+## AbsoluteLayout
+
+AbsoluteLayout は絶対座標と比率でコントロールのレイアウトを指定できるレイアウトコントロールです。AbsoluteLayout.LayoutBounds 添付プロパティで「x, y, width, height」の形式で位置を指定します。この時デフォルトでは絶対座標での指定が行われます。AbsoluteLayout.LayoutFlags 添付プロパティで絶対座標指定か、比率による指定かを設定できます。AbsoluteLayout.LayoutFlags 添付プロパティに指定可能な値は以下のものになります。
+
+- None：デフォルト値。絶対座標による指定になります。
+- All：全ての設定値が比率による指定になります。
+- WidthProportional：幅が比率による指定になります。
+- HeightProportional：高さが比率による指定になります。
+- XProportional：X座標が比率による指定になります。
+- YProportional：Y座標が比率による指定になります。
+- PositionProportional：X座標とY座標が比率による指定になります。
+- SizeProportional：WidthとHeightが比率による指定になります。
+
+比率による指定の場合は指定可能な値は 0 〜 1 の間の数字になります。XAML の例を以下に示します。
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:HelloWorld"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             ios:Page.UseSafeArea="true"
+             x:Class="HelloWorld.MyPage">
+    <AbsoluteLayout>
+        <BoxView Color="Red"
+                 AbsoluteLayout.LayoutBounds="10,10,100,100" />
+        <BoxView Color="Blue"
+                 AbsoluteLayout.LayoutBounds=".5,.5,.5,.5"
+                 AbsoluteLayout.LayoutFlags="All" />
+        <BoxView Color="Olive"
+                 AbsoluteLayout.LayoutBounds="1,.5,25,250"
+                 AbsoluteLayout.LayoutFlags="PositionProportional" />
+        <BoxView Color="Yellow"
+                 AbsoluteLayout.LayoutBounds=".5,1,100,50"
+                 AbsoluteLayout.LayoutFlags="PositionProportional" />
+    </AbsoluteLayout>
+</ContentPage>
+```
+
+実行結果を以下に示します。
+
+![Android AbsoluteLayout](images/android-absolutelayout.png)
+
+![iOS AbsoluteLayout](images/ios-absolutelayout.png)
+
+## RelativeLayout
+
+RelativeLayout は親要素か他のコントロールからの相対位置によってレイアウトを決めることができます。以下の添付プロパティを使用して設定します。
+
+- RelativeLayout.XConstraint：コントロールのX座標を指定します。
+- RelativeLayout.YConstraint：コントロールのY座標を指定します。
+- RelativeLayout.WidthConstraint：コントロールの幅を指定します。
+- RelativeLayout.HeihgtConstraint：コントロールの高さを指定します。
+- RelativeLayout.BoundsConstraint：コントロールの領域を指定します。
+
+上記の添付プロパティの値は ConstraintExpression マークアップ拡張を使って指定します。ConstraintExpression マークアップ拡張は以下のプロパティを持っています。
+
+- Type：RelativeToParent で親要素を指定するか、RelativeToView で ElementName で指定した View を指定するか設定します。
+- ElementName：Type で RelativeToView を指定した時に参照する View の名前(x:Name で指定)を設定します。
+- Property：親要素か他の View の、どのプロパティを参照するか指定します。
+- Factor：Type と ElementName と Property で取得した値に掛ける比率を指定します。
+- Constant：Type と ElementName と Property で取得して Factor を掛けた値に加算する値を指定します。
+
+例えば X 座標を親要素の中央に持ってきたい場合は親要素の幅の半分の値にすればいいので以下のような設定になります。
+
+```xml
+RelativeLayout.XConstraint=”{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=.5}”
+```
+
+X 座標を boxView の X 座標から 10 増やした位置に指定したい場合は以下のような設定になります。
+
+```xml
+RelativeLayout.XConstraint=”{ConstraintExpression Type=RelativeToView, ElementName=boxView, Property=X, Constant=10}”
+```
+
+XAML の例を以下に示します。
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:HelloWorld"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             ios:Page.UseSafeArea="true"
+             x:Class="HelloWorld.MyPage">
+    <RelativeLayout>
+        <BoxView x:Name="boxViewBlue"
+                 Color="Blue"
+                 RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=.5, Constant=-50}"
+                 RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=.5, Constant=-50}"
+                 RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=.5}"
+                 RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=.5}" />
+
+        <BoxView Color="Red"
+                 WidthRequest="100"
+                 HeightRequest="100"
+                 RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToView, ElementName=boxViewBlue, Property=X, Constant=-100}"
+                 RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView, ElementName=boxViewBlue, Property=Y, Constant=-100}" />
+    </RelativeLayout>
+</ContentPage>
+```
+
+画面中央から左上に 50px 動かした位置に青い BoxView を表示しています。そして赤い BoxView を青い BoxView の左上に表示しています。実行結果を以下に示します。
+
+![Android RelativeLayout](images/android-relativelayout.png)
+
+![iOS RelativeLayout](images/ios-relativelayout.png)
+
+## ScrollView
+
+ScrollView はスクロール可能な領域を提供するコントロールです。他のレイアウトコントロールとは多少毛色が異なりますが Layout を継承しているためここで紹介します。ScrollView は主に以下のプロパティを使用します。
+
+- Content：スクロールさせたいコンテンツを指定します。
+- ContentSize：コンテンツのサイズを取得します。（読み取り専用）
+- Orientation：スクロールの方向を指定します。ScrollOrientation 型の Horizontal（横方向）、Vertical（縦方向）、Both（両方）が指定可能です。
+- ScrollX：スクロールの X の位置を返します。（読み取り専用）
+- ScrollY：スクロールの Y の位置を返します。（読み取り専用）
+
+また、スクロール位置を制御するための以下のメソッドが提供されています。
+
+- ScrollAsync(int x, int y, bool animated)
+- ScrollAsync(Element element, ScrollToPosition position, bool animated)
+
+最初のオーバーロードが座標指定でのスクロールで2つ目のオーバーロードが要素が表示されるまでスクロールさせるメソッドになります。ScrollToPosition は以下の値を持つ列挙型です。
+
+- Center：中央に表示されるようにします。
+- Start：開始位置に表示されるようにします。
+- End：終了位置に表示されるようにします。
+- MakeVisible：とりあえず表示されるようにします。
+
+コード例を以下に示します。
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:HelloWorld"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             ios:Page.UseSafeArea="true"
+             x:Class="HelloWorld.MyPage">
+    <StackLayout>
+        <Button Text="Scroll"
+                Clicked="ButtonScrollTo_Clicked" />
+        <ScrollView x:Name="scrollView"
+                    VerticalOptions="FillAndExpand"
+                    Orientation="Both">
+            <StackLayout>
+                <BoxView Color="Red"
+                         WidthRequest="500"
+                         HeightRequest="500" />
+                <BoxView Color="Blue"
+                         WidthRequest="500"
+                         HeightRequest="500" />
+                <BoxView x:Name="boxViewYellow"
+                         Color="Yellow"
+                         WidthRequest="500"
+                         HeightRequest="500" />
+                <BoxView Color="Olive"
+                         WidthRequest="500"
+                         HeightRequest="500" />
+            </StackLayout>
+        </ScrollView>
+    </StackLayout>
+</ContentPage>
+```
+
+コードビハインドを以下に示します。黄色い BoxView までスクロールを行うように指定しています。
+
+```cs
+using System;
+using Xamarin.Forms;
+
+namespace HelloWorld
+{
+    public partial class MyPage : ContentPage
+    {
+        public MyPage()
+        {
+            InitializeComponent();
+        }
+        private async void ButtonScrollTo_Clicked(object sender, EventArgs e)
+        {
+            await scrollView.ScrollToAsync(this.boxViewYellow, ScrollToPosition.Start, true);
+            await DisplayAlert("Info", $"Scroll position is {scrollView.ScrollX}, {scrollView.ScrollY}", "OK");
+        }
+
+    }
+}
+```
+
+実行結果を以下に示します。
+
+![Android ScrollView](images/android-scrollview.gif)
+
+![iOS ScrollView](images/ios-scrollview.gif)
+
+## 余白の制御
+
+Margin プロパティと Padding プロパティを使って余白を制御できます。Margin プロパティがコントロールの外側の余白の指定になります。Padding プロパティがコントロールの内側の余白になります。Margin プロパティも Padding プロパティも Thickness 型で指定可能で、以下の書式です。XAMLでは以下のような形で指定可能です。
+
+- 左,上,右,下
+- 左右,上下
+- 上下左右
+
+「10,5,10,5」と「10,5」は同じ値を指定していることになります。また「10,10,10,10」と 「10」は同じ指定になります。
