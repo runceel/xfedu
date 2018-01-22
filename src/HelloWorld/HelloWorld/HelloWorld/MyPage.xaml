@@ -6,7 +6,10 @@
              ios:Page.UseSafeArea="true"
              x:Class="HelloWorld.MyPage">
     <StackLayout>
-        <Editor HorizontalOptions="FillAndExpand"
-                HeightRequest="150" />
+        <Entry Text="Hello world"
+               TextColor="Blue" />
+        <Entry Placeholder="Placeholder"
+               PlaceholderColor="Red" />
+        <Entry IsPassword="true" />
     </StackLayout>
 </ContentPage>

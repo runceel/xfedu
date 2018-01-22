@@ -572,3 +572,30 @@ Editor は複数行のテキストを入力する機能を提供するコント�
 
 ![iOS Editor](images/ios-editor.gif)
 
+## Entry
+
+Entry コントロールは 1 行表示のテキストを入力するための機能を提供するコントロールです。IsPassword プロパティを true にすることでパスワード入力欄として使えるようになります。Placeholder プロパティに文字列を設定することで未入力時にウォーターマークを表示することができます。PlaceholderColor プロパティで Placeholder の色を設定できます。TextColor プロパティで文字の色を設定することも可能です。XAML の例を以下に示します。
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:HelloWorld"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             ios:Page.UseSafeArea="true"
+             x:Class="HelloWorld.MyPage">
+    <StackLayout>
+        <Entry Text="Hello world"
+               TextColor="Blue" />
+        <Entry Placeholder="Placeholder"
+               PlaceholderColor="Red" />
+        <Entry IsPassword="true" />
+    </StackLayout>
+</ContentPage>
+```
+
+実行結果を以下に示します。
+
+![Android Entry](images/android-entry.gif)
+
+![iOS Entry](images/ios-entry.gif)
