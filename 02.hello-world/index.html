@@ -68,7 +68,7 @@
         
             <li><a class="toctree-l3" href="#_1">実行して動作確認</a></li>
         
-            <li><a class="toctree-l3" href="#iphone-x">iPhone X への対応</a></li>
+            <li><a class="toctree-l3" href="#iphone">iPhone の余白への対応</a></li>
         
         </ul>
     
@@ -109,7 +109,11 @@
                 </li>
                 <li class="">
                     
-    <a class="" href="../04.controls/layoutcontrol/">レイアウトコントロール</a>
+    <a class="" href="../04.controls/layoutcontrol/">レイアウト コントロール</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../04.controls/common-controls/">一般的なコントロール</a>
                 </li>
     </ul>
 	    </li>
@@ -296,7 +300,7 @@ namespace HelloWorld
 <p>実行して動作確認をします。iOS と Android で実行すると以下のようになります。</p>
 <p><img alt="Hello world Android" src="./images/hello-world-android.png" /></p>
 <p><img alt="Hello world iOS" src="./images/hello-world-ios.png" /></p>
-<h2 id="iphone-x">iPhone X への対応</h2>
+<h2 id="iphone">iPhone の余白への対応</h2>
 <p>iPhone X では画面上部にセンサーが配置されている領域があり画面が長方形ではありません。
 そのため、何も考えずにコントロールを配置すると以下のように画面上部にコントロールが埋まってしまいます。</p>
 <pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
@@ -309,16 +313,25 @@ namespace HelloWorld
 </code></pre>
 
 <p><img alt="iPhone X" src="./images/iphonex-badimage.png" /></p>
-<p>これに対応する方法は以下のページに記載があります。</p>
+<p>また iPhone X 以外も iOS のアプリでは画面上部のステータスバー領域にコントロールがはみ出てしまいます。このため iOS のアプリでは機種に応じて適切な Padding の設定が必要になります。</p>
+<p>以前はページに対して以下のような Padding を設定することで回避していました。</p>
+<pre><code class="xml">&lt;ContentPage ...&gt;
+    &lt;OnPlatform x:TypeArguments=&quot;Thickness&quot;&gt;
+      &lt;On Platform=&quot;iOS&quot; Value=&quot;0,20,0,0&quot;&gt;
+    &lt;/OnPlatform&gt;
+&lt;/ContentPage&gt;
+</code></pre>
+
+<p>ただ、この方法では iPhone X では対応しきれません。そのため以下のような機能が追加されました。</p>
 <p><a href="https://blog.xamarin.com/making-ios-11-even-easier-xamarin-forms/">Making iOS 11 Even Easier with Xamarin.Forms</a></p>
-<p>対応方法はページのコンストラクタに以下のコードを追加する必要があります。</p>
+<p>上記ページにあるように画面のコンストラクタに以下のコードを追加する必要があります。</p>
 <pre><code class="cs">// 以下の using を追加
 // using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 
 On&lt;Xamarin.Forms.PlatformConfiguration.iOS&gt;().SetUseSafeArea(true);
 </code></pre>
 
-<p>または、以下のようにページに UseSafeArea 属性を追加します。</p>
+<p>または、以下のように画面に UseSafeArea 属性を追加します。</p>
 <pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
 &lt;ContentPage xmlns=&quot;http://xamarin.com/schemas/2014/forms&quot;
              xmlns:x=&quot;http://schemas.microsoft.com/winfx/2009/xaml&quot;

@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Kazuki Ota">
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>一般的なコントロール - かずきの Xamarin.Forms 入門</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/highlight.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "\u4e00\u822c\u7684\u306a\u30b3\u30f3\u30c8\u30ed\u30fc\u30eb";
+    var mkdocs_page_input_path = "04.controls\\common-controls.md";
+    var mkdocs_page_url = "/04.controls/common-controls/";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js"></script>
+  <script src="../../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> かずきの Xamarin.Forms 入門</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../01.introduction/">はじめに</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../02.hello-world/">Hello world</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">XAML</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../03.xaml/">XAML</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../03.xaml/xaml-and-cs/">XAML と C# のコードの対比</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../03.xaml/adv-xaml/">XAML の応用</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Xamarin.Forms のコントロール</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../">はじめに</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../bindableobject/">BindableObject</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../layoutcontrol/">レイアウト コントロール</a>
+                </li>
+                <li class=" current">
+                    
+    <a class="current" href="./">一般的なコントロール</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#_1">一般的なコントロール</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#label">Label</a></li>
+        
+            <li><a class="toctree-l4" href="#activityindicator">ActivityIndicator</a></li>
+        
+            <li><a class="toctree-l4" href="#boxview">BoxView</a></li>
+        
+            <li><a class="toctree-l4" href="#button">Button</a></li>
+        
+            <li><a class="toctree-l4" href="#datepicker">DatePicker</a></li>
+        
+            <li><a class="toctree-l4" href="#editor">Editor</a></li>
+        
+            <li><a class="toctree-l4" href="#entry">Entry</a></li>
+        
+        </ul>
+    
+
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">かずきの Xamarin.Forms 入門</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Xamarin.Forms のコントロール &raquo;</li>
+        
+      
+    
+    <li>一般的なコントロール</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/runceel/xfedu/edit/master/docs/04.controls/common-controls.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="_1">一般的なコントロール</h1>
+<p>Xamarin.Forms で使用可能な一般的なコントロールについて説明します。</p>
+<h2 id="label">Label</h2>
+<p>Label は文字列を表示するためのコントロールです。Text プロパティで表示文字列を指定できます。その他に以下のプロパティでテキストの書式を指定できます。Label 以外の Text を表示するコントロールも同名のプロパティを持っていることが多いため、ここで詳細に説明します。</p>
+<p>FontAttributes プロパティは Bold、Italic、None が指定できます。太字でイタリックな書式を指定するには Bold,Italic のようにカンマ区切りで指定します。XAML の例を以下に示します。</p>
+<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;ContentPage xmlns=&quot;http://xamarin.com/schemas/2014/forms&quot;
+             xmlns:x=&quot;http://schemas.microsoft.com/winfx/2009/xaml&quot;
+             xmlns:local=&quot;clr-namespace:HelloWorld&quot;
+             xmlns:ios=&quot;clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core&quot;
+             ios:Page.UseSafeArea=&quot;true&quot;
+             x:Class=&quot;HelloWorld.MyPage&quot;&gt;
+    &lt;StackLayout HorizontalOptions=&quot;Center&quot;
+                 VerticalOptions=&quot;Center&quot;&gt;
+        &lt;Label Text=&quot;Hello world&quot; /&gt;
+        &lt;Label Text=&quot;Hello world Bold&quot;
+               FontAttributes=&quot;Bold&quot; /&gt;
+        &lt;Label Text=&quot;Hello world Italic&quot;
+               FontAttributes=&quot;Italic&quot; /&gt;
+        &lt;Label Text=&quot;Hello world Bold,Italic&quot;
+               FontAttributes=&quot;Bold,Italic&quot; /&gt;
+    &lt;/StackLayout&gt;
+&lt;/ContentPage&gt;
+</code></pre>
+
+<p>実行結果を以下に示します。</p>
+<p><img alt="Android FontAttributes" src="../images/android-label-fontattribute.png" /></p>
+<p><img alt="iOS FontAttributes" src="../images/ios-label-fontattribute.png" /></p>
+<p>FontFamily プロパティでフォント名を指定します。sans-serif と monospace などが指定できます。FontSize でフォントのサイズが指定できます。デバイス非依存のピクセルサイズの他に名前でサイズを指定可能です。サイズの名前は Default, Large, Medium, Small, Micro が指定可能です。XAML の例を以下に示します。</p>
+<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;ContentPage xmlns=&quot;http://xamarin.com/schemas/2014/forms&quot;
+             xmlns:x=&quot;http://schemas.microsoft.com/winfx/2009/xaml&quot;
+             xmlns:local=&quot;clr-namespace:HelloWorld&quot;
+             xmlns:ios=&quot;clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core&quot;
+             ios:Page.UseSafeArea=&quot;true&quot;
+             x:Class=&quot;HelloWorld.MyPage&quot;&gt;
+    &lt;StackLayout HorizontalOptions=&quot;Center&quot;
+                 VerticalOptions=&quot;Center&quot;&gt;
+        &lt;Label Text=&quot;Hello world Default.&quot;
+               FontSize=&quot;Default&quot; /&gt;
+        &lt;Label Text=&quot;Hello world Large.&quot;
+               FontSize=&quot;Large&quot; /&gt;
+        &lt;Label Text=&quot;Hello world Medium.&quot;
+               FontSize=&quot;Medium&quot; /&gt;
+        &lt;Label Text=&quot;Hello world Small.&quot;
+               FontSize=&quot;Small&quot; /&gt;
+        &lt;Label Text=&quot;Hello world Micro.&quot;
+               FontSize=&quot;Micro&quot; /&gt;
+        &lt;Label Text=&quot;Hello world Number.&quot;
+               FontSize=&quot;24&quot; /&gt;
+    &lt;/StackLayout&gt;
+&lt;/ContentPage&gt;
+</code></pre>
+
+<p>実行結果を以下に示します。</p>
+<p><img alt="Android FontSize" src="../images/android-label-fontsize.png" /></p>
+<p><img alt="iOS FontSize" src="../images/ios-label-fontsize.png" /></p>
+<p>LineBreakMode プロパティで折り返し方法などが指定できます。設定できる値は CharacterWrap, HeadTruncation, MiddleTruncation, NoWrap, TailTruncation, WordWrap になります。Wrap とつくものが横幅に収まりきらないときに折り返しを行う設定で Truncation とつくものが…でトランケートする設定になります。XAML を以下に示します。</p>
+<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;ContentPage xmlns=&quot;http://xamarin.com/schemas/2014/forms&quot;
+             xmlns:x=&quot;http://schemas.microsoft.com/winfx/2009/xaml&quot;
+             xmlns:local=&quot;clr-namespace:HelloWorld&quot;
+             xmlns:ios=&quot;clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core&quot;
+             ios:Page.UseSafeArea=&quot;true&quot;
+             x:Class=&quot;HelloWorld.MyPage&quot;&gt;
+    &lt;StackLayout HorizontalOptions=&quot;Center&quot;
+                 VerticalOptions=&quot;Center&quot;&gt;
+        &lt;Frame WidthRequest=&quot;75&quot;&gt;
+            &lt;Label Text=&quot;This is a long long long long long long long long long text!!!!!!&quot;
+                   LineBreakMode=&quot;CharacterWrap&quot; /&gt;
+        &lt;/Frame&gt;
+        &lt;Frame WidthRequest=&quot;75&quot;&gt;
+            &lt;Label Text=&quot;This is a long long long long long long long long long text!!!!!!&quot;
+                   LineBreakMode=&quot;TailTruncation&quot; /&gt;
+        &lt;/Frame&gt;
+    &lt;/StackLayout&gt;
+&lt;/ContentPage&gt;
+</code></pre>
+
+<p>最初の Label は文字単位での折り返しを指定しています。2 つ目の Label は末尾でトランケートを指定しています。実行結果を以下に示します。</p>
+<p><img alt="Android LineBreakMode" src="../images/android-label-linebreakmode.png" /></p>
+<p><img alt="iOS LineBreakMode" src="../images/ios-label-linebreakmode.png" /></p>
+<p>TextColor プロパティを指定することでテキストの色の指定が可能です。以下に XAML を示します。</p>
+<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;ContentPage xmlns=&quot;http://xamarin.com/schemas/2014/forms&quot;
+             xmlns:x=&quot;http://schemas.microsoft.com/winfx/2009/xaml&quot;
+             xmlns:local=&quot;clr-namespace:HelloWorld&quot;
+             xmlns:ios=&quot;clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core&quot;
+             ios:Page.UseSafeArea=&quot;true&quot;
+             x:Class=&quot;HelloWorld.MyPage&quot;&gt;
+    &lt;StackLayout HorizontalOptions=&quot;Center&quot;
+                 VerticalOptions=&quot;Center&quot;&gt;
+        &lt;Label Text=&quot;Red&quot;
+               TextColor=&quot;Red&quot; /&gt;
+        &lt;Label Text=&quot;Blue&quot;
+               TextColor=&quot;Blue&quot; /&gt;
+        &lt;Label Text=&quot;Yellow&quot;
+               TextColor=&quot;Yellow&quot; /&gt;
+    &lt;/StackLayout&gt;
+&lt;/ContentPage&gt;
+</code></pre>
+
+<p>実行結果を以下に示します。</p>
+<p><img alt="Android FontColor" src="../images/android-label-fontcolor.png" /></p>
+<p><img alt="iOS FontColor" src="../images/ios-label-fontcolor.png" /></p>
+<p>HorizontalTextAlign と VerticalTextAlign で水平方向、垂直方向のテキストの位置を指定できます。指定できる値は Start, End, Center になります。XAML の例を以下に示します。</p>
+<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;ContentPage xmlns=&quot;http://xamarin.com/schemas/2014/forms&quot;
+             xmlns:x=&quot;http://schemas.microsoft.com/winfx/2009/xaml&quot;
+             xmlns:local=&quot;clr-namespace:HelloWorld&quot;
+             xmlns:ios=&quot;clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core&quot;
+             ios:Page.UseSafeArea=&quot;true&quot;
+             x:Class=&quot;HelloWorld.MyPage&quot;&gt;
+    &lt;StackLayout HorizontalOptions=&quot;Center&quot;
+                 VerticalOptions=&quot;Center&quot;&gt;
+        &lt;Frame WidthRequest=&quot;100&quot;
+               HeightRequest=&quot;100&quot;&gt;
+            &lt;Label Text=&quot;Start&quot;
+                   HorizontalTextAlignment=&quot;Start&quot;
+                   VerticalTextAlignment=&quot;Start&quot; /&gt;
+        &lt;/Frame&gt;
+        &lt;Frame WidthRequest=&quot;100&quot;
+               HeightRequest=&quot;100&quot;&gt;
+            &lt;Label Text=&quot;Center&quot;
+                   HorizontalTextAlignment=&quot;Center&quot;
+                   VerticalTextAlignment=&quot;Center&quot; /&gt;
+        &lt;/Frame&gt;
+        &lt;Frame WidthRequest=&quot;100&quot;
+               HeightRequest=&quot;100&quot;&gt;
+            &lt;Label Text=&quot;End&quot;
+                   HorizontalTextAlignment=&quot;End&quot;
+                   VerticalTextAlignment=&quot;End&quot; /&gt;
+        &lt;/Frame&gt;
+    &lt;/StackLayout&gt;
+&lt;/ContentPage&gt;
+</code></pre>
+
+<p>実行結果を以下に示します。</p>
+<p><img alt="Android TextAlign" src="../images/android-label-textalign.png" /></p>
+<p><img alt="iOS TextAlign" src="../images/ios-label-textalign.png" /></p>
+<p>最後に FormattedText プロパティについて説明します。FormattedText プロパティは名前の通り書式付きのテキストを指定することができます。FormattedString 型を指定します。FormattedString 型の Spans プロパティに Span のコレクションを指定して書式付きテキストを表現します。Span 型は BackgorundColor, FontAttributes, FontFamily, FontSize, ForegroundColor, Text プロパティがあり、それぞれ名前の通り背景色やフォントの属性などが指定できます。FormattedText を使用した XAML の例を以下に示します。</p>
+<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;ContentPage xmlns=&quot;http://xamarin.com/schemas/2014/forms&quot;
+             xmlns:x=&quot;http://schemas.microsoft.com/winfx/2009/xaml&quot;
+             xmlns:local=&quot;clr-namespace:HelloWorld&quot;
+             xmlns:ios=&quot;clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core&quot;
+             ios:Page.UseSafeArea=&quot;true&quot;
+             x:Class=&quot;HelloWorld.MyPage&quot;&gt;
+    &lt;StackLayout HorizontalOptions=&quot;Center&quot;
+                 VerticalOptions=&quot;Center&quot;&gt;
+        &lt;Label&gt;
+            &lt;Label.FormattedText&gt;
+                &lt;FormattedString&gt;
+                    &lt;Span Text=&quot;H&quot;
+                          FontAttributes=&quot;Bold&quot;
+                          ForegroundColor=&quot;Red&quot; /&gt;
+                    &lt;Span Text=&quot;e&quot;
+                          BackgroundColor=&quot;Silver&quot; /&gt;
+                    &lt;Span Text=&quot;l&quot;
+                          FontAttributes=&quot;Bold,Italic&quot;
+                          FontSize=&quot;Small&quot; /&gt;
+                    &lt;Span Text=&quot;l&quot;
+                          ForegroundColor=&quot;Aqua&quot;
+                          FontSize=&quot;Large&quot; /&gt;
+                    &lt;Span Text=&quot;o&quot; /&gt;
+                &lt;/FormattedString&gt;
+            &lt;/Label.FormattedText&gt;
+        &lt;/Label&gt;
+    &lt;/StackLayout&gt;
+&lt;/ContentPage&gt;
+</code></pre>
+
+<p>実行結果を以下に示します。</p>
+<p><img alt="Android FormattedString" src="../images/android-label-formattedstring.png" /></p>
+<p><img alt="iOS FormattedString" src="../images/ios-label-formattedstring.png" /></p>
+<h2 id="activityindicator">ActivityIndicator</h2>
+<p>処理中を表すインジケータのコントロールです。Color プロパティでインジケータの色を指定して IsRunning プロパティでインジケータの表示・非表示を制御します。</p>
+<p>以下に XAML の例を示します。</p>
+<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;ContentPage xmlns=&quot;http://xamarin.com/schemas/2014/forms&quot;
+             xmlns:x=&quot;http://schemas.microsoft.com/winfx/2009/xaml&quot;
+             xmlns:local=&quot;clr-namespace:HelloWorld&quot;
+             xmlns:ios=&quot;clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core&quot;
+             ios:Page.UseSafeArea=&quot;true&quot;
+             x:Class=&quot;HelloWorld.MyPage&quot;&gt;
+    &lt;StackLayout&gt;
+        &lt;ActivityIndicator Color=&quot;Red&quot;
+                           HorizontalOptions=&quot;Center&quot;
+                           VerticalOptions=&quot;CenterAndExpand&quot;
+                           IsRunning=&quot;true&quot; /&gt;
+    &lt;/StackLayout&gt;
+&lt;/ContentPage&gt;
+</code></pre>
+
+<p>実行結果を以下に示します。</p>
+<p><img alt="Android ActivityIndicator" src="../images/android-activityindicator.gif" /></p>
+<p><img alt="iOS ActivityIndicator" src="../images/ios-activityindicator.gif" /></p>
+<p>実際に使う場合は IsVisible プロパティ(bool 型)で表示・非表示を切り替えて使うと非表示時に他の UI 操作の邪魔をしないため良いと思います。</p>
+<h2 id="boxview">BoxView</h2>
+<p>BoxView は矩形を表示するためのコントロールです。Color プロパティで色を指定できます。以下に XAML を示します。</p>
+<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;ContentPage xmlns=&quot;http://xamarin.com/schemas/2014/forms&quot;
+             xmlns:x=&quot;http://schemas.microsoft.com/winfx/2009/xaml&quot;
+             xmlns:local=&quot;clr-namespace:HelloWorld&quot;
+             xmlns:ios=&quot;clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core&quot;
+             ios:Page.UseSafeArea=&quot;true&quot;
+             x:Class=&quot;HelloWorld.MyPage&quot;&gt;
+    &lt;StackLayout HorizontalOptions=&quot;Center&quot;
+                 VerticalOptions=&quot;Center&quot;&gt;
+        &lt;BoxView Color=&quot;Red&quot;
+                 WidthRequest=&quot;50&quot;
+                 HeightRequest=&quot;50&quot; /&gt;
+    &lt;/StackLayout&gt;
+&lt;/ContentPage&gt;
+</code></pre>
+
+<p>実行結果を以下に示します。</p>
+<p><img alt="Android BoxView" src="../images/android-boxview.png" /></p>
+<p><img alt="iOS BoxView" src="../images/ios-boxview.png" /></p>
+<h2 id="button">Button</h2>
+<p>Button はタップ可能な領域を提供するコントロールです。一般的にユーザーがアクションを起こすときのきっかけとして使用されます。Button には Label で説明したのと同様に FontAttributes, FintFamily, FintSize, TextColor プロパティでテキストの書式を指定できます。これに加えて BorderColor で枠線の色、BorderRadius で枠線の角の丸まり具合、BorderWidth で枠線の幅を指定できます。</p>
+<p>XAML の例を以下に示します。</p>
+<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;ContentPage xmlns=&quot;http://xamarin.com/schemas/2014/forms&quot;
+             xmlns:x=&quot;http://schemas.microsoft.com/winfx/2009/xaml&quot;
+             xmlns:local=&quot;clr-namespace:HelloWorld&quot;
+             xmlns:ios=&quot;clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core&quot;
+             ios:Page.UseSafeArea=&quot;true&quot;
+             x:Class=&quot;HelloWorld.MyPage&quot;&gt;
+    &lt;StackLayout HorizontalOptions=&quot;Center&quot;
+                 VerticalOptions=&quot;Center&quot;&gt;
+        &lt;Button Text=&quot;Default&quot; /&gt;
+        &lt;Button Text=&quot;Border&quot;
+                BorderColor=&quot;Olive&quot;
+                BorderRadius=&quot;30&quot;
+                BorderWidth=&quot;2&quot;
+                WidthRequest=&quot;60&quot;
+                HeightRequest=&quot;60&quot;
+                BackgroundColor=&quot;Teal&quot;
+                TextColor=&quot;White&quot; /&gt;
+    &lt;/StackLayout&gt;
+&lt;/ContentPage&gt;
+</code></pre>
+
+<p>実行結果を以下に示します。</p>
+<p><img alt="Android Button" src="../images/android-button.png" /></p>
+<p><img alt="iOS Button" src="../images/ios-button.png" /></p>
+<p>Android では Border 系のプロパティが効いていないことが確認できます。このような見た目の差異があることに注意して Border 系プロパティは指定しましょう。</p>
+<p>Button コントロールは Clicked イベントを購読することでボタンがタップされた時の処理を記述できます。コード例を以下に示します。</p>
+<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;ContentPage xmlns=&quot;http://xamarin.com/schemas/2014/forms&quot;
+             xmlns:x=&quot;http://schemas.microsoft.com/winfx/2009/xaml&quot;
+             xmlns:local=&quot;clr-namespace:HelloWorld&quot;
+             xmlns:ios=&quot;clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core&quot;
+             ios:Page.UseSafeArea=&quot;true&quot;
+             x:Class=&quot;HelloWorld.MyPage&quot;&gt;
+    &lt;StackLayout HorizontalOptions=&quot;Center&quot;
+                 VerticalOptions=&quot;Center&quot;&gt;
+        &lt;Label x:Name=&quot;label&quot; /&gt;
+        &lt;Button Text=&quot;Default&quot;
+                Clicked=&quot;ButtonLabelChange_Clicked&quot; /&gt;
+    &lt;/StackLayout&gt;
+&lt;/ContentPage&gt;
+</code></pre>
+
+<p>コードビハインドにイベントハンドラを記述します。コードを以下に示します。</p>
+<pre><code class="cs">using System;
+using Xamarin.Forms;
+
+namespace HelloWorld
+{
+    public partial class MyPage : ContentPage
+    {
+        public MyPage()
+        {
+            InitializeComponent();
+        }
+
+        private void ButtonLabelChange_Clicked(object sender, EventArgs e)
+        {
+            this.label.Text = DateTime.Now.ToString();
+        }
+    }
+}
+</code></pre>
+
+<p>実行してボタンをタップした結果を以下に示します。</p>
+<p><img alt="Android Button Clicked" src="../images/android-button-clicked.gif" /></p>
+<p><img alt="iOS Button Clicked" src="../images/ios-button-clicked.gif" /></p>
+<p>Button コントロールにはユーザーからの操作を受け取る方法としてイベントの他に Command というものが提供されています。これはデータ バインディングと共に使用されることが多いプロパティです。Command プロパティは、ICommand インターフェース型で実行を行う Execute メソッドと、実行可否を返す CanExecute メソッドと、実行可否のステータスが変わったことを示す CanExecuteChanged イベントが定義されています。Xamarin.Forms ではデフォルトの ICommand インターフェースの実装クラスとして Command クラスを提供しています。このクラスはデリゲートで Execute と CanExecute の指定が可能になっています。使用例を以下に示します。</p>
+<p>まず BindingContext に設定するための以下のようなクラスを用意します。このクラスに Command をもたせています。Command では Execute 時に Message プロパティを更新するようにしています。</p>
+<pre><code class="cs">using System;
+using Xamarin.Forms;
+
+namespace HelloWorld
+{
+    public class MyPageViewModel : BindableBase
+    {
+        private string _message;
+
+        public string Message
+        {
+            get =&gt; _message;
+            set =&gt; SetProperty(ref _message, value);
+        }
+
+        public Command NowCommand { get; }
+
+        public MyPageViewModel()
+        {
+            this.NowCommand = new Command(_ =&gt; Message = DateTime.Now.ToString());
+        }
+    }
+}
+</code></pre>
+
+<p>XAML で上記クラスを BindingContext に設定してデータバインディングしています。</p>
+<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;ContentPage xmlns=&quot;http://xamarin.com/schemas/2014/forms&quot;
+             xmlns:x=&quot;http://schemas.microsoft.com/winfx/2009/xaml&quot;
+             xmlns:local=&quot;clr-namespace:HelloWorld&quot;
+             xmlns:ios=&quot;clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core&quot;
+             ios:Page.UseSafeArea=&quot;true&quot;
+             x:Class=&quot;HelloWorld.MyPage&quot;&gt;
+    &lt;ContentPage.BindingContext&gt;
+        &lt;local:MyPageViewModel /&gt;
+    &lt;/ContentPage.BindingContext&gt;
+    &lt;StackLayout HorizontalOptions=&quot;Center&quot;
+                 VerticalOptions=&quot;Center&quot;&gt;
+        &lt;Label Text=&quot;{Binding Message}&quot; /&gt;
+        &lt;Button Text=&quot;Default&quot;
+                Command=&quot;{Binding NowCommand}&quot; /&gt;
+    &lt;/StackLayout&gt;
+&lt;/ContentPage&gt;
+</code></pre>
+
+<p>実行してボタンをタップした結果を以下に示します。</p>
+<p><img alt="Android Button Command" src="../images/android-button-command.gif" /></p>
+<p><img alt="iOS Button Command" src="../images/ios-button-command.gif" /></p>
+<p>これに実行可否の機能を追加したいと思います。実行可否の状態を保持するための CanExecute という名前のプロパティを MyPageViewModel クラスに定義します。そして Command の CanExecute の処理で、その値を返します。CanExecute プロパティの変更のタイミングで NowCommand の実行可否状態に変化があったことを通知するために ChangeCanExecute メソッドを呼び出しています。コードを以下に示します。</p>
+<pre><code class="cs">using System;
+using Xamarin.Forms;
+
+namespace HelloWorld
+{
+    public class MyPageViewModel : BindableBase
+    {
+        private string _message;
+
+        public string Message
+        {
+            get =&gt; _message; 
+            set =&gt; SetProperty(ref _message, value); 
+        }
+
+        private bool _canExecute;
+
+        public bool CanExecute
+        {
+            get =&gt; _canExecute;
+            set
+            {
+                SetProperty(ref _canExecute, value);
+                NowCommand.ChangeCanExecute();
+            }
+        }
+
+        public Command NowCommand { get; }
+
+        public MyPageViewModel()
+        {
+            NowCommand = new Command(
+                _ =&gt; Message = DateTime.Now.ToString(),
+                _ =&gt; CanExecute);
+        }
+    }
+}
+</code></pre>
+
+<p>XAML 側では Switch という ON/OFF 状態を表すコントロールを使って MyPageViewModel クラスの CanExecute プロパティの切り替えを行なっています。XAML を以下に示します。</p>
+<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;ContentPage xmlns=&quot;http://xamarin.com/schemas/2014/forms&quot;
+             xmlns:x=&quot;http://schemas.microsoft.com/winfx/2009/xaml&quot;
+             xmlns:local=&quot;clr-namespace:HelloWorld&quot;
+             xmlns:ios=&quot;clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core&quot;
+             ios:Page.UseSafeArea=&quot;true&quot;
+             x:Class=&quot;HelloWorld.MyPage&quot;&gt;
+    &lt;ContentPage.BindingContext&gt;
+        &lt;local:MyPageViewModel /&gt;
+    &lt;/ContentPage.BindingContext&gt;
+    &lt;StackLayout HorizontalOptions=&quot;Center&quot;
+                 VerticalOptions=&quot;Center&quot;&gt;
+        &lt;Label Text=&quot;{Binding Message}&quot; /&gt;
+        &lt;Button Text=&quot;Default&quot;
+                Command=&quot;{Binding NowCommand}&quot; /&gt;
+        &lt;Switch IsToggled=&quot;{Binding CanExecute, Mode=TwoWay}&quot; /&gt;
+    &lt;/StackLayout&gt;
+&lt;/ContentPage&gt;
+</code></pre>
+
+<p>実行結果を以下に示します。Switch の状態に連動して Button の実行可否が切り替わっていることが確認できます。</p>
+<p><img alt="Android Button Command" src="../images/android-button-command2.gif" /></p>
+<p><img alt="iOS Button Command" src="../images/ios-button-command2.gif" /></p>
+<p>Command にはパラメータを渡すことができます。Button クラスの CommandParameter クラスで指定します。このプロパティを設定すると Command の Execute と CanExecute にパラメータを渡すことができるようになります。日付の書式指定を CommandParameter で渡すようにしたコード例を以下に示します。まず MyPageViewModel を、パラメータを使うように変更します。</p>
+<pre><code class="cs">NowCommand = new Command(
+    x =&gt; Message = DateTime.Now.ToString((string)x),
+    _ =&gt; CanExecute);
+</code></pre>
+
+<p>そして Button の CommandParameter に以下のように書式文字列を指定するようにします。</p>
+<pre><code class="xml">&lt;Button Text=&quot;Default&quot;
+        Command=&quot;{Binding NowCommand}&quot;
+        CommandParameter=&quot;yyyy/MM/dd&quot; /&gt;
+</code></pre>
+
+<p>実行すると CommandParameter で指定した書式になっていることが確認できます。実行結果を以下に示します。</p>
+<p><img alt="Android Button Command" src="../images/android-button-commandparameter.gif" /></p>
+<p><img alt="iOS Button Command" src="../images/ios-button-commandparameter.gif" /></p>
+<h2 id="datepicker">DatePicker</h2>
+<p>DatePicker は日付を選択するUIを提供するコントロールです。Date プロパティで選択日付を DateTime 型で取得や設定できます。MaximumDate プロパティ, MinimumDate プロパティで DatePicker で選択可能な日付の範囲を指定できます。Format プロパティで yyyy-MM-dd などのように日付の表示時のフォーマットを指定できます。XAML の例を以下に示します。</p>
+<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;ContentPage xmlns=&quot;http://xamarin.com/schemas/2014/forms&quot;
+             xmlns:x=&quot;http://schemas.microsoft.com/winfx/2009/xaml&quot;
+             xmlns:local=&quot;clr-namespace:HelloWorld&quot;
+             xmlns:sys=&quot;clr-namespace:System;assembly=mscorlib&quot;
+             xmlns:ios=&quot;clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core&quot;
+             ios:Page.UseSafeArea=&quot;true&quot;
+             x:Class=&quot;HelloWorld.MyPage&quot;&gt;
+    &lt;StackLayout HorizontalOptions=&quot;Center&quot;
+                 VerticalOptions=&quot;Center&quot;&gt;
+        &lt;Label Text=&quot;{Binding Date, Source={x:Reference datePicker}, StringFormat='{0:yyyy-MM-dd}'}&quot; /&gt;
+        &lt;DatePicker x:Name=&quot;datePicker&quot;
+                    Format=&quot;yyyy/MM/dd&quot;
+                    VerticalOptions=&quot;CenterAndExpand&quot;&gt;
+            &lt;DatePicker.MaximumDate&gt;
+                &lt;sys:DateTime x:FactoryMethod=&quot;Parse&quot;&gt;
+                    &lt;x:Arguments&gt;
+                        &lt;sys:String&gt;2050/12/31&lt;/sys:String&gt;
+                    &lt;/x:Arguments&gt;
+                &lt;/sys:DateTime&gt;
+            &lt;/DatePicker.MaximumDate&gt;
+            &lt;DatePicker.MinimumDate&gt;
+                &lt;sys:DateTime x:FactoryMethod=&quot;Parse&quot;&gt;
+                    &lt;x:Arguments&gt;
+                        &lt;sys:String&gt;1900/1/1&lt;/sys:String&gt;
+                    &lt;/x:Arguments&gt;
+                &lt;/sys:DateTime&gt;
+            &lt;/DatePicker.MinimumDate&gt;
+        &lt;/DatePicker&gt;
+    &lt;/StackLayout&gt;
+&lt;/ContentPage&gt;
+</code></pre>
+
+<p>MaximumDate プロパティと MinimumDate プロパティを指定する箇所で若干 XAML の紹介していない機能を使用しているため説明します。x:FactoryMethod 属性はオブジェクトのインスタンスを生成するときのファクトリメソッドを指定できます。今回の例では DateTime 型の Parse メソッドを使用してインスタンスを指定するという意味になります。そして x:Arguments でファクトリメソッドの引数を指定しています。引数には、それぞれ 2050/12/31 と 1900/1/1 という文字列を渡しています。
+つまり上記 XAML で 1900/1/1 から 2050/12/31 までの間の日付が選択可能でフォーマットが yyyy/MM/dd で表示される DatePicker が定義されています。そして選択日付は Label コントロールに yyyy-MM-dd というフォーマットで表示されるように指定しています。実行結果を以下に示します。</p>
+<p><img alt="Android DatePicker" src="../images/android-datepicker.gif" /></p>
+<p><img alt="iOS DatePicker" src="../images/ios-datepicker.gif" /></p>
+<h2 id="editor">Editor</h2>
+<p>Editor は複数行のテキストを入力する機能を提供するコントロールです。FontAttributes, FontFamily, FontSize, TextColor のプロパティでテキストの書式指定が可能です。Text プロパティでテキストの取得や設定ができます。XAML の例を以下に示します。</p>
+<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;ContentPage xmlns=&quot;http://xamarin.com/schemas/2014/forms&quot;
+             xmlns:x=&quot;http://schemas.microsoft.com/winfx/2009/xaml&quot;
+             xmlns:local=&quot;clr-namespace:HelloWorld&quot;
+             xmlns:ios=&quot;clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core&quot;
+             ios:Page.UseSafeArea=&quot;true&quot;
+             x:Class=&quot;HelloWorld.MyPage&quot;&gt;
+    &lt;StackLayout&gt;
+        &lt;Editor HorizontalOptions=&quot;FillAndExpand&quot;
+                HeightRequest=&quot;150&quot; /&gt;
+    &lt;/StackLayout&gt;
+&lt;/ContentPage&gt;
+</code></pre>
+
+<p>実行結果を以下に示します。</p>
+<p><img alt="Android Editor" src="../images/android-editor.gif" /></p>
+<p><img alt="iOS Editor" src="../images/ios-editor.gif" /></p>
+<h2 id="entry">Entry</h2>
+<p>Entry コントロールは 1 行表示のテキストを入力するための機能を提供するコントロールです。IsPassword プロパティを true にすることでパスワード入力欄として使えるようになります。Placeholder プロパティに文字列を設定することで未入力時にウォーターマークを表示することができます。PlaceholderColor プロパティで Placeholder の色を設定できます。TextColor プロパティで文字の色を設定することも可能です。XAML の例を以下に示します。</p>
+<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;ContentPage xmlns=&quot;http://xamarin.com/schemas/2014/forms&quot;
+             xmlns:x=&quot;http://schemas.microsoft.com/winfx/2009/xaml&quot;
+             xmlns:local=&quot;clr-namespace:HelloWorld&quot;
+             xmlns:ios=&quot;clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core&quot;
+             ios:Page.UseSafeArea=&quot;true&quot;
+             x:Class=&quot;HelloWorld.MyPage&quot;&gt;
+    &lt;StackLayout&gt;
+        &lt;Entry Text=&quot;Hello world&quot;
+               TextColor=&quot;Blue&quot; /&gt;
+        &lt;Entry Placeholder=&quot;Placeholder&quot;
+               PlaceholderColor=&quot;Red&quot; /&gt;
+        &lt;Entry IsPassword=&quot;true&quot; /&gt;
+    &lt;/StackLayout&gt;
+&lt;/ContentPage&gt;
+</code></pre>
+
+<p>実行結果を以下に示します。</p>
+<p><img alt="Android Entry" src="../images/android-entry.gif" /></p>
+<p><img alt="iOS Entry" src="../images/ios-entry.gif" /></p>
+<p>また Text プロパティに変更があったことを伝える TextChanged イベントがあります。使用例を以下に示します。</p>
+<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;ContentPage xmlns=&quot;http://xamarin.com/schemas/2014/forms&quot;
+             xmlns:x=&quot;http://schemas.microsoft.com/winfx/2009/xaml&quot;
+             xmlns:local=&quot;clr-namespace:HelloWorld&quot;
+             xmlns:ios=&quot;clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core&quot;
+             ios:Page.UseSafeArea=&quot;true&quot;
+             x:Class=&quot;HelloWorld.MyPage&quot;&gt;
+    &lt;StackLayout&gt;
+        &lt;Entry TextChanged=&quot;Handle_TextChanged&quot; /&gt;
+        &lt;Label x:Name=&quot;label&quot; /&gt;
+    &lt;/StackLayout&gt;
+&lt;/ContentPage&gt;
+</code></pre>
+
+<p>実行結果を以下に示します。</p>
+<p><img alt="Android Entry TextChanged" src="../images/android-entry-textchanged.gif" /></p>
+<p><img alt="iOS Entry TextChanged" src="../images/ios-entry-textchanged.gif" /></p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="../layoutcontrol/" class="btn btn-neutral" title="レイアウト コントロール"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/runceel/xfedu/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../layoutcontrol/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/require.js"></script>
+      <script src="../../search/search.js"></script>
+
+</body>
+</html>

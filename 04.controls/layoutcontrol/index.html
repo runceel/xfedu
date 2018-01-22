@@ -8,7 +8,7 @@
   
   <meta name="author" content="Kazuki Ota">
   <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>レイアウトコントロール - かずきの Xamarin.Forms 入門</title>
+  <title>レイアウト コントロール - かずきの Xamarin.Forms 入門</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
@@ -17,7 +17,7 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "\u30ec\u30a4\u30a2\u30a6\u30c8\u30b3\u30f3\u30c8\u30ed\u30fc\u30eb";
+    var mkdocs_page_name = "\u30ec\u30a4\u30a2\u30a6\u30c8 \u30b3\u30f3\u30c8\u30ed\u30fc\u30eb";
     var mkdocs_page_input_path = "04.controls\\layoutcontrol.md";
     var mkdocs_page_url = "/04.controls/layoutcontrol/";
   </script>
@@ -95,7 +95,7 @@
                 </li>
                 <li class=" current">
                     
-    <a class="current" href="./">レイアウトコントロール</a>
+    <a class="current" href="./">レイアウト コントロール</a>
     <ul class="subnav">
             
     <li class="toctree-l3"><a href="#_1">レイアウトコントロール</a></li>
@@ -106,10 +106,22 @@
         
             <li><a class="toctree-l4" href="#grid">Grid</a></li>
         
+            <li><a class="toctree-l4" href="#absolutelayout">AbsoluteLayout</a></li>
+        
+            <li><a class="toctree-l4" href="#relativelayout">RelativeLayout</a></li>
+        
+            <li><a class="toctree-l4" href="#scrollview">ScrollView</a></li>
+        
+            <li><a class="toctree-l4" href="#_2">余白の制御</a></li>
+        
         </ul>
     
 
     </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../common-controls/">一般的なコントロール</a>
                 </li>
     </ul>
 	    </li>
@@ -140,7 +152,7 @@
         
       
     
-    <li>レイアウトコントロール</li>
+    <li>レイアウト コントロール</li>
     <li class="wy-breadcrumbs-aside">
       
         <a href="https://github.com/runceel/xfedu/edit/master/docs/04.controls/layoutcontrol.md"
@@ -395,12 +407,194 @@ Height と Width は GridLength という型で固定数値、Auto、数字<em>�
 <p>先ほどのコードの一部にGrid.RowSpan添付プロパティとGrid.ColumnSpan添付プロパティを指定しています。実行結果を以下に示します。</p>
 <p><img alt="Android Grid span" src="../images/android-grid-span.png" /></p>
 <p><img alt="iOS Grid span" src="../images/ios-grid-span.png" /></p>
+<h2 id="absolutelayout">AbsoluteLayout</h2>
+<p>AbsoluteLayout は絶対座標と比率でコントロールのレイアウトを指定できるレイアウトコントロールです。AbsoluteLayout.LayoutBounds 添付プロパティで「x, y, width, height」の形式で位置を指定します。この時デフォルトでは絶対座標での指定が行われます。AbsoluteLayout.LayoutFlags 添付プロパティで絶対座標指定か、比率による指定かを設定できます。AbsoluteLayout.LayoutFlags 添付プロパティに指定可能な値は以下のものになります。</p>
+<ul>
+<li>None：デフォルト値。絶対座標による指定になります。</li>
+<li>All：全ての設定値が比率による指定になります。</li>
+<li>WidthProportional：幅が比率による指定になります。</li>
+<li>HeightProportional：高さが比率による指定になります。</li>
+<li>XProportional：X座標が比率による指定になります。</li>
+<li>YProportional：Y座標が比率による指定になります。</li>
+<li>PositionProportional：X座標とY座標が比率による指定になります。</li>
+<li>SizeProportional：WidthとHeightが比率による指定になります。</li>
+</ul>
+<p>比率による指定の場合は指定可能な値は 0 〜 1 の間の数字になります。XAML の例を以下に示します。</p>
+<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;ContentPage xmlns=&quot;http://xamarin.com/schemas/2014/forms&quot;
+             xmlns:x=&quot;http://schemas.microsoft.com/winfx/2009/xaml&quot;
+             xmlns:local=&quot;clr-namespace:HelloWorld&quot;
+             xmlns:ios=&quot;clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core&quot;
+             ios:Page.UseSafeArea=&quot;true&quot;
+             x:Class=&quot;HelloWorld.MyPage&quot;&gt;
+    &lt;AbsoluteLayout&gt;
+        &lt;BoxView Color=&quot;Red&quot;
+                 AbsoluteLayout.LayoutBounds=&quot;10,10,100,100&quot; /&gt;
+        &lt;BoxView Color=&quot;Blue&quot;
+                 AbsoluteLayout.LayoutBounds=&quot;.5,.5,.5,.5&quot;
+                 AbsoluteLayout.LayoutFlags=&quot;All&quot; /&gt;
+        &lt;BoxView Color=&quot;Olive&quot;
+                 AbsoluteLayout.LayoutBounds=&quot;1,.5,25,250&quot;
+                 AbsoluteLayout.LayoutFlags=&quot;PositionProportional&quot; /&gt;
+        &lt;BoxView Color=&quot;Yellow&quot;
+                 AbsoluteLayout.LayoutBounds=&quot;.5,1,100,50&quot;
+                 AbsoluteLayout.LayoutFlags=&quot;PositionProportional&quot; /&gt;
+    &lt;/AbsoluteLayout&gt;
+&lt;/ContentPage&gt;
+</code></pre>
+
+<p>実行結果を以下に示します。</p>
+<p><img alt="Android AbsoluteLayout" src="../images/android-absolutelayout.png" /></p>
+<p><img alt="iOS AbsoluteLayout" src="../images/ios-absolutelayout.png" /></p>
+<h2 id="relativelayout">RelativeLayout</h2>
+<p>RelativeLayout は親要素か他のコントロールからの相対位置によってレイアウトを決めることができます。以下の添付プロパティを使用して設定します。</p>
+<ul>
+<li>RelativeLayout.XConstraint：コントロールのX座標を指定します。</li>
+<li>RelativeLayout.YConstraint：コントロールのY座標を指定します。</li>
+<li>RelativeLayout.WidthConstraint：コントロールの幅を指定します。</li>
+<li>RelativeLayout.HeihgtConstraint：コントロールの高さを指定します。</li>
+<li>RelativeLayout.BoundsConstraint：コントロールの領域を指定します。</li>
+</ul>
+<p>上記の添付プロパティの値は ConstraintExpression マークアップ拡張を使って指定します。ConstraintExpression マークアップ拡張は以下のプロパティを持っています。</p>
+<ul>
+<li>Type：RelativeToParent で親要素を指定するか、RelativeToView で ElementName で指定した View を指定するか設定します。</li>
+<li>ElementName：Type で RelativeToView を指定した時に参照する View の名前(x:Name で指定)を設定します。</li>
+<li>Property：親要素か他の View の、どのプロパティを参照するか指定します。</li>
+<li>Factor：Type と ElementName と Property で取得した値に掛ける比率を指定します。</li>
+<li>Constant：Type と ElementName と Property で取得して Factor を掛けた値に加算する値を指定します。</li>
+</ul>
+<p>例えば X 座標を親要素の中央に持ってきたい場合は親要素の幅の半分の値にすればいいので以下のような設定になります。</p>
+<pre><code class="xml">RelativeLayout.XConstraint=”{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=.5}”
+</code></pre>
+
+<p>X 座標を boxView の X 座標から 10 増やした位置に指定したい場合は以下のような設定になります。</p>
+<pre><code class="xml">RelativeLayout.XConstraint=”{ConstraintExpression Type=RelativeToView, ElementName=boxView, Property=X, Constant=10}”
+</code></pre>
+
+<p>XAML の例を以下に示します。</p>
+<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;ContentPage xmlns=&quot;http://xamarin.com/schemas/2014/forms&quot;
+             xmlns:x=&quot;http://schemas.microsoft.com/winfx/2009/xaml&quot;
+             xmlns:local=&quot;clr-namespace:HelloWorld&quot;
+             xmlns:ios=&quot;clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core&quot;
+             ios:Page.UseSafeArea=&quot;true&quot;
+             x:Class=&quot;HelloWorld.MyPage&quot;&gt;
+    &lt;RelativeLayout&gt;
+        &lt;BoxView x:Name=&quot;boxViewBlue&quot;
+                 Color=&quot;Blue&quot;
+                 RelativeLayout.XConstraint=&quot;{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=.5, Constant=-50}&quot;
+                 RelativeLayout.YConstraint=&quot;{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=.5, Constant=-50}&quot;
+                 RelativeLayout.WidthConstraint=&quot;{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=.5}&quot;
+                 RelativeLayout.HeightConstraint=&quot;{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=.5}&quot; /&gt;
+
+        &lt;BoxView Color=&quot;Red&quot;
+                 WidthRequest=&quot;100&quot;
+                 HeightRequest=&quot;100&quot;
+                 RelativeLayout.XConstraint=&quot;{ConstraintExpression Type=RelativeToView, ElementName=boxViewBlue, Property=X, Constant=-100}&quot;
+                 RelativeLayout.YConstraint=&quot;{ConstraintExpression Type=RelativeToView, ElementName=boxViewBlue, Property=Y, Constant=-100}&quot; /&gt;
+    &lt;/RelativeLayout&gt;
+&lt;/ContentPage&gt;
+</code></pre>
+
+<p>画面中央から左上に 50px 動かした位置に青い BoxView を表示しています。そして赤い BoxView を青い BoxView の左上に表示しています。実行結果を以下に示します。</p>
+<p><img alt="Android RelativeLayout" src="../images/android-relativelayout.png" /></p>
+<p><img alt="iOS RelativeLayout" src="../images/ios-relativelayout.png" /></p>
+<h2 id="scrollview">ScrollView</h2>
+<p>ScrollView はスクロール可能な領域を提供するコントロールです。他のレイアウトコントロールとは多少毛色が異なりますが Layout を継承しているためここで紹介します。ScrollView は主に以下のプロパティを使用します。</p>
+<ul>
+<li>Content：スクロールさせたいコンテンツを指定します。</li>
+<li>ContentSize：コンテンツのサイズを取得します。（読み取り専用）</li>
+<li>Orientation：スクロールの方向を指定します。ScrollOrientation 型の Horizontal（横方向）、Vertical（縦方向）、Both（両方）が指定可能です。</li>
+<li>ScrollX：スクロールの X の位置を返します。（読み取り専用）</li>
+<li>ScrollY：スクロールの Y の位置を返します。（読み取り専用）</li>
+</ul>
+<p>また、スクロール位置を制御するための以下のメソッドが提供されています。</p>
+<ul>
+<li>ScrollAsync(int x, int y, bool animated)</li>
+<li>ScrollAsync(Element element, ScrollToPosition position, bool animated)</li>
+</ul>
+<p>最初のオーバーロードが座標指定でのスクロールで2つ目のオーバーロードが要素が表示されるまでスクロールさせるメソッドになります。ScrollToPosition は以下の値を持つ列挙型です。</p>
+<ul>
+<li>Center：中央に表示されるようにします。</li>
+<li>Start：開始位置に表示されるようにします。</li>
+<li>End：終了位置に表示されるようにします。</li>
+<li>MakeVisible：とりあえず表示されるようにします。</li>
+</ul>
+<p>コード例を以下に示します。</p>
+<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;ContentPage xmlns=&quot;http://xamarin.com/schemas/2014/forms&quot;
+             xmlns:x=&quot;http://schemas.microsoft.com/winfx/2009/xaml&quot;
+             xmlns:local=&quot;clr-namespace:HelloWorld&quot;
+             xmlns:ios=&quot;clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core&quot;
+             ios:Page.UseSafeArea=&quot;true&quot;
+             x:Class=&quot;HelloWorld.MyPage&quot;&gt;
+    &lt;StackLayout&gt;
+        &lt;Button Text=&quot;Scroll&quot;
+                Clicked=&quot;ButtonScrollTo_Clicked&quot; /&gt;
+        &lt;ScrollView x:Name=&quot;scrollView&quot;
+                    VerticalOptions=&quot;FillAndExpand&quot;
+                    Orientation=&quot;Both&quot;&gt;
+            &lt;StackLayout&gt;
+                &lt;BoxView Color=&quot;Red&quot;
+                         WidthRequest=&quot;500&quot;
+                         HeightRequest=&quot;500&quot; /&gt;
+                &lt;BoxView Color=&quot;Blue&quot;
+                         WidthRequest=&quot;500&quot;
+                         HeightRequest=&quot;500&quot; /&gt;
+                &lt;BoxView x:Name=&quot;boxViewYellow&quot;
+                         Color=&quot;Yellow&quot;
+                         WidthRequest=&quot;500&quot;
+                         HeightRequest=&quot;500&quot; /&gt;
+                &lt;BoxView Color=&quot;Olive&quot;
+                         WidthRequest=&quot;500&quot;
+                         HeightRequest=&quot;500&quot; /&gt;
+            &lt;/StackLayout&gt;
+        &lt;/ScrollView&gt;
+    &lt;/StackLayout&gt;
+&lt;/ContentPage&gt;
+</code></pre>
+
+<p>コードビハインドを以下に示します。黄色い BoxView までスクロールを行うように指定しています。</p>
+<pre><code class="cs">using System;
+using Xamarin.Forms;
+
+namespace HelloWorld
+{
+    public partial class MyPage : ContentPage
+    {
+        public MyPage()
+        {
+            InitializeComponent();
+        }
+        private async void ButtonScrollTo_Clicked(object sender, EventArgs e)
+        {
+            await scrollView.ScrollToAsync(this.boxViewYellow, ScrollToPosition.Start, true);
+            await DisplayAlert(&quot;Info&quot;, $&quot;Scroll position is {scrollView.ScrollX}, {scrollView.ScrollY}&quot;, &quot;OK&quot;);
+        }
+
+    }
+}
+</code></pre>
+
+<p>実行結果を以下に示します。</p>
+<p><img alt="Android ScrollView" src="../images/android-scrollview.gif" /></p>
+<p><img alt="iOS ScrollView" src="../images/ios-scrollview.gif" /></p>
+<h2 id="_2">余白の制御</h2>
+<p>Margin プロパティと Padding プロパティを使って余白を制御できます。Margin プロパティがコントロールの外側の余白の指定になります。Padding プロパティがコントロールの内側の余白になります。Margin プロパティも Padding プロパティも Thickness 型で指定可能で、以下の書式です。XAMLでは以下のような形で指定可能です。</p>
+<ul>
+<li>左,上,右,下</li>
+<li>左右,上下</li>
+<li>上下左右</li>
+</ul>
+<p>「10,5,10,5」と「10,5」は同じ値を指定していることになります。また「10,10,10,10」と 「10」は同じ指定になります。</p>
               
             </div>
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../common-controls/" class="btn btn-neutral float-right" title="一般的なコントロール">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
         <a href="../bindableobject/" class="btn btn-neutral" title="BindableObject"><span class="icon icon-circle-arrow-left"></span> Previous</a>
@@ -433,6 +627,8 @@ Height と Width は GridLength という型で固定数値、Auto、数字<em>�
       
         <span><a href="../bindableobject/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
+      
+        <span style="margin-left: 15px"><a href="../common-controls/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

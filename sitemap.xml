@@ -4,7 +4,7 @@
     
     <url>
      <loc>/</loc>
-     <lastmod>2018-01-21</lastmod>
+     <lastmod>2018-01-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -12,7 +12,7 @@
     
     <url>
      <loc>/01.introduction/</loc>
-     <lastmod>2018-01-21</lastmod>
+     <lastmod>2018-01-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -20,7 +20,7 @@
     
     <url>
      <loc>/02.hello-world/</loc>
-     <lastmod>2018-01-21</lastmod>
+     <lastmod>2018-01-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -29,19 +29,19 @@
         
     <url>
      <loc>/03.xaml/</loc>
-     <lastmod>2018-01-21</lastmod>
+     <lastmod>2018-01-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/03.xaml/xaml-and-cs/</loc>
-     <lastmod>2018-01-21</lastmod>
+     <lastmod>2018-01-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/03.xaml/adv-xaml/</loc>
-     <lastmod>2018-01-21</lastmod>
+     <lastmod>2018-01-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -51,19 +51,25 @@
         
     <url>
      <loc>/04.controls/</loc>
-     <lastmod>2018-01-21</lastmod>
+     <lastmod>2018-01-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/04.controls/bindableobject/</loc>
-     <lastmod>2018-01-21</lastmod>
+     <lastmod>2018-01-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/04.controls/layoutcontrol/</loc>
-     <lastmod>2018-01-21</lastmod>
+     <lastmod>2018-01-23</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>/04.controls/common-controls/</loc>
+     <lastmod>2018-01-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
