@@ -546,3 +546,29 @@ MaximumDate プロパティと MinimumDate プロパティを指定する箇所�
 ![Android DatePicker](images/android-datepicker.gif)
 
 ![iOS DatePicker](images/ios-datepicker.gif)
+
+## Editor
+
+Editor は複数行のテキストを入力する機能を提供するコントロールです。FontAttributes, FontFamily, FontSize, TextColor のプロパティでテキストの書式指定が可能です。Text プロパティでテキストの取得や設定ができます。XAML の例を以下に示します。
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:HelloWorld"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             ios:Page.UseSafeArea="true"
+             x:Class="HelloWorld.MyPage">
+    <StackLayout>
+        <Editor HorizontalOptions="FillAndExpand"
+                HeightRequest="150" />
+    </StackLayout>
+</ContentPage>
+```
+
+実行結果を以下に示します。
+
+![Android Editor](images/android-editor.gif)
+
+![iOS Editor](images/ios-editor.gif)
+
