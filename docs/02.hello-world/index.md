@@ -166,7 +166,7 @@ Xamarin.Forms の基本的なページである ContentPage を継承してい�
 
 ![Hello world iOS](images/hello-world-ios.png)
 
-## iPhone X への対応
+## iPhone の余白への対応
 
 iPhone X では画面上部にセンサーが配置されている領域があり画面が長方形ではありません。
 そのため、何も考えずにコントロールを配置すると以下のように画面上部にコントロールが埋まってしまいます。
@@ -183,11 +183,23 @@ iPhone X では画面上部にセンサーが配置されている領域があ�
 
 ![iPhone X](images/iphonex-badimage.png)
 
-これに対応する方法は以下のページに記載があります。
+また iPhone X 以外も iOS のアプリでは画面上部のステータスバー領域にコントロールがはみ出てしまいます。このため iOS のアプリでは機種に応じて適切な Padding の設定が必要になります。
+
+以前はページに対して以下のような Padding を設定することで回避していました。
+
+```xml
+<ContentPage ...>
+    <OnPlatform x:TypeArguments="Thickness">
+      <On Platform="iOS" Value="0,20,0,0">
+    </OnPlatform>
+</ContentPage>
+```
+
+ただ、この方法では iPhone X では対応しきれません。そのため以下のような機能が追加されました。
 
 [Making iOS 11 Even Easier with Xamarin.Forms](https://blog.xamarin.com/making-ios-11-even-easier-xamarin-forms/)
 
-対応方法はページのコンストラクタに以下のコードを追加する必要があります。
+上記ページにあるように画面のコンストラクタに以下のコードを追加する必要があります。
 
 ```cs
 // 以下の using を追加
@@ -196,7 +208,7 @@ iPhone X では画面上部にセンサーが配置されている領域があ�
 On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
 ```
 
-または、以下のようにページに UseSafeArea 属性を追加します。
+または、以下のように画面に UseSafeArea 属性を追加します。
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>

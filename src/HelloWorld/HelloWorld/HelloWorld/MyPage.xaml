@@ -5,27 +5,15 @@
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
              ios:Page.UseSafeArea="true"
              x:Class="HelloWorld.MyPage">
-    <StackLayout>
-        <Button Text="Scroll"
-                Clicked="ButtonScrollTo_Clicked" />
-        <ScrollView x:Name="scrollView"
-                    VerticalOptions="FillAndExpand"
-                    Orientation="Both">
-            <StackLayout>
-                <BoxView Color="Red"
-                         WidthRequest="500"
-                         HeightRequest="500" />
-                <BoxView Color="Blue"
-                         WidthRequest="500"
-                         HeightRequest="500" />
-                <BoxView x:Name="boxViewYellow"
-                         Color="Yellow"
-                         WidthRequest="500"
-                         HeightRequest="500" />
-                <BoxView Color="Olive"
-                         WidthRequest="500"
-                         HeightRequest="500" />
-            </StackLayout>
-        </ScrollView>
+    <ContentPage.BindingContext>
+        <local:MyPageViewModel />
+    </ContentPage.BindingContext>
+    <StackLayout HorizontalOptions="Center"
+                 VerticalOptions="Center">
+        <Label Text="{Binding Message}" />
+        <Button Text="Default"
+                Command="{Binding NowCommand}"
+                CommandParameter="yyyy/MM/dd" />
+        <Switch IsToggled="{Binding CanExecute, Mode=TwoWay}" />
     </StackLayout>
 </ContentPage>
