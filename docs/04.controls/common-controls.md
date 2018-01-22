@@ -501,3 +501,48 @@ NowCommand = new Command(
 ![Android Button Command](images/android-button-commandparameter.gif)
 
 ![iOS Button Command](images/ios-button-commandparameter.gif)
+
+## DatePicker
+
+DatePicker は日付を選択するUIを提供するコントロールです。Date プロパティで選択日付を DateTime 型で取得や設定できます。MaximumDate プロパティ, MinimumDate プロパティで DatePicker で選択可能な日付の範囲を指定できます。Format プロパティで yyyy-MM-dd などのように日付の表示時のフォーマットを指定できます。XAML の例を以下に示します。
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:HelloWorld"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             ios:Page.UseSafeArea="true"
+             x:Class="HelloWorld.MyPage">
+    <StackLayout HorizontalOptions="Center"
+                 VerticalOptions="Center">
+        <Label Text="{Binding Date, Source={x:Reference datePicker}, StringFormat='{0:yyyy-MM-dd}'}" />
+        <DatePicker x:Name="datePicker"
+                    Format="yyyy/MM/dd"
+                    VerticalOptions="CenterAndExpand">
+            <DatePicker.MaximumDate>
+                <sys:DateTime x:FactoryMethod="Parse">
+                    <x:Arguments>
+                        <sys:String>2050/12/31</sys:String>
+                    </x:Arguments>
+                </sys:DateTime>
+            </DatePicker.MaximumDate>
+            <DatePicker.MinimumDate>
+                <sys:DateTime x:FactoryMethod="Parse">
+                    <x:Arguments>
+                        <sys:String>1900/1/1</sys:String>
+                    </x:Arguments>
+                </sys:DateTime>
+            </DatePicker.MinimumDate>
+        </DatePicker>
+    </StackLayout>
+</ContentPage>
+```
+
+MaximumDate プロパティと MinimumDate プロパティを指定する箇所で若干 XAML の紹介していない機能を使用しているため説明します。x:FactoryMethod 属性はオブジェクトのインスタンスを生成するときのファクトリメソッドを指定できます。今回の例では DateTime 型の Parse メソッドを使用してインスタンスを指定するという意味になります。そして x:Arguments でファクトリメソッドの引数を指定しています。引数には、それぞれ 2050/12/31 と 1900/1/1 という文字列を渡しています。
+つまり上記 XAML で 1900/1/1 から 2050/12/31 までの間の日付が選択可能でフォーマットが yyyy/MM/dd で表示される DatePicker が定義されています。そして選択日付は Label コントロールに yyyy-MM-dd というフォーマットで表示されるように指定しています。実行結果を以下に示します。
+
+![Android DatePicker](images/android-datepicker.gif)
+
+![iOS DatePicker](images/ios-datepicker.gif)

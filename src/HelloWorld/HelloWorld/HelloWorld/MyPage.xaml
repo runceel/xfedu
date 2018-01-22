@@ -2,18 +2,30 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:HelloWorld"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
              ios:Page.UseSafeArea="true"
              x:Class="HelloWorld.MyPage">
-    <ContentPage.BindingContext>
-        <local:MyPageViewModel />
-    </ContentPage.BindingContext>
     <StackLayout HorizontalOptions="Center"
                  VerticalOptions="Center">
-        <Label Text="{Binding Message}" />
-        <Button Text="Default"
-                Command="{Binding NowCommand}"
-                CommandParameter="yyyy/MM/dd" />
-        <Switch IsToggled="{Binding CanExecute, Mode=TwoWay}" />
+        <Label Text="{Binding Date, Source={x:Reference datePicker}, StringFormat='{0:yyyy-MM-dd}'}" />
+        <DatePicker x:Name="datePicker"
+                    Format="yyyy/MM/dd"
+                    VerticalOptions="CenterAndExpand">
+            <DatePicker.MaximumDate>
+                <sys:DateTime x:FactoryMethod="Parse">
+                    <x:Arguments>
+                        <sys:String>2050/12/31</sys:String>
+                    </x:Arguments>
+                </sys:DateTime>
+            </DatePicker.MaximumDate>
+            <DatePicker.MinimumDate>
+                <sys:DateTime x:FactoryMethod="Parse">
+                    <x:Arguments>
+                        <sys:String>1900/1/1</sys:String>
+                    </x:Arguments>
+                </sys:DateTime>
+            </DatePicker.MinimumDate>
+        </DatePicker>
     </StackLayout>
 </ContentPage>
