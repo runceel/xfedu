@@ -6,10 +6,7 @@
              ios:Page.UseSafeArea="true"
              x:Class="HelloWorld.MyPage">
     <StackLayout>
-        <Entry Text="Hello world"
-               TextColor="Blue" />
-        <Entry Placeholder="Placeholder"
-               PlaceholderColor="Red" />
-        <Entry IsPassword="true" />
+        <Entry TextChanged="Handle_TextChanged" />
+        <Label x:Name="label" />
     </StackLayout>
 </ContentPage>

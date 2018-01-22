@@ -599,3 +599,26 @@ Entry コントロールは 1 行表示のテキストを入力するための�
 ![Android Entry](images/android-entry.gif)
 
 ![iOS Entry](images/ios-entry.gif)
+
+また Text プロパティに変更があったことを伝える TextChanged イベントがあります。使用例を以下に示します。
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:HelloWorld"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             ios:Page.UseSafeArea="true"
+             x:Class="HelloWorld.MyPage">
+    <StackLayout>
+        <Entry TextChanged="Handle_TextChanged" />
+        <Label x:Name="label" />
+    </StackLayout>
+</ContentPage>
+```
+
+実行結果を以下に示します。
+
+![Android Entry TextChanged](images/android-entry-textchanged.gif)
+
+![iOS Entry TextChanged](images/ios-entry-textchanged.gif)
