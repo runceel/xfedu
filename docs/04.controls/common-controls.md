@@ -617,6 +617,32 @@ Entry コントロールは 1 行表示のテキストを入力するための�
 </ContentPage>
 ```
 
+コードビハインドにイベントハンドラのコードを書きます。
+イベント引数の OldTextValue プロパティで変更前のテキストが取得できます。
+NewTextValue プロパティで変更後のテキストが取得できます。
+
+```cs
+using System;
+using Xamarin.Forms;
+
+namespace HelloWorld
+{
+    public partial class MyPage : ContentPage
+    {
+        public MyPage()
+        {
+            InitializeComponent();
+        }
+
+        private void Handle_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            label.Text = $"{e.OldTextValue} -> ${e.NewTextValue}";
+        }
+
+    }
+}
+```
+
 実行結果を以下に示します。
 
 ![Android Entry TextChanged](images/android-entry-textchanged.gif)
