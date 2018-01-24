@@ -6,7 +6,14 @@
              ios:Page.UseSafeArea="true"
              x:Class="HelloWorld.MyPage">
     <StackLayout>
-        <Entry TextChanged="Handle_TextChanged" />
-        <Label x:Name="label" />
+        <Image HeightRequest="150"
+               Source="profile.jpg"
+               Aspect="Fill" />
+        <Image HeightRequest="150"
+               Source="profile.jpg"
+               Aspect="AspectFill" />
+        <Image HeightRequest="150"
+               Source="profile.jpg"
+               Aspect="AspectFit" />
     </StackLayout>
 </ContentPage>

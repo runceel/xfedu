@@ -10,10 +10,5 @@ namespace HelloWorld
             InitializeComponent();
         }
 
-        private void Handle_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            label.Text = $"{e.OldTextValue} -> ${e.NewTextValue}";
-        }
-
     }
 }
